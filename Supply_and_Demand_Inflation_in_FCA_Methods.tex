@@ -205,42 +205,47 @@ difficulty involved in specifying a suitable distance decay function
 healthcare accessibility in the previous literature is the Two-Step
 Floating Catchment Area (2SFCA) method proposed by Luo and Wang
 {[}4,5{]}, which is based on a simplified gravity model with a binary
-distance function. Within the 2SFCA framework, accessibility to
-healthcare is estimated across two stages: in the first, the PPR at a
-given healthcare provider is determined based on the number of
-physicians and the estimated demand from the surrounding population
-within some catchment area. In the second stage, the level of service
-for different healthcare providers is summarized for the population. By
-simplifying gravity measures and operationalizing healthcare
-accessibility in terms of population-to-provider ratios, the properties
-of the 2SFCA method make it both intuitive and appealing for health
-policy.
+distance function. Numerous applications are found in the international
+literature, including work from Germany {[}6{]}, South Korea {[}7{]},
+Japan {[}8{]}, China {[}9{]}, Australia {[}10{]}, and Canada {[}11{]}.
+
+Within the 2SFCA framework, accessibility to healthcare is estimated
+across two stages: in the first, the PPR at a given healthcare provider
+is determined based on the number of physicians and the estimated demand
+from the surrounding population within some catchment area. In the
+second stage, the level of service for different healthcare providers is
+summarized for the population. By simplifying gravity measures and
+operationalizing healthcare accessibility in terms of
+population-to-provider ratios, the properties of the 2SFCA method make
+it both intuitive and appealing for health policy.
 
 Still, several improvements have been made to the 2SFCA method since it
 was proposed that seek to address the method's most significant
 perceived shortcomings. The result is a family of Floating Catchment
 Areas (FCA) methods that include more realistic conceptualizations of
-distance by specifying variable catchment area sizes {[}6{]} and/or the
-incorporation of stepped {[}7{]} or continuous {[}8{]} distance decay
-functions. Other authors have added multi-modal transportation {[}9{]}
-and age-adjusted healthcare demand profiles {[}10{]}.
+distance by specifying variable catchment area sizes {[}10{]} and/or the
+incorporation of stepped {[}12{]}, continuous {[}13{]}, and adaptive
+{[}14{]} distance-decay functions. Other authors have added multi-modal
+transportation {[}15{]}, age-adjusted healthcare demand profiles
+{[}16{]}, and ways to counteract the modifiable areal unit problem
+{[}17{]}.
 
 A second major focus area has been the addition of competition for
 available opportunities or the allocation of services to regions. As we
 discuss further in the next section, the original 2SFCA approach has
-been criticized for over-estimating demand {[}11{]}. By summarizing the
+been criticized for over-estimating demand {[}18{]}. By summarizing the
 population within the catchment area of healthcare facilities, the
 original 2SFCA framework often produces double-counting that tends to
 inflate estimates of the level of demand at supply points in the
 healthcare system, which in turn deflates the level of service for
 populations within the study area. Proposed solutions to this problem
 include the addition of selection weights based on a travel impedance
-function in what Wan et al. {[}11{]} refer to as the Three-Step Floating
+function in what Wan et al. {[}18{]} refer to as the Three-Step Floating
 Catchment Area (3SFCA) method and a modified 3SFCA that uses a Huff
-model to probabalisticly estimate these selection weights {[}12{]} based
+model to probabalisticly estimate these selection weights {[}19{]} based
 on impedance and the supply of physicians at a given facility. On the
 supply side (the allocation of the service to populations), Delamater
-{[}13{]} proposes a modification to the 2SFCA method to address what he
+{[}20{]} proposes a modification to the 2SFCA method to address what he
 terms a ``suboptimal'' spatial configuration of services.
 
 However, although the issue of demand overestimation (or inflation) and
@@ -345,7 +350,7 @@ A criticism of the binary impedance function is that it does not account
 for the declining probability of using a facility as distance grows. As
 a result of this criticism, other impedance functions have since been
 proposed, including the stepwise formulation of the Enhanced 2-Step
-Floating Catchment Area method {[}7{]}: \[
+Floating Catchment Area method {[}12{]}: \[
 D_j = \sum_iD_{ij} = \sum_{i=1}^N\sum_{r=1}^R P_iW(d_{ij}|d_1, d_2, \dots, d_R)
 \] where \(W(d_{ij}|d_1, d_2, \dots, d_R)\) takes different values
 depending on the value of \(d_{ij}\) and cost threshold values \(d_r\),
@@ -367,13 +372,13 @@ the extent of the catchment area (i.e., the space contained within
 travel behavior. More recent research has introduced smooth functions to
 replace the stepwise approach. It is worthwhile noting that impedance
 functions have long been studied in geographical analysis in general
-{[}14{]}, and accessibility research in particular {[}15{]}, but it is
+{[}21{]}, and accessibility research in particular {[}22{]}, but it is
 only relatively recently that alternative impedance functions have been
 incorporated in FCA approaches. These include continuous functions
-{[}8{]} and mixtures of continuous and step functions {[}3{]}.
+{[}13{]} and mixtures of continuous and step functions {[}3{]}.
 
 Among recent developments in the literature on FCA methods, Wan et al.
-{[}11{]} propose a 3-Step Floating Catchment Area method (3SFCA) that
+{[}18{]} propose a 3-Step Floating Catchment Area method (3SFCA) that
 aims at refining the estimates of level of demand and accessibility by
 incorporating a \emph{selection weight}. This approach operates by
 introducing an aditional step where selection weights are calculated as
@@ -397,11 +402,11 @@ A_i = \sum_jG_{ij}L_jW_{ij}
 \subsection{Demand and Supply
 Inflation}\label{demand-and-supply-inflation}
 
-An important point in the implementation of FCA methods {[}11{]}, is
+An important point in the implementation of FCA methods {[}18{]}, is
 that demand tends to be overestimated. This is a consequence of the way
 in which \(Dj\) is calculated, which generally fails to preserve the
 population. In other words, FCA methods lack the pycnophilactic property
-discussed by Tobler {[}16{]}. In practical terms, this implies that the
+discussed by Tobler {[}23{]}. In practical terms, this implies that the
 population used to calculate the demand component of accessibility will
 exceed (or fall short) of the actual population in a region, depending
 on the weighting scheme. We term the consequent effect \emph{demand
@@ -438,15 +443,15 @@ effect, demand is artificially higher via population inflation.
 
 This can be more easily seen by means of a simple example.
 
-Consider the situation shown in Fig \ref{fig:fig1-figure-example-1}
-(Panel I), with three clinics (labeled \(a\), \(b\), and \(c\)) and one
-population center (labeled \(1\)). Assume that the supply at the three
-clinics is identical, say one physician at each. Further, assume that
-the population at \(1\) is \(100\) and that this population center is
-part of the catchment areas of the three service points. Under this
-setup, the level of service at each of the clinics is 1 physician per
-100 people - even though the service points will not in reality service
-one hundred patients each. It is more likely, instead, that each service
+Consider the situation shown in Fig \ref{fig:fig1-example-1} (Panel I),
+with three clinics (labeled \(a\), \(b\), and \(c\)) and one population
+center (labeled \(1\)). Assume that the supply at the three clinics is
+identical, say one physician at each. Further, assume that the
+population at \(1\) is \(100\) and that this population center is part
+of the catchment areas of the three service points. Under this setup,
+the level of service at each of the clinics is 1 physician per 100
+people - even though the service points will not in reality service one
+hundred patients each. It is more likely, instead, that each service
 point will serve only a fraction of all those patients, and that
 collectively they offer their services to the whole population within
 their catchment areas. As a consequence of how demand is calculated in
@@ -497,7 +502,7 @@ D_{ij} = P_iW(d_{ij})
 \]
 
 An example of an impedance function is a stepwise function as follows
-{[}7{]}: \[
+{[}12{]}: \[
 W(d_{ij}) = \left\{
         \begin{array}{ll}
             1 & \quad d_{ij} \leq d_1 \\
@@ -579,13 +584,13 @@ It follows that the demand aggregated by population center is: \[
 It appears from this example that the 3SFCA method has deflated demand
 somewhat overzealously. This is perhaps not surprising, when we realize
 that the 3SFCA method operates, essentially, by stacking the effects of
-two related impedance functions (Delamater's {[}13{]} Modified 2SFCA
+two related impedance functions (Delamater's {[}20{]} Modified 2SFCA
 approach does the same but on the supply side). Recall that the
 selection weights are calculated using the impedance weights
 \(W(d_{ij})\). These selection weights then multiply the impedance when
 computing the level of service (since \(D_{ij} = P_iW(d_{ij})\)). The
 net effect is to make impedance steeper by a factor that depends on the
-impedance {[}12{]}.
+impedance {[}19{]}.
 
 In addition to illustrating the demand/supply inflation (or deflation)
 effect, the examples in this section also suggest that the magnitude and
@@ -666,7 +671,7 @@ service for that service point is preserved: \[
 
 Note that, since the weights add up to one, they can be interpreted as a
 \emph{probability} or \emph{frequency} of contact, similar to the Huff
-model of {[}12{]}.
+model of {[}19{]}.
 
 In reference to Fig \ref{fig:fig1-example-1}, we can see that the
 original (unadjusted) weights for population centre \(1\) are
@@ -703,7 +708,7 @@ The method to adjust the weights used above is identical to a procedure
 that will be familiar to readers acquainted with the literature in the
 fields of spatial statistics and econometrics. The same adjustment is
 widely used there under the names of row- and column-standardization of
-a weights matrix {[}17,18{]}.
+a weights matrix {[}24,25{]}.
 
 The proposed adjustment can be easily implemented. We will present next
 the implementation using a compact matrix notation. Begin by defining
@@ -840,6 +845,18 @@ service points): \[
 \mathbf{L}^* = \mathbf{S}\oslash\mathbf{D}^*
 \]
 
+Notice that levels of service are given in terms of units of supply per
+units of demand, say physicians per person. This can be interpreted as
+the provider-to-population ratio from the perspective of each service
+point. These values are consistent with the regional
+provider-to-population ratio (RPRR), since: \[
+RPPR = \frac{\sum_jS_j}{\sum_iD^*_i} = \frac{\sum_jS_j}{\sum_iP_i}
+\]
+
+The average of \(L^*\), on the other hand, can be interpreted as the
+average clinic level of service, considering the spatial distribution of
+supply and demand.
+
 Since Hadamard division is an element-by-element operation, the adjusted
 levels of service in the first example (using the binary impedance
 function) are: \[
@@ -966,13 +983,14 @@ L_{j}=\sum_i\frac{S_j}{P_iW_{ij}^{i}}
 A_i = \sum_j{L_jW_{ij}^{j}}
 \] with the colum-standardized impedance weights \(W_{ij}^j\)
 incorporated into the second step. The same approach is used to
-re-weight the impedance function for the stepwise E2SFCA. The case study
-is based on accessibility to family physicians in the Hamilton CMA, in
-Ontario, Canada using data collected about the distribution of the
-population and primary health care clinics (i.e., family physicians) in
-the region. Time use data from Canada's General Social Survey was also
-used to inform the selection of thresholds for the impedance functions.
-The data collection and preprocessing protocols are described next.
+re-weight the impedance function for the stepwise approach (i.e.,
+E2SFCA). The case study is based on accessibility to family physicians
+in the Hamilton CMA, in Ontario, Canada using data collected about the
+distribution of the population and primary health care clinics (i.e.,
+family physicians) in the region. Time use data from Canada's General
+Social Survey was also used to inform the selection of thresholds for
+the impedance functions. The data collection and preprocessing protocols
+are described next.
 
 \subsection{Family Physicians and Clinic
 Locations}\label{family-physicians-and-clinic-locations}
@@ -982,7 +1000,7 @@ were obtained using the College of Physicians and Surgeons of Ontario
 (CPSO) database for the Province of Ontario. We chose this organization
 beacuse all physicians practicing in Ontario are required to register
 with the CPSO, as set out in the Ontario Regulation 865/93: Registration
-{[}19{]}.
+{[}26{]}.
 
 Our search of CPSO's database was conducted attending to the following
 criteria.
@@ -1051,9 +1069,7 @@ variable. To this end, we computed a matrix of travel times measured
 over the road network. To calculate the travel time between population
 centers and clinics we used the DA centroids and the geocoded locations
 of clinics. Shortest paths on the network and subsequently travel times
-were computed using a Geographic Information System. During this
-process, we identified four clinics that did not correctly geocode to
-the network and were thus dropped from the analysis.
+were computed using a Geographic Information System.
 
 \subsection{Impedance Functions}\label{impedance-functions}
 
@@ -1116,7 +1132,7 @@ We begin our discussion of the results by noting that with a total
 population of the region of 2,959,090 and 2,224 family physicians, the
 regional provider-to-population ratio is 0.752 family physicians per
 1,000 people. This value is somewhat lower than the value of 1.16 for
-Ontario reported by CIHI {[}20{]} and lower than the 1.20 estimated
+Ontario reported by CIHI {[}27{]} and lower than the 1.20 estimated
 based on the population and physician data for the Hamilton CMA, which
 we attribute to our conservative search criteria of family physicians in
 the rest of the region.
@@ -1216,19 +1232,8 @@ of service, on the other hand, leads to accessibility output that is in
 line with the regional system-wide provider-to-population ratio. This,
 in turn, makes interpretation of the output more robust and intuitive.
 
-\textbf{Question here - the regional PPR is 0.752. sum of bin\_adj LOS
-is 571 for example; avg 1.06 PPR. Regional \emph{average} PPR versus
-system-wide PPR? We lose the ability to easily recover the regional
-average PPR in this adjusted method (but we get local versions)\ldots{}
-}
-
-\textbf{also, interesting offset effect? If binary inflates demand,
-higher density areas show less inflation of supply/access. On the other
-hand, low-density rural areas have much higher inflation of supply
-relative to demand - smaller population}
-
 How much has access been inflated in the original 2SFCA? Fig
-\ref{fig:fig8-map-accessibility-binary-comparison} plots the ratio of
+\ref{fig:fig9-map-accessibility-binary-comparison} plots the ratio of
 the binary and adjusted binary accessibility measures. Here it can be
 seen that the unadjusted accessibility values are at least three times
 greater than their adjusted counterparts within the study area. This
@@ -1237,14 +1242,6 @@ binary accessibility values up to 8 times greater than those from the
 adjusted model at the edges of the city where the 15-minute catchment
 areas begin to overlap with neighboring municipalites.
 
-\textbf{Accessibility in the 2SFCA turns out to be inflated sometimes by
-factors of one order of magnitude or more in this example (see Fig
-\ref{fig:fig9-map-accessibility-binary-comparison} and Fig
-\ref{fig:fig10-map-pop-share-inflation-comparison-binary}). Inflation,
-moreover, is not uniform across space, with greater inflation at the
-edges of the city where the binary catchment areas begin to overlap with
-neighboring municipalites. }
-
 \begin{figure}[htbp]
 \centering
 %\includegraphics{Supply_and_Demand_Inflation_in_FCA_Methods_files/figure-latex/fig9-map-accessibility-binary-comparison-1.pdf}
@@ -1252,10 +1249,10 @@ neighboring municipalites. }
 Inflation factor, binary impedance function}
 \end{figure}
 
-Why is this important? As noted by various authors {[}4,13{]}, in
+Why is this important? As noted by various authors {[}4,20{]}, in
 traditional FCA methods, the sum of the population-weighted average of
 accessibility across all population centers is equal to the regional
-average provider-to-population ratio {[}13{]}. In the present case, the
+average provider-to-population ratio {[}20{]}. In the present case, the
 weighted sum of accessibility in the unadjusted binary and stepwise
 measures is 0.752. However, while this value is indeed identical to the
 regional average provider-to-population ratio, it is problematic because
@@ -1308,8 +1305,10 @@ inflation factor, stepwise impedance function}
 \subsection{Disparity Analysis}\label{disparity-analysis}
 
 Since neither supply or demand are inflated as in existing FCA methods,
-it is possible to conduct disparity analysis in a very intuitive way.
-For instance, an analyst interested in equity analysis could allocating
+it is possible to conduct accessibility disparity analysis in a very
+intuitive way.
+
+For instance, an analyst interested in equity analysis could allocate
 the total level of service uniformly to every DA. In other words, the
 total level of service (which equals the sum of accessibility over the
 system) can be divided by the number of population centers in the
@@ -1324,9 +1323,9 @@ of service. On the other hand, when the difference is negative, the DA's
 accessibility is below its equitable share of the level of service.
 
 This approach is reminiscent of the Spatial Access Ratio (SPAR) proposed
-by Wan et al. {[}21{]}, which is calculated as the ratio between a
+by Wan et al. {[}28{]}, which is calculated as the ratio between a
 population center's accessibility and the mean accessibility across all
-population centers. While Wan et al. {[}11{]} calculate SPAR based on
+population centers. While Wan et al. {[}18{]} calculate SPAR based on
 the results of their 3SFCA method, its use here with the adjusted demand
 and supply parameters would enable more intuitive results. Nevertheless,
 SPAR rescales the accessibility measures to reflect the percentage
@@ -1408,7 +1407,7 @@ functions for illustration purposes, the adjustment procedure outlined
 here is also suitable for re-weighting continous impedance functions.
 Second, our adjusted measures of supply and demand account for potential
 interactions between all physicians and population in the system. This
-is in contrast to Delamater's {[}13{]} M2SFCA, where some supply may not
+is in contrast to Delamater's {[}20{]} M2SFCA, where some supply may not
 be allocated due to the spatial configuration of opportunities relative
 to population centers. Beyond overcoming the inflation issue inherent in
 Delamater's modification, the assumption of full allocation in the
@@ -1460,91 +1459,131 @@ C:/Papers/Environment and Planning B/EPB (2003) 30 (6) 865-885.pdf}
 regions to predict access to social programs. Annals of Geographic
 Information Sciences. 2000;6: 105--112.
 
+\hypertarget{ref-Bauer2017}{}
+6. Bauer J, Muller P, Maier W, Groneberg DA. Orthopedic workforce
+planning in germany - an analysis of orthopedic accessibility. Plos One.
+2017;12: 15.
+doi:\href{https://doi.org/10.1371/journal.pone.0171747}{10.1371/journal.pone.0171747}
+
+\hypertarget{ref-Kim2018}{}
+7. Kim Y, Byon YJ, Yeo H. Enhancing healthcare accessibility
+measurements using gis: A case study in seoul, korea. Plos One. 2018;13:
+19.
+doi:\href{https://doi.org/10.1371/journal.pone.0193013}{10.1371/journal.pone.0193013}
+
+\hypertarget{ref-Fujita2017}{}
+8. Fujita M, Sato Y, Nagashima K, Takahashi S, Hata A. Impact of
+geographic accessibility on utilization of the annual health check-ups
+by income level in japan: A multilevel analysis. Plos One. 2017;12: 14.
+doi:\href{https://doi.org/10.1371/journal.pone.0177091}{10.1371/journal.pone.0177091}
+
+\hypertarget{ref-Song2013}{}
+9. Song PG, Zhu YJ, Mao X, Li Q, An L. Assessing spatial accessibility
+to maternity units in shenzhen, china. Plos One. 2013;8: 7.
+doi:\href{https://doi.org/10.1371/journal.pone.0070227}{10.1371/journal.pone.0070227}
+
 \hypertarget{ref-McGrail2009}{}
-6. McGrail MR, Humphreys JS. Measuring spatial accessibility to primary
+10. McGrail MR, Humphreys JS. Measuring spatial accessibility to primary
 care in rural areas: Improving the effectiveness of the two-step
 floating catchment area method. Applied Geography. 2009;29: 533--541.
 doi:\href{https://doi.org/10.1016/j.apgeog.2008.12.003}{10.1016/j.apgeog.2008.12.003}
 
+\hypertarget{ref-Shah2016}{}
+11. Shah TI, Bell S, Wilson K. Spatial accessibility to health care
+services: Identifying under-serviced neighbourhoods in canadian urban
+areas. Plos One. 2016;11.
+doi:\href{https://doi.org/10.1371/journal.pone.0168208}{10.1371/journal.pone.0168208}
+
 \hypertarget{ref-Luo2009}{}
-7. Luo W, Qi Y. An enhanced two-step floating catchment area (e2sfca)
+12. Luo W, Qi Y. An enhanced two-step floating catchment area (e2sfca)
 method for measuring spatial accessibility to primary care physicians.
 Health \& Place. 2009;15: 1100--1107. Available:
 \href{ISI:000270348400023\%0AC:/Papers/Health\%20and\%20Place/Health\%20and\%20Place\%20(2009)\%2015\%20(4)\%201100-1107.pdf}{ISI:000270348400023
 C:/Papers/Health and Place/Health and Place (2009) 15 (4) 1100-1107.pdf}
 
 \hypertarget{ref-Dai2010}{}
-8. Dai D. Black residential segregation, disparities in spatial access
+13. Dai D. Black residential segregation, disparities in spatial access
 to health care facilities, and late-stage breast cancer diagnosis in
 metropolitan detroit. Health \& place. Elsevier; 2010;16: 1038--1052.
 
+\hypertarget{ref-Bauer2016}{}
+14. Bauer J, Groneberg DA. Measuring spatial accessibility of health
+care providers - introduction of a variable distance decay function
+within the floating catchment area (fca) method. Plos One. 2016;11.
+doi:\href{https://doi.org/10.1371/journal.pone.0159148}{10.1371/journal.pone.0159148}
+
 \hypertarget{ref-Mao2013}{}
-9. Mao L, Nekorchuk D. Measuring spatial accessibility to healthcare for
-populations with multiple transportation modes. Health \& Place.
+15. Mao L, Nekorchuk D. Measuring spatial accessibility to healthcare
+for populations with multiple transportation modes. Health \& Place.
 2013;24: 115--122.
 doi:\href{https://doi.org/10.1016/j.healthplace.2013.08.008}{10.1016/j.healthplace.2013.08.008}
 
 \hypertarget{ref-Ngui2011}{}
-10. Ngui A, Apparicio P. Optimizing the two-step floating catchment area
+16. Ngui A, Apparicio P. Optimizing the two-step floating catchment area
 method for measuring spatial accessibility to medical clinics in
 montreal. Bmc Health Services Research. 2011;11. Available:
 \url{http://www.biomedcentral.com/1472-6963/11/166}
 
+\hypertarget{ref-Bell2013}{}
+17. Bell S, Wilson K, Bissonnette L, Shah T. Access to primary health
+care: Does neighborhood of residence matter? Annals of the Association
+of American Geographers. Taylor \& Francis; 2013;103: 85--105.
+
 \hypertarget{ref-Wan2012}{}
-11. Wan N, Zou B, Sternberg T. A three-step floating catchment area
+18. Wan N, Zou B, Sternberg T. A three-step floating catchment area
 method for analyzing spatial access to health services. International
 Journal of Geographical Information Science. 2012;26: 1073--1089.
 doi:\href{https://doi.org/10.1080/13658816.2011.624987}{10.1080/13658816.2011.624987}
 
 \hypertarget{ref-Luo2014}{}
-12. Luo J. Integrating the huff model and floating catchment area
+19. Luo J. Integrating the huff model and floating catchment area
 methods to analyze spatial access to healthcare services. Transactions
 in GIS. Wiley Online Library; 2014;18: 436--448.
 
 \hypertarget{ref-Delamater2013}{}
-13. Delamater PL. Spatial accessibility in suboptimally configured
+20. Delamater PL. Spatial accessibility in suboptimally configured
 health care systems: A modified two-step floating catchment area
 (m2sfca) metric. Health \& Place. 2013;24: 30--43.
 doi:\href{https://doi.org/10.1016/j.healthplace.2013.07.012}{10.1016/j.healthplace.2013.07.012}
 
 \hypertarget{ref-Taylor1971}{}
-14. Taylor PJ. Distance transformation and distance decay functions.
+21. Taylor PJ. Distance transformation and distance decay functions.
 Geographical Analysis. 1971;3: 221--238.
 doi:\href{https://doi.org/doi:10.1111/j.1538-4632.1971.tb00364.x}{doi:10.1111/j.1538-4632.1971.tb00364.x}
 
 \hypertarget{ref-Kwan1998}{}
-15. Kwan MP. Space-time and integral measures of individual
+22. Kwan MP. Space-time and integral measures of individual
 accessibility: A comparative analysis using a point-based framework.
 Geographical Analysis. 1998;30: 191--216. Available:
 \href{ISI:000074579200001\%0AC:/Papers/Geographical\%20Analysis/Geographical\%20Analysis\%20(1998)\%2030\%20(3)\%20191-216.pdf}{ISI:000074579200001
 C:/Papers/Geographical Analysis/Geographical Analysis (1998) 30 (3) 191-216.pdf}
 
 \hypertarget{ref-Tobler1979}{}
-16. Tobler WR. Smooth pycnophylactic interpolation for geographical
+23. Tobler WR. Smooth pycnophylactic interpolation for geographical
 regions. Journal of the American Statistical Association. 1979;74:
 519--530. Available:
 \href{ISI:A1979HS22400001\%0AC:/Papers/Journal\%20of\%20the\%20American\%20Statistical\%20Association/Journal\%20of\%20the\%20American\%20Statistical\%20Association\%20(1979)\%2074\%20(367)\%20519-530.pdf}{ISI:A1979HS22400001
 C:/Papers/Journal of the American Statistical Association/Journal of the American Statistical Association (1979) 74 (367) 519-530.pdf}
 
 \hypertarget{ref-Anselin1988}{}
-17. Anselin L. Spatial econometrics: Methods and models. Dordrecht:
+24. Anselin L. Spatial econometrics: Methods and models. Dordrecht:
 Kluwer; 1988.
 
 \hypertarget{ref-Griffith1988}{}
-18. Griffith DA. Advanced spatial statistics: Special topics in the
+25. Griffith DA. Advanced spatial statistics: Special topics in the
 exploration of quantitative spatial data series. Dordrecht: Kluwer;
 1988.
 
 \hypertarget{ref-Ontario1991}{}
-19. 1991, Medicine Act, S.O. 1991, c. 30.
+26. 1991, Medicine Act, S.O. 1991, c. 30.
 
 \hypertarget{ref-CIHI2018}{}
-20. Health Information CI for. Number of physicians by
+27. Health Information CI for. Number of physicians by
 province/territory and specialty. Canadian Institute for Health
 Information; 2018;
 
 \hypertarget{ref-Wan2012SPAR}{}
-21. Wan N, Zhan FB, Zou B, Chow E. A relative spatial access assessment
+28. Wan N, Zhan FB, Zou B, Chow E. A relative spatial access assessment
 approach for analyzing potential spatial access to colorectal cancer
 services in texas. Applied Geography. Elsevier; 2012;32: 291--299.
 
