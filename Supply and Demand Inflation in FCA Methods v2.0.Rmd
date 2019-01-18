@@ -1,5 +1,5 @@
 ---
-title: Demand and Supply Inflation in Floating Catchment Area (FCA) Methods (TEST)
+title: Demand and Supply Inflation in Floating Catchment Area (FCA) Methods
 author:
   - name: Antonio Paez
     email: paezha@mcmaster.ca
@@ -269,13 +269,13 @@ This can be more easily seen by means of a simple example. Consider the situatio
 
 Does this inflation effect matter, though? After all, since accessibility is the sum of the level of service that a population center can reach, the accessibility at $1$ is 3 physicians per hundred people or 0.030 physicians per person. This statistic be referred to as a Local Population Center PPR, reflecting the provider-to-population ratio for each population center. In the present case, the Local Population Center PPR equals the Regional Average PPR, as expected. The situation, however, is less clear-cut when there are more population centers or service clinics and they begin to interact with each other in their contributions to demand and accessibility.
 
-To illustrate this, let us add population center $2$ to the previous example, and say that this center has a population of 50 (see Fig \ref{fig:fig1-example-1}, Panel II) which changes the Regional Average PPR to 0.020 physicians per person. In terms of demand, the population at $2$ is within the catchment area of clinic $c$ only. The Local Clinic PPR at clinics $a$ and $b$ is still 1 physician per hundred people. The level of demand at clinic $c$, on the other hand, is now 150 people, and its Local Clinic PPR has declined to 1 physician per 150 people - despite the fact that demand on $c$ is likely lower than 150. Remember that the population of center $1$ has been inflated by a factor of 3 when calculating its expected demand, contributing to this lower level of service for clinic $c$.
+To illustrate this, let us add population center $2$ to the previous example, and say that this center has a population of 50 (see Fig \ref{fig:fig1-example-1}, Panel II) which changes the Regional Average PPR to 0.020 physicians per person. In terms of demand, the population at $2$ is within the catchment area of clinic $c$ only. The Local Clinic PPR at clinics $a$ and $b$ is still 1 physician per hundred people. The level of demand at clinic $c$, on the other hand, is now 150 people, and its Local Clinic PPR has declined to 1 physician per 150 people - despite the fact that demand on $c$ is likely lower than 150. Remember that the population of center $1$ has been inflated by a factor of 3 when calculating its expected demand, contributing to this lower level of service for clinic $c$. Taken together, the system-wide population in the 2SFCA approach is 350 while the actual regional population is 150.
 
 ```{r fig1-example-1, echo=FALSE, fig.cap="\\label{fig:fig1-example-1}Example using binary impedance (the dotted lines represent the impedance thresholds for each clinic)"}
 include_graphics("fig1-Example1.pdf")
 ```
 
-A similar inflation effect is present on the supply side when the same service point is included in the overlapping catchment areas of multiple population centres. In this case, the same Local Clinic PPR is assumed to be avalable to all those population centers, and therefore supply becomes inflated in the second-stage calcuation of accessibility. Continuing with the example, the 2SFCA algorithm assumes that the level of service available at clinic $c$ to population centers $1$ and $2$ is both $L_{1c}=L_{2c}=1/150$. In effect, the total level of service available in the system at $c$ for accessibility calculations is actually $2$ - twice the actual level of service at the clinic. In the end, the accessibility for population center $1$ is 
+A similar inflation effect is present on the supply side when the same service point is included in the overlapping catchment areas of multiple population centres. In this case, the same Local Clinic PPR is assumed to be avalable to all those population centers, and therefore supply becomes inflated in the second-stage calcuation of accessibility. Continuing with the example, the 2SFCA algorithm assumes that the level of service available at clinic $c$ to population centers $1$ and $2$ is both $L_{1c}=L_{2c}=1/150$. In effect, the total level of service available in the system at $c$ for accessibility calculations is actually $2$ - twice the actual level of service at the clinic. Within the 2SFCA system, this means 4 physicians are available, despite there only being 3 in the region. In the end, the accessibility for population center $1$ is 
 
 $$
 A_1 = 1/100 + 1/100 + 1/150 = 0.027
@@ -284,11 +284,28 @@ and population center $2$ is
 $$
 A_2 = 1/150 = 0.007
 $$
-These accessibility results suggest that population center $1$ has a higher Local Population Center PPR than the Regional Average PPR of 0.020, while the accessibility of population center $2$ falls below the regional average. Of note, taking the population-weighted average of the Local Population Center PPRs in the 2SFCA method returns the Regional Average PPR. We will return to these results later.
+These accessibility results suggest that population center $1$ has a higher Local Population Center PPR than the Regional Average PPR of 0.020, while the accessibility of population center $2$ falls below the regional average. Of note, taking the population-weighted average of the Local Population Center PPRs in the 2SFCA method returns the Regional Average PPR. Full results for the individual clinics and population centres are displayed in Table \ref{tab:table-example-statistics}, and we will return to these results later.
+
+```{r table-example-statistics, echo=FALSE, warning=FALSE}
+example_stats <- read.csv("example_stats.csv")
+options(knitr.kable.NA = '')
+kable(example_stats, 
+    format = "latex",
+    booktabs = TRUE,
+    digits = 3,
+    col.names = c("", "Actual", "2SFCA", "E2SFCA", "3SFCA", "4SFCA Binary", "4SFCA Stepwise"),
+    caption = "\\label{tab:table-descriptive-statistics}Descriptive Statistics") %>%
+  group_rows("Population", 1, 3) %>%
+  group_rows("Demand", 4, 6) %>%
+  group_rows("Supply", 7, 10) %>%
+  group_rows("Level of Service", 11, 13) %>%
+  group_rows("Accessibility", 14, 15) %>%
+  group_rows("Summary Statistics", 16, 18)
+```
 
 ## Demand and Supply Inflation in the E2SFCA
 
-The situation above becomes more vexing when using enhanced impedance functions (i.e., non-binary). Such is the case of the enhanced 2SFCA approach (E2SFCA), whereby the contribution of the population at $i$ to demand at service location $j$ is:
+The situation above becomes more vexing when using enhanced impedance functions (i.e., non-binary). Such is the case of the Enhanced 2SFCA approach (E2SFCA) proposed by Luo and Qi [-@Luo2009], whereby the contribution of the population at $i$ to demand at service location $j$ is:
 $$
 D_{ij} = P_iW(d_{ij})
 $$
@@ -307,7 +324,7 @@ $$
 
 Let us revisit example (see Fig \ref{fig:fig2-example-2}, Panel I) now using a stepwise impedance function. The population at $1$ is still within the catchment area of the three clinics ($a$, $b$, and $c$), but now the impedance weights are $W(d_{1a})=1$, $W(d_{1b})=0.68$, and $W(d_{1c})=0.68$. If, as before, the population at $1$ is $100$, the implied demand is inflated as follows:
 $$
-\sum_jD_{1j} = 100 + 68 + 68 = 236 > P_1 = 100
+\sum_jD_{1j} = 100 + 68 + 22 = 190 > P_1 = 100
 $$
 
 Although inflation is lower in the case of the stepwise function compared to the binary function, the same location $i$ can still potentially contribute multiple times its population value to different service points $j$, with similar consequences.
@@ -318,11 +335,9 @@ $$
 $$
 and therefore demand has been _deflated_.
 
-This example demonstrates an internal contradiction in how FCA methods operate: when multiple service centers are within the threshold travel cost, they assume that some (maybe all) of the same persons crowd more than one of those centers. On the other hand, when only one service center is available, the assumption is that some individuals may _not_ demand service, even when the center is within their threshold travel cost. While this assumption may be acceptable for discretionary services, it is suspect when it comes to essential services such as primary health care.
+This example demonstrates an internal contradiction in how FCA methods operate: when multiple service centers are within the threshold travel cost, they assume that some (maybe all) of the same persons crowd more than one of those centers. On the other hand, when only one service center is available, the assumption is that some individuals may _not_ demand service, even when the center is within their threshold travel cost. While this assumption may be acceptable for discretionary services, it is suspect when it comes to essential services such as primary health care, particularly in a single-payer system like that in Canada.
 
-**I am not sure about this next bit - the results in my excel sheet are identical to those for the Binary solution. See email**
-
-Continuing with this example, population center $2$ (see Fig \ref{fig:fig2-example-2}, Panel II) has an accessibility of 1 physician per 118 people - higher than when the binary impedance function is used, but still likely biased for two reasons: 1) demand from center $1$ is higher than the actual population; and 2) demand from center $2$ is lower than the actual population.
+Continuing with this example, population center $2$ (see Fig \ref{fig:fig2-example-2}, Panel II) has a Local Population Center PPR of 0.012 physicians per person. Per Table \ref{tab:table-example-statistics}, this is higher than when the binary impedance function is used, but still likely biased for two reasons: 1) demand from center $1$ is higher than the actual population; and 2) demand from center $2$ is lower than the actual population. 
 
 ```{r fig2-example-2, echo=FALSE, fig.cap="\\label{fig:fig2-example-2}Congestion inflation and accessibility deflation under stepwise impedance (each dotted line represents a different impedance threshold)"}
 include_graphics("fig2-Example2.pdf")
@@ -350,12 +365,12 @@ $$
 A_i = \sum_jG_{ij}L_jW_{ij}
 $$
 
-But although it purports to fix overestimation in demand, the issue of demand and supply inflation is not fully resolved by the 3SFCA method. In this case, the selection weights are $G_{1a} = 1/2.36$, $G_{1b} = 0.68/2.36$, $G_{1c} = 0.68/2.36$ for location $1$, and $G_{2a} = 0$, $G_{2b} = 0$, $G_{2c} = 0.68$ for location $2$. The adjusted levels of demand are then:
+But although it purports to fix overestimation in demand, the issue of demand and supply inflation is not fully resolved by the 3SFCA method. In this case, the selection weights are $G_{1a} = 1/1.9$, $G_{1b} = 0.68/1.9$, $G_{1c} = 0.22/1.9$ for location $1$, and $G_{2a} = 0$, $G_{2b} = 0$, $G_{2c} = 0.68$ for location $2$. The adjusted levels of demand are then:
 $$
 \begin{array}{l}
-            D^*_{1a} = G_{1a}D_{1a} = (1/2.36)(100) = 42.37 \\
-            D^*_{1b} = G_{1a}D_{1a} = (0.68/2.36)(68) = 19.59 \\
-            D^*_{1c} = G_{1a}D_{1a} = (0.68/2.36)(68) = 19.59
+            D^*_{1a} = G_{1a}D_{1a} = (1/2.36)(100) = 52.63 \\
+            D^*_{1b} = G_{1a}D_{1a} = (0.68/2.36)(68) = 24.34 \\
+            D^*_{1c} = G_{1a}D_{1a} = (0.22/2.36)(68) = 2.55
 \end{array}\quad \text{and}\quad
 \begin{array}{ll}
             D^*_{2a} = G_{2a}D_{2a} = (0/0.68)(0) = 0 \\
@@ -366,7 +381,7 @@ $$
 
 It follows that the demand aggregated by population center is:
 $$
-\sum_jD^*_{1j} = D^*_{1a} + D^*_{1b} + D^*_{1c} = 42.37 + 19.59 + 19.59 = 81.56 < P_1 = 100
+\sum_jD^*_{1j} = D^*_{1a} + D^*_{1b} + D^*_{1c} = 52.63 + 24.34 + 2.55 = 79.52 < P_1 = 100
 $$
 for center $1$, and:
 $$
@@ -374,7 +389,7 @@ $$
 $$
 for center $2$. 
 
-It appears from this example that the 3SFCA method has deflated demand somewhat overzealously. This is perhaps not surprising, when we realize that the 3SFCA method operates, essentially, by stacking the effects of two related impedance functions (Delamater's [-@Delamater2013] Modified 2SFCA approach does the same but on the supply side). Recall that the selection weights are calculated using the impedance weights $W(d_{ij})$. These selection weights then multiply the impedance when computing the level of service (since $D_{ij} = P_iW(d_{ij})$). The net effect is to make impedance steeper by a factor that depends on the impedance [the same mechanism is present in the Huff-enhanced model of @Luo2014, even if different impedance functions are used to compute the selection weights and the level of service/accessibility].
+It appears from this example that the 3SFCA method has deflated demand somewhat overzealously, as the system-wide population is now 113.52. This is perhaps not surprising, when we realize that the 3SFCA method operates, essentially, by stacking the effects of two related impedance functions (Delamater's [-@Delamater2013] Modified 2SFCA approach does the same but on the supply side). Recall that the selection weights are calculated using the impedance weights $W(d_{ij})$. These selection weights then multiply the impedance when computing the level of service (since $D_{ij} = P_iW(d_{ij})$). The net effect is to make impedance steeper by a factor that depends on the impedance [the same mechanism is present in the Huff-enhanced model of @Luo2014, even if different impedance functions are used to compute the selection weights and the level of service/accessibility]. 
 
 In addition to illustrating the demand/supply inflation (or deflation) effect, the examples in this section also suggest that the magnitude and even direction of the effect depend on the geography of the problem (i.e., the locations of population centers and clinics), as well as the kind of impedance function used. If the inflation effect were even (i.e., all accessibility estimates are inflated/deflated at the same rate) then a simple solution would be to apply a constant inflation factor. Alas, it is more likely that the effect will not be even across space (e.g., we can anticipate that demand will be more inflated in denser parts of a region). For this reason, a more general approach to offset the inflation of supply _and_ demand in a systematic way seems to be called for. We discuss this next. 
 
@@ -495,7 +510,7 @@ $$
 In the second example (see Fig \ref{fig:fig2-example-2}), the stepwise impedance weights are:
 $$
 \mathbf{W}_{stepwise} = \left(\begin{array}{ccc}
-            1 & 0.68 & 0.68\\
+            1 & 0.68 & 0.22\\
             0 & 0 & 0.68\\
         \end{array}
         \right)
@@ -504,7 +519,7 @@ $$
 The row-standardized weights in turn are (with some rounding):
 $$
 \mathbf{W}^{i}_{stepwise} = \left(\begin{array}{ccc}
-            0.424 & 0.288 & 0.288\\
+            0.526 & 0.358 & 0.116\\
             0 & 0 & 1\\
         \end{array}
         \right)
@@ -512,8 +527,8 @@ $$
 whereas the column-standardized weights are:
 $$
 \mathbf{W}^{j}_{stepwise} = \left(\begin{array}{ccc}
-            1 & 1 & 1/2\\
-            0 & 0 & 1/2\\
+            1 & 1 & 0.244\\
+            0 & 0 & 0.756\\
         \end{array}
         \right)
 $$
@@ -545,42 +560,38 @@ $$
 100/3\\
 100/3\\
 250/3
-\end{array} \right)
+\end{array} \right)=
+\left( \begin{array}{c}
+33.33\\
+33.33\\
+83.33\end{array} \right)
 $$
 
 The level of demand for the service points in the stepwise impedance function example is (in vector form):
 $$
 \mathbf{D}^*_{sstepwise}= \left( \begin{array}{cc}
-0.424 & 0\\
-0.288 & 0\\
-0.288 & 1\end{array} \right)
+0.526 & 0\\
+0.358 & 0\\
+0.116 & 1\end{array} \right)
 \left( \begin{array}{c}
 100\\
 50\end{array} \right)=
 \left( \begin{array}{c}
-42.4\\
-28.8\\
-78.8
+52.63\\
+35.78\\
+61.58
 \end{array} \right)
 $$
 
-As can be seen, the aggregated level of demand, after the adjustment, equals (as desired) the total population of the region.
+As can be seen, the aggregated level of demand, after the adjustment, equals (as desired) the actual population of the region.
 
-The levels of demand can then be introduced in the next stage of the accessibility calculations by performing Hadamard division ($\oslash$) of the vector of supply by the vector of adjusted demand. This is the first step of the 2SFCA (aggregating demand over catchment areas for service points):
+The levels of demand can then be used to calculate the level of service at the individual clinic locations by performing Hadamard division ($\oslash$) of the vector of supply by the vector of adjusted demand. This is the first step of the 2SFCA (aggregating demand over catchment areas for service points):
 $$
 \mathbf{L}^* = \mathbf{S}\oslash\mathbf{D}^*
 $$
 
-Notice that levels of service are given in terms of units of supply per units of demand, say physicians per person. This can be interpreted as the provider-to-population ratio from the perspective of each service point. 
-
-**Not correct** These values are consistent with the regional provider-to-population ratio (RPRR), since:
-$$
-RPPR = \frac{\sum_jS_j}{\sum_iD^*_i} = \frac{\sum_jS_j}{\sum_iP_i}
-$$
-
-The average of $L^*$, on the other hand, can be interpreted as the average clinic level of service, considering the spatial distribution of supply and demand.
-
 Since Hadamard division is an element-by-element operation, the adjusted levels of service in the first example (using the binary impedance function) are:
+
 $$
 \mathbf{L}^*_{binary} = \left( \begin{array}{c}
 1 \\
@@ -612,18 +623,18 @@ $$
 1 \\
 \end{array}\right)\oslash
 \left( \begin{array}{c}
-42.4\\
-28.8\\
-78.8
+52.63\\
+35.79\\
+61.58
 \end{array} \right)=
 \left( \begin{array}{c}
-0.024\\
-0.035\\
-0.013
+0.019\\
+0.028\\
+0.016
 \end{array} \right)
 $$
 
-Note that the values of level of service are consistent with the demand and supply. As we saw above, the demand equals the population. Here, the supply also equals the number of physicians in the region. Indeed, these values are consistent with the Regional Average PPR of $3/150$ or $0.02$ physicians per person. With this in mind, it is clear that locations $a$ and $b$ offer better provider-to-population ratios than the regional average, whereas location $c$ offers a lower provider-to-population than the regional average.
+As in the 2SFCA, E2SFCA, and 3SFCA methods, this operation returns the Local Clinic PPR in terms of physicians per person for each service point. However, these level of service values are consistent with demand and supply. As we saw above, the demand equals the population. Here, the supply also equals the number of physicians in the region. Because both demand and supply are not inflated or deflated in this rectified method, these values are easily interpretable relative to the Regional Average PPR of $3/150$ or $0.02$ physicians per person. In the case of the bindary impedance function, it is clear that locations $a$ and $b$ offer better provider-to-population ratios than the regional average, whereas location $c$ offers a lower provider-to-population than the regional average. In the stepwise formulation, only clinic $b$ has a level of service greater than the regional average.
 
 Accessibility, finally, is calculated as the matrix product of the column-standardized weights and the adjusted level of service:
 $$
@@ -655,26 +666,26 @@ and for the stepwise impedance function:
 $$
 \mathbf{A}^*_{stepwise} = 
 \left(\begin{array}{ccc}
-            1 & 1 & 1/2\\
-            0 & 0 & 1/2\\
+            1 & 1 & 0.244\\
+            0 & 0 & 0.756\\
         \end{array}
         \right)
 \left( \begin{array}{c}
-0.024\\
-0.035\\
-0.013
+0.019\\
+0.028\\
+0.016
 \end{array} \right) =
 \left( \begin{array}{c}
-0.024 + 0.035 + 0.0065\\
-0 + 0 + 0.0065
+0.019 + 0.028 + 0.004\\
+0 + 0 + 0.0012
 \end{array} \right)=
 \left( \begin{array}{c}
-0.0655\\
-0.0065
+0.051\\
+0.012
 \end{array} \right)
 $$
 
-Notice that accessibility values are provider-to-population ratios as perceived from the perspective of each population center, and therefore are _local_ versions of the provider-to-population ratio. Furthermore, the total accessibility in the system is identical to the system-wide level of service, which in turn is consistent with the supply and demand values of the system. To summarize, then, the adjustment proposed succeeds at preserving the level of demand to the total population, and the level of service to the total resources available in the system. In this way, it provides a more intuitive interpretation of accessibility.
+As with the Local Clinic PPRs, these population-to-provider ratios for each local population center are consistent with demand and supply. As such, they are more meaningfully interpreted relative to the Regional Average PPR of 0.020. In both the binary and stepwise formulations, the Local Population Center PPR for $1$ is significantly higher than the regional average at 0.066 and 0.051 respectively. On the other hand, accessibility levels for population center $2$ are lower than the average. By extension, the average and population-weighted average Local Population Center PPRs in Table \ref{tab:table-example-statistics} also provide more meaningful measures of accessibility within a region. In contrast to previous FCA methods, the population-weighted average in particular does not equal the Regional Average PPR. By taking the geographic distribution of population, opportunities, and accessibility into account, these summary statistics provide a more useful and intuitive benchmark for capturing service and accessibility levels for population groups across a region relative to the simple regional average. To summarize, the proposed adjustment succeeds at preserving the level of demand to the total population and the level of service to the total resources available in the system. In this way, it provides a more intuitive interpretation of accessibility than previous FCA methods.
 
 ```{r toy-example, echo=FALSE}
 #In this chunk, the toy example is replicated.
@@ -891,9 +902,9 @@ Notice how the stepwise function has weights greater than 0.5 for $d_{ij} \leq 1
 
 # Results
 
-We begin our discussion of the results by noting that with a total population of the region of `r prettyNum(sum(da_population$POP2011), big.mark = ",")` and `r prettyNum(sum(family_doctors$family_doctors), big.mark = ",")` family physicians, the regional provider-to-population ratio is `r formatC(sum(family_doctors$family_doctors)/sum(da_population$POP2011/1000), digits = 3)` family physicians per 1,000 people. This value is somewhat lower than the value of 1.16 for Ontario reported by CIHI [-@CIHI2018] and lower than the 1.20 estimated based on the population and physician data for the Hamilton CMA, which we attribute to our conservative search criteria of family physicians in the rest of the region.
+We begin our discussion of the results by noting that with a total population of the region of `r prettyNum(sum(da_population$POP2011), big.mark = ",")` and `r prettyNum(sum(family_doctors$family_doctors), big.mark = ",")` family physicians, the Regional Average PPR ratio is `r formatC(sum(family_doctors$family_doctors)/sum(da_population$POP2011/1000), digits = 3)` family physicians per 1,000 people. This value is somewhat lower than the value of 1.16 for Ontario reported by CIHI [-@CIHI2018] and lower than the 1.20 estimated based on the population and physician data for the Hamilton CMA, which we attribute to our conservative search criteria of family physicians in the rest of the region.
 
-The level of demand is calculated for the 2SFCA and E2SFCA using both the unadjusted and adjusted impedance matrices. Table \ref{tab:table-descriptive-statistics} reports the total level of demand calculated by each impedance matrix. As seen there, when no adjustment is made, demand explodes to several times the actual population in the region. However, when the impedance weights are standardized, demand is now only slightly less than the total population for the region, since a small proportion of the population turns out to be outside of catchment areas. The total demand under binary impedance is lower due to the more strict catchment area condition (i.e., less than 15 minutes), compared to the stepwise function (i.e., less than 45 minutes), which in turn is somewhat lower than the total demand in the regional provider-to-population ratio, which does not impose catchment area constraints within the region.
+The level of demand is calculated for the 2SFCA and E2SFCA using both the unadjusted and adjusted impedance matrices. Table \ref{tab:table-descriptive-statistics} reports the total level of demand calculated by each impedance matrix. As seen there, when no adjustment is made, demand explodes to several times the actual population in the region. However, when the impedance weights are standardized, demand is now only slightly less than the total population for the region, since a small proportion of the population turns out to be outside of catchment areas. The total demand under binary impedance is lower due to the more strict catchment area condition (i.e., less than 15 minutes), compared to the stepwise function (i.e., less than 45 minutes), which in turn is somewhat lower than the total demand in the Regional Average PPR, which does not impose catchment area constraints within the region.
 
 It is clear that the rectified demand leads to results that are considerably more realistic. This is also seen when calculating the provider-to-population ratios for each case (i.e., Family Physicians per 1,000 people). As seen in Fig \ref{fig:fig5-map-demand-inflation-binary} and Fig \ref{fig:fig6-map-demand-inflation-stepwise}, demand inflation is far from uniform. Inflation factors are also substantially higher when the binary impedance function is used. Since this function lacks a gradual distance-decay mechanism, it is more generous in terms of counting population serviced.
 
@@ -1104,7 +1115,16 @@ ggmap(basemap) +
 Why is this important? As noted by various authors [e.g., @Delamater2013; @Luo2003], in traditional FCA methods, the sum of the population-weighted average of accessibility across all population centers is equal to the regional average provider-to-population ratio [see the examples in @Delamater2013]. In the present case, the weighted sum of accessibility in the unadjusted binary and stepwise measures is `r round(sum(family_doctors$family_doctors)/sum(da_population$POP2011/1000), digits = 3)`. However, while this value is indeed identical to the regional average provider-to-population ratio, it is problematic because the share of the population correlates poorly with the pattern of inflation observed (see Fig \ref{fig:fig10-map-pop-share-inflation-comparison-binary}). The key issue here is that accessibility is deflated by the share of the population in a DA $i$; however, the degree of inflation of demand and supply depend not only of the population DA $i$, but on the population of every DA $j$ with which DA $i$ interacts via coincident catchment areas. As a consequence, deflating accessibility using population shares in previous FCA methods does not accurately offset demand and supply inflation.
 
 ```{r fig10-map-pop-share-inflation-comparison-binary, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig10-map-pop-share-inflation-comparison-binary}Population share and inflation factors compared", warning=FALSE}
+da_pop_hamilton <- subset(da_population,CMA==537)
+da_pop_hamilton <- merge(x=da_pop_hamilton,y=accessibility_comparison,by.x="DA",by.y="id")
+ggplot(da_pop_hamilton,aes(x = da_pop_hamilton$POP2011/sum(da_pop_hamilton$POP2011), y=da_pop_hamilton$Binary)) +
+  geom_point() +
+  xlab("DA Population Share") +
+  ylab("DA Accessibility Inflation Factor") +
+  theme_minimal()
+```
 
+```{r}
 ggplot(data = data.frame(pop_weight = da_population$POP2011/sum(da_population$POP2011), 
                          inflation = accessibility_comparison$Binary), 
        aes(x = pop_weight, y = inflation)) + 
@@ -1159,11 +1179,11 @@ ggmap(basemap) +
 
 Since neither supply or demand are inflated as in existing FCA methods, it is possible to conduct accessibility disparity analysis in a very intuitive way. 
 
-For instance, an analyst interested in equity analysis could allocate the total level of service uniformly to every DA. In other words, the total level of service (which equals the sum of accessibility over the system) can be divided by the number of population centers in the system. The resulting mean value, call it $L_i^e$ then would be assigned to the population centers as their "equitable" share of the total level of service in the system. Next, the equitative distribution of the level of service in each population center is substracted from the estimated mean accessibility to arrive at a disparity index. When the difference between these two quantities is positive, this would indicate that a DA's accessibility exceeds its equitable share of level of service. On the other hand, when the difference is negative, the DA's accessibility is below its equitable share of the level of service.
+For instance, an analyst interested in equity analysis could allocate the total level of service uniformly to every DA. In other words, the total level of service (which equals the sum of accessibility over the system) can be divided by the number of population centers in the system to return the Average Local Population Center PPR. The resulting mean value, call it $L_i^e$ then would be assigned to the population centers as their "equitable" share of the total level of service in the system. Next, the equitative distribution of the level of service in each population center is substracted from the estimated mean accessibility to arrive at a disparity index. When the difference between these two quantities is positive, this would indicate that a DA's accessibility exceeds its equitable share of level of service. On the other hand, when the difference is negative, the DA's accessibility is below its equitable share of the level of service.
 
-This approach is reminiscent of the Spatial Access Ratio (SPAR) proposed by Wan et al. [-@Wan2012SPAR], which is calculated as the ratio between a population center's accessibility and the mean accessibility across all population centers. While Wan et al. [-@Wan2012] calculate SPAR based on the results of their 3SFCA method, its use here with the adjusted demand and supply parameters would enable more intuitive results. Nevertheless, SPAR rescales the accessibility measures to reflect the percentage difference in each population center's accessibility relative to the mean and was designed to overcome the sensitivity of existing FCA metrics to the impedance function. In contrast, the preservation of the system-wide population and level of service in the adjusted approach enables the disparity index to highlight the absolute difference in accessible provider-to-population ratios across the population centers.
+This approach is reminiscent of the Spatial Access Ratio (SPAR) proposed by Wan et al. [-@Wan2012SPAR], which is calculated as the ratio between a population center's accessibility and the mean accessibility across all population centers. While Wan et al. [-@Wan2012] calculate SPAR based on the results of their 3SFCA method, its use here with the adjusted demand and supply parameters would enable more consistent and interpretable results. Nevertheless, SPAR rescales the accessibility measures to reflect the percentage difference in each population center's accessibility relative to the mean and was designed to overcome the sensitivity of existing FCA metrics to the impedance function. In contrast, the preservation of the system-wide population and level of service in the adjusted approach enables the disparity index to highlight the absolute difference in accessible provider-to-population ratios across the population centers.
 
-From this, the disparity maps for the binary and stepwise impedance functions are shown in Fig \ref{fig:fig14-map-disparities-binary} and Fig \ref{fig:fig15-map-disparities-stepwise}. These figures reveal the spatial distribution in disparity, with levels of access that are lower than the mean in more rural parts of the city (where travel times are longer and the distribution of physicians is more spatially disperse) compared to levels of access that are greater than the mean in the higher-density and more connected urban center.
+From this, the disparity maps for the adjusted binary and stepwise impedance functions are shown in Fig \ref{fig:fig14-map-disparities-binary} and Fig \ref{fig:fig15-map-disparities-stepwise}. These figures reveal the spatial distribution in disparity, with levels of access that are lower than the mean in more rural parts of the city (where travel times are longer and the distribution of physicians is more spatially disperse) compared to levels of access that are greater than the mean in the higher-density and more connected urban center.
 
 ```{r fig14-map-disparities-binary, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig14-map-disparities-binary}Accessibility disparities, adjusted binary impedance function", warning=FALSE}
 

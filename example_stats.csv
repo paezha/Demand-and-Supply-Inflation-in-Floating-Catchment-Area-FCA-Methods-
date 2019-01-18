@@ -1,0 +1,19 @@
+FCA Parameter,Actual,2SFCA,E2SFCA,3SFCA,4SFCA Binary,4SFCA Stepwise
+Population (1),100,300,190,79.516,100,100
+Population (2),50,50,34,34,50,50
+System-wide Population,150,350,224,113.52,150,150
+Demand (a),,100,100,52.63157895,33.33333333,52.63157895
+Demand (b),,100,68,24.33684211,33.33333333,35.78947368
+Demand (c),,150,56,36.54736842,83.33333333,61.57894737
+Physicians (a),1,1,1,1,1,1
+Physicians (b),1,1,1,1,1,1
+Physicians (c),1,2,2,2,1,1
+System-wide Physicians,3,4,4,4,3,3
+Local Clinic PPR (a),,0.01,0.01,0.019,0.03,0.019
+Local Clinic PPR (b),,0.01,0.014705882,0.041089965,0.03,0.027941176
+Local Clinic PPR (c),,0.006666667,0.017857143,0.027361751,0.012,0.016239316
+Local Population Center PPR (1),,0.027,0.024,0.021,0.066,0.051
+Local Population Center PPR (2),,0.007,0.012,0.019,0.006,0.012
+Regional Average PPR,0.02,,,,,
+Average LPC-PPR,,0.016666667,0.018035714,0.019651498,0.036,0.031590246
+Population-weighted Average LPC-PPR,,0.02,0.02,0.02,0.046,0.038

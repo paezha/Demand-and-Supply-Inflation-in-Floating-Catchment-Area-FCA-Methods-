@@ -19,6 +19,7 @@ library(sf)
 library(dplyr)
 library(gdistance)
 library(kableExtra)
+library(ggplot2)
 ```
 
 Load geography:
