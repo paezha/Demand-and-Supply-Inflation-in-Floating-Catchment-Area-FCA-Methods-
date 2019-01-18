@@ -1,0 +1,88 @@
+---
+title: "Example for Version 2 of Paper"
+output: html_notebook
+---
+
+I would like to create a new example that is realistic but still simple enought that it can be verified manually.
+
+Begin by clearing the workspace:
+```{r clear-workspace, echo=FALSE}
+rm(list = ls())
+```
+
+Next, load the packages needed for this:
+```{r load-packages, echo=FALSE, include=FALSE}
+library(tidyverse)
+library(rgdal)
+library(raster)
+library(sf)
+library(dplyr)
+library(gdistance)
+library(kableExtra)
+```
+
+Load geography:
+```{r retrieve-geography-files, echo=FALSE, include=FALSE}
+load("Simulated Example.RData")
+```
+
+Create simple features objects for population centers and clinics:
+```{r}
+# Clinics
+sim_clinics <- st_sf(Clinics_data, geometry_clinics, stringsAsFactors = TRUE)
+
+# Population centers
+sim_population <- st_sf(Population_data, geometry_population, stringsAsFactors = TRUE)
+```
+
+Calculate the distance between these points as a measure of cost:
+```{r}
+distance_matrix <- round(pointDistance(st_coordinates(sim_population), 
+                                 st_coordinates(sim_clinics), 
+                                 type='Euclidean', lonlat = FALSE))
+```
+
+Create buffers around the clinics using some threshold value, say the 4th quintile of distances in the system:
+```{r}
+# Clinic
+clinic_buffers <- st_buffer(sim_clinics, quantile(as.vector(distance_matrix), probs = c(0, 1/10, 3/10, 5/10, 7/10, 8/10, 9/10))[4])
+
+# Population centers
+population_buffers <- st_buffer(sim_population, quantile(as.vector(distance_matrix), probs = c(0, 1/10, 3/10, 5/10, 7/10, 8/10, 9/10))[4])
+```
+
+Plot the first stage of the 2SFCA algorithm (i.e., clinic catchments):
+```{r}
+ggplot() +
+  geom_sf(data = clinic_buffers, aes(fill = id), alpha = 0.3) +
+  geom_sf(data = sim_population, aes(size = Population, color = Population)) +
+  geom_sf_text(data = sim_population, aes(label = id), vjust = -1.5, size = 3) +
+  geom_sf(data = sim_clinics, shape = 17, color = "red", size = 3)+
+  theme_minimal()
+```
+
+Notice that some population centers are inside the catchment areas of more than one clinic. For instance, Population Center 4 is in the catchment areas of Clinics 1 and 2. To see how this impacts the calculations, define an impedance matrix using the same criteria as for the buffers:
+```{r}
+#quantiles_tt <- quantile(as.vector(distance_matrix), probs = c(0, 1/10, 3/10, 5/10, 7/10, 8/10, 9/10))
+
+impedance_binary <- 1 * (distance_matrix <= quantile(as.vector(distance_matrix), probs = c(0, 1/10, 3/10, 5/10, 7/10, 8/10, 9/10))[4])
+
+kable(data.frame(Center = Population_data$id, impedance_binary), 
+      "html", 
+      col.names = c("Population Center",
+                           "Clinic 1",
+                           "Clinic 2",
+                           "Clinic 3"))
+```
+
+The demand can be calculated as:
+```{r}
+demand_binary <- (t(impedance_binary) %*% (sim_population$Population))
+```
+
+```{r}
+kable(data.frame(Clinic = c("Clinic 1", "Clinic 2", "Clinic 3"), Demand = demand_binary), "html")
+```
+
+It can be seen that the total population in this system is `r sum(sim_population$Population)` and yet, the assumed level of demand is `r sum(demand_binary)`.
+
