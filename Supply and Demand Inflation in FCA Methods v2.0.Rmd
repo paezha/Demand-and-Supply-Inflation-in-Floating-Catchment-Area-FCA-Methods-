@@ -347,7 +347,7 @@ include_graphics("fig2-Example2.pdf")
 
 Recognizing the potential for overestimated demand in the 2SFCA method, Wan et al. [-@Wan2012] propose a 3-Step Floating Catchment Area method (3SFCA) that aims at refining the estimates of level of demand and accessibility by incorporating a _selection weight_. This approach operates by introducing an aditional step where selection weights are calculated as follows:
 $$
-G_{ij}=\frac{W(d_{ij})}{\sum_jW(d_{ij})}
+G_{ij}=\frac{T(d_{ij})}{\sum_jT(d_{ij})}
 $$
 
 These selection weights are used to adjust the level of demand on the second step of the algorithm in this fashion:
