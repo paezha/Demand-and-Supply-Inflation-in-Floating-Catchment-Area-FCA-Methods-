@@ -1,0 +1,1259 @@
+---
+title: Demand and Supply Inflation in Floating Catchment Area (FCA) Methods
+author:
+  - name: Antonio Paez
+    email: paezha@mcmaster.ca
+    affiliation: McMaster University
+    corresponding: paezha@mcmaster.ca
+  - name: Christopher D. Higgins
+    email: christopher.d.higgins@polyu.edu.hk
+    affiliation: The Hong Kong Polytechnic University
+  - name: Salvatore F. Vivona
+    email: vivonasg@cs.toronto.edu
+    affiliation: University of Toronto
+address:
+  - code: McMaster University
+    address: School of Geography and Earth Sciences, McMaster University, 1280 Main St W, Hamilton, ON L8S 4K1 Canada
+  - code: The Hong Kong Polytechnic University
+    address: Department of Land Surveying and Geo-Informatics & Department of Building and Real Estate, 11 Yuk Choi Rd, Hung Hom, Hong Kong
+  - code: University of Toronto
+    address: Department of Computer Science, University of Toronto, 214 College Street, Toronto, ON, M5T 3A1
+abstract: |
+  Floating Catchment Area (FCA) methods have become a very popular tool to investigate accessibility to public facilities, in particular health care services. FCA approaches are attractive because, unlike other accessibility measures, they take into account the potential for congestion of facilities. This is done by considering the population within the catchment area of a facility to calculate a variable that measures level of service, and then aggregating the level of service by population centers subject to catchment area constraints. In this paper we discuss what seems to be a hitherto overlooked effect of FCA approaches, an artifact that we term demand and supply _inflation_. We show 1) how these artifacts are present in 2FCSA, E2FSCA, and 3SFCA; and 2) how they lead to misleading estimates of accessibility, with possible deleterious consequences for decision making. Next, we propose a simple and intuitive approach to adjust the impedance weights used in the calculation of FCAs that rectifies the inflation effect. The result is a more intiuitive measure of accessibility that 1) provides a local version of the provider-to-population ratio; and 2) preserves the level of demand and the level of supply in a system. We illustrate the relevant issues with some simple examples, and then empirically by means of a case study of accessibility to family physicians in the Hamilton Census Metropolitan Area (CMA), in Ontario, Canada. Results indicate that demand and supply inflation/deflation poses a serious problem for the interpretation of accessibility analysis using existing FCA methods, and that these issues that are eliminated through the use of the proposed adjustments.
+  
+author_summary: |
+
+bibliography: mybibfile.bib
+output: rticles::plos_article
+csl: plos.csl
+header-includes:
+   - \usepackage{booktabs}
+---
+
+```{r clear-workspace, echo=FALSE}
+rm(list = ls())
+```
+
+```{r load-packages, echo=FALSE, include=FALSE}
+library(tidyverse)
+library(knitr)
+library(rgdal)
+library(raster)
+library(readr)
+library(ggmap)
+library(dplyr)
+library(kableExtra)
+library(ggthemes)
+```
+
+```{r read-files-travel-time, echo=FALSE,include=FALSE}
+#Travel time was calculated using Maptitude
+#travel_time <- read_csv("Travel Time.csv", 
+#                        col_types = cols(ID = col_character()))
+#Two clinic locations did not geocode to the network
+#travel_time <- dplyr::select(travel_time, -c("192", "364"))
+#travel_time <- as.matrix(travel_time[,2:ncol(travel_time)])
+
+#Travel time was calculated by Chris using Arc
+travel_time <- read_csv("OD_Matrix_Arc.csv")
+travel_time <- as.matrix(travel_time[,2:ncol(travel_time)])
+```
+
+```{r read-files-clinics, echo=FALSE, include=FALSE}
+#Read family doctors data
+family_doctors <- read_csv("Family Doctors.csv",
+                           col_types = cols(ID = col_character()))
+clinics <- transmute(family_doctors, long = Longitude, lat = Latitude)
+family_doctors <- transmute(family_doctors, family_doctors = Sum_count, Hamilton = HAM_CMA, ClinicID = ID)
+```
+
+```{r read-files-population, echo=FALSE, include=FALSE}
+#Read DA population data 
+da_population <- read_csv("DA Centroids+DAPOP.csv",
+                   col_types = cols(DAUID = col_character()))
+#Read DA population data collected by Chris
+#da_population <- read_csv("DA_Centroids_wPOP.csv",
+#                   col_types = cols(DAUID = col_character()))
+#da_population <- arrange(da_population, DAUID)
+```
+
+```{r read-time-use-files, echo=FALSE, include=FALSE}
+#The main file includes individual attributes, questions, and summaries for durations and episodes for individual
+#main <- read_csv("gss-12M0018-E-2010-c-24-tus-mf_F1-selected.csv")
+
+#The episode file includes detail information about the episodes (activities)
+#episode <- read_csv("gss-12M0018-E-2010-c-24-tus-ef_F1-selected.csv")
+```
+
+```{r select-metro-on, echo=FALSE, include=FALSE}
+#Now filter main file by `PRV` == 35 (Ontario, see p. 89 of documentation) and `LUC_RST` == 1 (CMA/CA: Metropolitan regions, see p. 90 of documentation).
+#main_on_cma <- filter(main, PRV == 35, LUC_RST == 1)
+```
+
+```{r join-main-episode-files, echo=FALSE, include=FALSE}
+#The next task is to identify individuals in main_on_cma and obtain their episodes from the episode file.
+#episode_on_cma <- inner_join(episode, main_on_cma, by = "RECID")
+```
+
+```{r filter-activities, echo=FALSE}
+#Once the episode file has been joined with the main file to retrieve only individuals in Ontario CMA/CMs, the data can be filtered by activity code. The codes of interest are:
+
+#- 292.0 (Travel to/from personal care activities for household adults). This includes traveling to see a doctor (see p. 658 of documentation).
+
+#- 390.0 (Travel to/from shopping or obtaining services). This includes traveling to go to health clinic or doctor's office (see p. 672 of documentation).
+
+#~~(- 674.0 (Transportation assistance to someone other than a household member). This includes driving non-household adult to see the doctor (see p. 700 of documentation))~~ Did not use in the end.
+
+#episode_on_cma_t <- filter(episode_on_cma, ACTCODE == 292 | ACTCODE == 390)# | ACTCODE == 674)
+```
+
+```{r filter-place-of-activity, echo=FALSE} 
+#Also, filter by `PLACE` == 12 (or 13 to pick car driver or passengers (see p. 601 of documentation))
+#episode_on_cma_t <- filter(episode_on_cma, PLACE == 12)# | PLACE == 13)
+```
+
+```{r select-time-use-variables, echo=FALSE}
+#Now select relevant variables, namely age group (`AGEGR5`), duration of episode (`DURATION`), and episode weight (`WGHT_EPI`).
+#episode_on_cma_t <- select(episode_on_cma_t, DURATION, WGHT_EPI, AGEGR5)
+```
+
+```{r retrieve-time-use-data, echo=FALSE, include=FALSE}
+#save(episode_on_cma_t, file = "time_use_data.RData")
+load("time_use_data.RData")
+```
+
+```{r calculate-time-stats, echo=FALSE}
+#Calculate weighted travel time statistics. Note that each episode duration is repeated by the weight of the episode.
+#Mean travel time:
+#mean_tt <- mean(rep(episode_on_cma_t$DURATION, times = episode_on_cma_t$WGHT_EPI))
+#Median travel time:
+#median_tt <- median(rep(episode_on_cma_t$DURATION, times = episode_on_cma_t$WGHT_EPI))
+#Travel time quantiles:
+quantiles_tt <- quantile(rep(episode_on_cma_t$DURATION, times = episode_on_cma_t$WGHT_EPI),
+                        probs = c(0, 1/10, 3/10, 5/10, 7/10, 8/10, 9/10))
+```
+
+```{r read-shape-files, echo=FALSE, include=FALSE}
+#Hamilton DAs
+#hamilton_da.shp <- readOGR(".", "Hamilton_CMA_DAs_2011")
+#hamilton_da.shp@data <- transmute(hamilton_da.shp@data, ID = DA)
+
+#Lake mask
+#lake_mask.shp <- readOGR(".", "Lake Mask")
+
+#Clip geography using the `raster` package
+#hamilton_da.shp <- hamilton_da.shp - lake_mask.shp
+```
+
+```{r tidy-polygons, echo=FALSE, include=FALSE}
+#hamilton_da.t <- fortify(hamilton_da.shp, region = "ID")
+```
+
+```{r retrieve-basemap, echo=FALSE}
+#basemap <- get_map("Hamilton, Ontario", zoom = 10)
+```
+
+```{r retrieve-geography-files, echo=FALSE, include=FALSE}
+#Join population data
+#hamilton_da.t <- left_join(hamilton_da.t,
+#                           data.frame(id = da_population$DAUID, POP2011 = da_population$POP2011),
+#                           by = "id")
+#save(hamilton_da.t, basemap, file = "geography_data.RData")
+load("geography_data.RData")
+```
+
+# Introduction
+
+Evaluating accessibility to healthcare services is an important issue in health geography and health policy, with hundreds of research papers published on the topic since the 2000s [@Apparicio2017]. However, the concept of accessibility is multi-dimensional, which often presents challenges to its operationalization in empirical research. According to Joseph and Bantock [-@Joseph1982], accessibility can be defined by both aspatial and spatial dimensions. The first dimension considers factors such as the availability of healthcare services (or the supply of services), their potential or revealed use by the public (demand). Other aspatial factors include the characteristics of the supply, such as the cost of utilizing the service, and the characteristics of the individual, such as their income, social class, ethnicity, and mobility profile. The spatial dimension considers the geographic distribution of available healthcare services and the costs or friction involved in travelling to them. By taking these dimensions into account, estimates of accessibility can identify areas with high or low access to healthcare services and provide critical information related to social and spatial inequalities and guidance for health policy and resource allocation.
+
+At a high level, provider-to-population ratios offer some indication of the level of service within a community. However, these measures lack a true spatial dimension. In contrast, gravity measures offer a more sophisticated approach to measuring spatial accessibility to healthcare [@Joseph1982]. Nevertheless, these methods have been criticized for the difficulty involved in specifying a suitable distance decay function [e.g., @Schuurman2010]. From this, one of the most popular approaches to estimating healthcare accessibility in the previous literature is the Two-Step Floating Catchment Area (2SFCA) method proposed by Luo and Wang [@Luo2003; @Radke2000], which is based on a simplified gravity model with a binary distance function. Numerous applications are found in the international literature, including work from Germany [@Bauer2017], South Korea [@Kim2018], Japan [@Fujita2017], China [@Song2013], Australia [@McGrail2009], and Canada [@Shah2016]. 
+
+Within the 2SFCA framework, accessibility to healthcare is estimated across two stages: in the first, the PPR at a given healthcare provider is determined based on the number of physicians and the estimated demand from the surrounding population within some catchment area. In the second stage, the level of service for different healthcare providers is summarized for the population. By simplifying gravity measures and operationalizing healthcare accessibility in terms of population-to-provider ratios, the properties of the 2SFCA method make it both intuitive and appealing for health policy. 
+
+Still, several improvements have been made to the 2SFCA method since it was proposed that seek to address the method's most significant perceived shortcomings. The result is a family of Floating Catchment Areas (FCA) methods that include more realistic conceptualizations of distance by specifying variable catchment area sizes [@McGrail2009] and/or the incorporation of stepped [e.g., @Luo2009], continuous [e.g., @Dai2010], and adaptive [@Bauer2016] distance-decay functions. Other authors have added multi-modal transportation [e.g., @Mao2013], age-adjusted healthcare demand profiles [e.g., @Ngui2011], and ways to counteract the modifiable areal unit problem [@Bell2013].
+
+A second major focus area has been the addition of competition for available opportunities or the allocation of services to regions. As we discuss further in the next section, the original 2SFCA approach has been criticized for over-estimating demand [@Wan2012]. By summarizing the population within the catchment area of healthcare facilities, the original 2SFCA framework often produces double-counting that tends to inflate estimates of the level of demand at supply points in the healthcare system, which in turn deflates the level of service for populations within the study area. Proposed solutions to this problem include the addition of selection weights based on a travel impedance function in what Wan et al. [-@Wan2012] refer to as the Three-Step Floating Catchment Area (3SFCA) method and a modified 3SFCA that uses a Huff model to probabalisticly estimate these selection weights [@Luo2014] based on impedance and the supply of physicians at a given facility. On the supply side (the allocation of the service to populations), Delamater [-@Delamater2013] proposes a modification to the 2SFCA method to address what he terms a "suboptimal" spatial configuration of services.
+
+However, although the issue of demand overestimation (or inflation) and the alloation of services has been correctly identified in the literature, there are not to our knowledge any existing methods that adequately solve these perceived shortcomings. As we will show, previous approaches inflate or deflate demand and supply to varying degrees. Crucially, this results in potentially misleading estimations of healthcare accessibility. As a consequence, potentially erroneous recommendations for health policy could result, including the imprecise identification of spatial inequalities.
+
+In response, this research proposes a simple and intuitive approach to adjusting the impedance weights used in the estimation of FCA methods. By incorporating methods drawn from the field of spatial econometrics, we preserve levels of demand and supply in the system and eliminate the inflation and deflation of these parameters in previous FCA approaches.To illustrate the benefits of this approach, we conduct a case study of access to family physicians in Hamilton, Canada. Our results indicate that the proposed adjustments produce more intuitive measures of accessibility to healthcare measured in terms of local provider-to-population ratios. Moreover, these outputs can be used to provide estimates of access disparity across a region that are both easily understood and robust to demand and supply inflation. 
+
+# Demand Inflation/Accessibility Deflation in FCA Methods
+
+## Floating Catchment Area Methods
+
+To motivate the discussion to follow we begin by quickly reviewing some popular FCA methods. In general terms, FCA approaches are implemented in two steps (2SFCA). In the first step, _catchment areas_ are defined for facilities (e.g., clinics, parks, libraries, etc.) by means of an impedance function. The population within a catchment area is allocated to the corresponding facility or service point. This creates a demand or congestion effect. More formally, the level of demand $D_{j}$ is calculated using a combination of the population at $i$ and an impedance function $W$ that depends on $d_{ij}$, an indicator of the cost of travel between $i$ and $j$ (e.g., distance, travel time, out-of-pocket expenses, or generalized cost):
+$$
+D_j = \sum_i{D_{ij}} = \sum_i{P_iW(d_{ij})}
+$$
+
+Next, the level of supply at the facility is then divided by the demand to obtain a measure of level of service (e.g., beds/person, sq.m of park space/person, library floor space/person). Here, the level of service at location $j$ is defined as follows (decomposed in various ways):
+$$
+L_j = \frac{S_j}{D_j} = \frac{S_j}{\sum_iD_{ij}} = \sum_i\frac{S_j}{D_{ij}}=\sum_iL_{ij}
+$$
+where $S_i$ is the supply of the service offered at location $j$ (say, number of beds/doctors in a clinic), whereas $D_j$ is the level of demand on that service location. It is clear that the congestion effect results from the level of demand, which in turn depends on the number of potential users from different origins $i$ that converge at service point $j$: at a fixed level of supply, greater demand results in lower levels of service. The different decompositions of $L_j$ help to understand how different population centers influence the level of demand at $j$.
+
+In the second step, the catchment areas are "floated" to the population centers. Accessibility at location $i$, in turn, is defined as the weighted sum (via the impedance function) of the level of service at every location $j$ that includes $i$ within its catchment area:
+$$
+A_i = \sum_j{L_jW(d_{ij})}
+$$
+## FCA Impedance Function
+
+The impedance function incorporated into both steps of the 2SFCA technique implements the geographical concept of distance-decay, which reflects a commonly observed cost-minimization behavior, namely that people in general prefer to spend less time than more travelling to destinations. In effect, the impedance function defines the _catchment areas_ for the points of service and population centers alike.
+
+In early implementations of the 2SFCA approach [see @Luo2003], a binary impedance function was used:
+$$
+D_j = \sum_iD_{ij} = \sum_iP_iW(d_{ij}|d_0)
+$$
+
+with:
+$$
+W(d_{ij}\leq d_0) = \left\{
+        \begin{array}{ll}
+            1 & \quad d_{ij} \leq d_0 \\
+            0 & \quad d_{ij} > d_0
+        \end{array}
+    \right.
+$$
+
+This formulation assumes equal potential for use within a catchment area, and zero beyond. In other words, travellers are assumed to be equally likely users of a service point within the catchment area, irrespective of how proximate or distant they are from it.
+
+A criticism of the binary impedance function is that it does not account for the declining probability of using a facility as distance grows. As a result of this criticism, other impedance functions have since been proposed, including the stepwise formulation of the Enhanced 2-Step Floating Catchment Area method [E2SFCA; @Luo2009]:
+$$
+D_j = \sum_iD_{ij} = \sum_{i=1}^N\sum_{r=1}^R P_iW(d_{ij}|d_1, d_2, \dots, d_R)
+$$
+where $W(d_{ij}|d_1, d_2, \dots, d_R)$ takes different values depending on the value of $d_{ij}$ and cost threshold values $d_r$, as follows:
+$$
+W(d_{ij}) = \left\{
+        \begin{array}{ll}
+            k_1 & \quad d_{ij} \leq d_1 \\
+            k_2 & \quad d_1 < d_{ij} \leq d_2 \\
+            \dotsb \\
+            k_{R-1} & \quad d_{R-1} < d_{ij} \leq d_R \\
+            0 & \quad d_{ij} > d_R
+        \end{array}
+    \right.
+$$
+
+Clearly, a stepwise function does not assume identical potential within the extent of the catchment area (i.e., the space contained within $d_{ij} \leq d_R$), and better reflects empirical observations of travel behavior. More recent research has introduced smooth functions to replace the stepwise approach. It is worthwhile noting that impedance functions have long been studied in geographical analysis in general [e.g., @Taylor1971], and accessibility research in particular [e.g., @Kwan1998], but it is only relatively recently that alternative impedance functions have been incorporated in FCA approaches. These include continuous functions [e.g, @Dai2010] and mixtures of continuous and step functions [e.g, @Schuurman2010].
+
+## Demand and Supply Inflation in the 2SFCA
+
+An important point in the implementation of FCA methods [see @Wan2012], is that demand tends to be overestimated. This is a consequence of the way in which $Dj$ is calculated, which generally fails to preserve the population. In other words, 2SFCA methods lack the pycnophilactic property discussed by Tobler [-@Tobler1979]. In practical terms, this implies that the population used to calculate the demand component of accessibility will exceed (or fall short) of the actual population in a region, depending on the weighting scheme. We term the consequent effect _demand inflation_.
+
+Let us illustrate this inflation effect by means of a simple example using the conventional 2SFCA approach with a binary impedance function. In this case, the population value at $i$ is multiplied by zero or one, meaning that the contribution of $i$ to demand at $j$ whenever $d_{ij}$ does not exceed the threshold is:
+$$
+D_{ij} = P_i
+$$
+
+However, when calculating levels of service at $L_j$ and $L_k$, this population is double-counted if $d_{ij} \le d_0$ and $d_{ik} \leq d_0$. More generally, the population at $i$ contributes to the demand on multiple service points $j$, every time that $d_{ij} \le d_0$. It follows, then, that:
+$$
+\sum_j D_{ij} = nP_i
+$$
+where $n$ is the number of service points $j$ that include $i$ as part of their catchment areas. Unfortunately, since (as noted above) $D_ij = P_i$, it turns out that the level of demand implied by the population at $i$ vastly exceeds the actual population at $i$ in these calculations:
+$$
+\sum_j D_{ij} = nP_i > P_i
+$$
+
+In other words, when estimating the level of accessibility with congestion by means of the 2SFCA approach, it appears that the population that needs to be serviced is substantially larger than the actual population. Clearly, this overestimation does not make sense and perhaps worse, it may lead to gross underestimation of the actual level of service. While more service centres within reach of a population should lead to better service, in effect, demand is artificially higher via population inflation.
+
+This can be more easily seen by means of a simple example. Consider the situation shown in Fig \ref{fig:fig1-example-1} (Panel I), with three clinics (labeled $a$, $b$, and $c$) and one population center (labeled $1$). Assume that the supply at the three clinics is identical, say one physician at each. Further, assume that the population at $1$ is $100$ and that this population center is part of the catchment areas of the three service points. Under this setup, the level of service across the whole system is 3 physicians per 100 people or 0.030 physicians per person, which we will refer to as the Regional Average PPR. At the clinic level, the level of service at each of the clinics, or what could be called the Local Clinic PPR, is 1 physician per 100 people (0.010 physicians per person) - even though the service points will not in reality service one hundred patients each. It is more likely, instead, that each service point will serve only a fraction of all those patients, and that collectively they offer their services to the whole population within their catchment areas. As a consequence of how demand is calculated in the 2SFCA, the level of demand has been overestimated (i.e., demand has been _inflated_) and the level of service has been underestimated.
+
+Does this inflation effect matter, though? After all, since accessibility is the sum of the level of service that a population center can reach, the accessibility at $1$ is 3 physicians per hundred people or 0.030 physicians per person. This statistic be referred to as a Local Population Center PPR, reflecting the provider-to-population ratio for each population center. In the present case, the Local Population Center PPR equals the Regional Average PPR, as expected. The situation, however, is less clear-cut when there are more population centers or service clinics and they begin to interact with each other in their contributions to demand and accessibility.
+
+To illustrate this, let us add population center $2$ to the previous example, and say that this center has a population of 50 (see Fig \ref{fig:fig1-example-1}, Panel II) which changes the Regional Average PPR to 0.020 physicians per person. In terms of demand, the population at $2$ is within the catchment area of clinic $c$ only. The Local Clinic PPR at clinics $a$ and $b$ is still 1 physician per hundred people. The level of demand at clinic $c$, on the other hand, is now 150 people, and its Local Clinic PPR has declined to 1 physician per 150 people - despite the fact that demand on $c$ is likely lower than 150. Remember that the population of center $1$ has been inflated by a factor of 3 when calculating its expected demand, contributing to this lower level of service for clinic $c$. Taken together, the system-wide population in the 2SFCA approach is 350 while the actual regional population is 150.
+
+```{r fig1-example-1, echo=FALSE, fig.cap="\\label{fig:fig1-example-1}Example using binary impedance (the dotted lines represent the impedance thresholds for each clinic)"}
+include_graphics("fig1-Example1.pdf")
+```
+
+A similar inflation effect is present on the supply side when the same service point is included in the overlapping catchment areas of multiple population centres. In this case, the same Local Clinic PPR is assumed to be avalable to all those population centers, and therefore supply becomes inflated in the second-stage calcuation of accessibility. Continuing with the example, the 2SFCA algorithm assumes that the level of service available at clinic $c$ to population centers $1$ and $2$ is both $L_{1c}=L_{2c}=1/150$. In effect, the total level of service available in the system at $c$ for accessibility calculations is actually $2$ - twice the actual level of service at the clinic. Within the 2SFCA system, this means 4 physicians are available, despite there only being 3 in the region. In the end, the accessibility for population center $1$ is 
+
+$$
+A_1 = 1/100 + 1/100 + 1/150 = 0.027
+$$ 
+and population center $2$ is 
+$$
+A_2 = 1/150 = 0.007
+$$
+These accessibility results suggest that population center $1$ has a higher Local Population Center PPR than the Regional Average PPR of 0.020, while the accessibility of population center $2$ falls below the regional average. Of note, taking the population-weighted average of the Local Population Center PPRs in the 2SFCA method returns the Regional Average PPR. Full results for the individual clinics and population centres are displayed in Table \ref{tab:table-example-statistics}, and we will return to these results later.
+
+```{r table-example-statistics, echo=FALSE, warning=FALSE}
+example_stats <- read.csv("example_stats.csv")
+options(knitr.kable.NA = '')
+kable(example_stats, 
+    format = "latex",
+    booktabs = TRUE,
+    digits = 3,
+    col.names = c("", "Actual", "2SFCA", "E2SFCA", "3SFCA", "4SFCA Binary", "4SFCA Stepwise"),
+    caption = "\\label{tab:table-descriptive-statistics}Descriptive Statistics") %>%
+  group_rows("Population", 1, 3) %>%
+  group_rows("Demand", 4, 6) %>%
+  group_rows("Supply", 7, 10) %>%
+  group_rows("Level of Service", 11, 13) %>%
+  group_rows("Accessibility", 14, 15) %>%
+  group_rows("Summary Statistics", 16, 18)
+```
+
+## Demand and Supply Inflation in the E2SFCA
+
+The situation above becomes more vexing when using enhanced impedance functions (i.e., non-binary). Such is the case of the Enhanced 2SFCA approach (E2SFCA) proposed by Luo and Qi [-@Luo2009], whereby the contribution of the population at $i$ to demand at service location $j$ is:
+$$
+D_{ij} = P_iW(d_{ij})
+$$
+
+An example of an impedance function is a stepwise function as follows [see the slow decay function in @Luo2009]:
+$$
+W(d_{ij}) = \left\{
+        \begin{array}{ll}
+            1 & \quad d_{ij} \leq d_1 \\
+            0.68 & \quad d_1 < d_{ij} \leq d_2 \\
+            0.22 & \quad d_2 < d_{ij} \leq d_3 \\
+            0 & \quad otherwise
+        \end{array}
+    \right.
+$$
+
+Let us revisit example (see Fig \ref{fig:fig2-example-2}, Panel I) now using a stepwise impedance function. The population at $1$ is still within the catchment area of the three clinics ($a$, $b$, and $c$), but now the impedance weights are $W(d_{1a})=1$, $W(d_{1b})=0.68$, and $W(d_{1c})=0.68$. If, as before, the population at $1$ is $100$, the implied demand is inflated as follows:
+$$
+\sum_jD_{1j} = 100 + 68 + 22 = 190 > P_1 = 100
+$$
+
+Although inflation is lower in the case of the stepwise function compared to the binary function, the same location $i$ can still potentially contribute multiple times its population value to different service points $j$, with similar consequences.
+
+Turning to (see Fig \ref{fig:fig2-example-2}, Panel II), the implied demand of population center $2$, on the other hand, is:
+$$
+\sum_jD_{2j} = 0 + 0 + 34 = 34 < P_2 = 50
+$$
+and therefore demand has been _deflated_.
+
+This example demonstrates an internal contradiction in how FCA methods operate: when multiple service centers are within the threshold travel cost, they assume that some (maybe all) of the same persons crowd more than one of those centers. On the other hand, when only one service center is available, the assumption is that some individuals may _not_ demand service, even when the center is within their threshold travel cost. While this assumption may be acceptable for discretionary services, it is suspect when it comes to essential services such as primary health care, particularly in a single-payer system like that in Canada.
+
+Continuing with this example, population center $2$ (see Fig \ref{fig:fig2-example-2}, Panel II) has a Local Population Center PPR of 0.012 physicians per person. Per Table \ref{tab:table-example-statistics}, this is higher than when the binary impedance function is used, but still likely biased for two reasons: 1) demand from center $1$ is higher than the actual population; and 2) demand from center $2$ is lower than the actual population. 
+
+```{r fig2-example-2, echo=FALSE, fig.cap="\\label{fig:fig2-example-2}Congestion inflation and accessibility deflation under stepwise impedance (each dotted line represents a different impedance threshold)"}
+include_graphics("fig2-Example2.pdf")
+```
+
+## Demand and Supply Inflation in the 3SFCA
+
+Recognizing the potential for overestimated demand in the 2SFCA method, Wan et al. [-@Wan2012] propose a 3-Step Floating Catchment Area method (3SFCA) that aims at refining the estimates of level of demand and accessibility by incorporating a _selection weight_. This approach operates by introducing an aditional step where selection weights are calculated as follows:
+$$
+G_{ij}=\frac{W(d_{ij})}{\sum_jW(d_{ij})}
+$$
+
+These selection weights are used to adjust the level of demand on the second step of the algorithm in this fashion:
+$$
+D^*_{ij} = G_{ij}P_iW_{ij} = G_{ij}D_{ij}
+$$
+
+The level of service at $j$ is calculated in the second step as:
+$$
+L_j=\frac{S_j}{\sum_iD^*_{ij}}
+$$
+
+Accessibility, in the final step, becomes:
+$$
+A_i = \sum_jG_{ij}L_jW_{ij}
+$$
+
+But although it purports to fix overestimation in demand, the issue of demand and supply inflation is not fully resolved by the 3SFCA method. In this case, the selection weights are $G_{1a} = 1/1.9$, $G_{1b} = 0.68/1.9$, $G_{1c} = 0.22/1.9$ for location $1$, and $G_{2a} = 0$, $G_{2b} = 0$, $G_{2c} = 0.68$ for location $2$. The adjusted levels of demand are then:
+$$
+\begin{array}{l}
+            D^*_{1a} = G_{1a}D_{1a} = (1/2.36)(100) = 52.63 \\
+            D^*_{1b} = G_{1a}D_{1a} = (0.68/2.36)(68) = 24.34 \\
+            D^*_{1c} = G_{1a}D_{1a} = (0.22/2.36)(68) = 2.55
+\end{array}\quad \text{and}\quad
+\begin{array}{ll}
+            D^*_{2a} = G_{2a}D_{2a} = (0/0.68)(0) = 0 \\
+            D^*_{2b} = G_{2b}D_{2b} = (0/0.68)(0) = 0 \\
+            D^*_{2c} = G_{2b}D_{2c} = (0.68/0.68)(34) = 34
+\end{array}
+$$
+
+It follows that the demand aggregated by population center is:
+$$
+\sum_jD^*_{1j} = D^*_{1a} + D^*_{1b} + D^*_{1c} = 52.63 + 24.34 + 2.55 = 79.52 < P_1 = 100
+$$
+for center $1$, and:
+$$
+\sum_jD^*_{2j} = D^*_{2a} + D^*_{2b} + D^*_{2c} = 0 + 0 + 34 = 34 < P_2 = 50
+$$
+for center $2$. 
+
+It appears from this example that the 3SFCA method has deflated demand somewhat overzealously, as the system-wide population is now 113.52. This is perhaps not surprising, when we realize that the 3SFCA method operates, essentially, by stacking the effects of two related impedance functions (Delamater's [-@Delamater2013] Modified 2SFCA approach does the same but on the supply side). Recall that the selection weights are calculated using the impedance weights $W(d_{ij})$. These selection weights then multiply the impedance when computing the level of service (since $D_{ij} = P_iW(d_{ij})$). The net effect is to make impedance steeper by a factor that depends on the impedance [the same mechanism is present in the Huff-enhanced model of @Luo2014, even if different impedance functions are used to compute the selection weights and the level of service/accessibility]. 
+
+In addition to illustrating the demand/supply inflation (or deflation) effect, the examples in this section also suggest that the magnitude and even direction of the effect depend on the geography of the problem (i.e., the locations of population centers and clinics), as well as the kind of impedance function used. If the inflation effect were even (i.e., all accessibility estimates are inflated/deflated at the same rate) then a simple solution would be to apply a constant inflation factor. Alas, it is more likely that the effect will not be even across space (e.g., we can anticipate that demand will be more inflated in denser parts of a region). For this reason, a more general approach to offset the inflation of supply _and_ demand in a systematic way seems to be called for. We discuss this next. 
+
+## A Method to Rectify Demand and Supply Levels to System-wide Totals
+
+As the examples in the preceding subsection illustrate, FCA methods can induce quite substantial inflation of supply and demand (and even, in some cases, _negative inflation_, or deflation). This, in turn, can lead to artificially lower or higher estimates of accessibility, as the case may be. In this section, we propose a simple and intuitive adjustment to avoid the inflation artifacts inherent in current implementations of FCA methods.
+
+Refer again to Fig \ref{fig:fig1-example-1}. Demand inflation occurs because the underlying assumption is that all the population within a catchment area will be serviced by its corresponding service location. More realistically, only a fraction of that population will demand service at any given location if other service points are within reach (i.e., inside its "floated" catchment area). 
+
+For instance, assuming (as the binary impedance function does), that individuals at location $1$ are indifferent between clinics $a$, $b$, and $c$, then it is reasonable to think that the population will sort itself proportionally to the clinics - in this example, this means that each third of the population will attend one of three different clinics (importantly, this assumes that the service points offer undifferentiated services). This suggests the following adjustment to the way the level of demand is calculated. Given an impedance function, a set of adjusted weights, say  $W^{i*}_{ij}$, are precalculated by dividing the original impedance weights by the sum of the weights for population center $i$ over all service points $j$:
+$$
+W_{ij}^{i} = \frac{W_{ij}}{\sum_j W_{ij}}
+$$
+
+Please notice that these weights are identical to the selection weights of the 3SFCA method. A key property of the adjusted weights is the following:
+$$
+\sum_jW_{ij}^{i}=1
+$$
+
+This adjustment procedure has the effect that, when the level of demand of $i$ is summed over all service points $j$, the aggregated level of demand due to $i$ is identical to its population:
+$$
+\sum_j P_iW_{ij}^{i} = P_i
+$$
+
+On the supply side, inflation happens because the level of service available at location $j$ is assumed to be available to every population center $i$ within its catchment area. To adjust this, another set of weights, say $W^{j*}_{ij}$, is pre-calculated by dividing the original impedance weights $W_{ij}$ by the sum of the weights for service point $j$ over all population centers $i$:
+$$
+W_{ij}^{j} = \frac{W_{ij}}{\sum_i W_{ij}}
+$$
+
+Again, the resulting weights have the property that:
+$$
+\sum_iW_{ij}^{j}=1
+$$
+
+As before, the result of this procedure is that, when the level of service of $j$ is aggregated by population centers, the total level of service for that service point is preserved:
+$$
+\sum_i L_jW_{ij}^{j} = L_j 
+$$
+
+Note that, since the weights add up to one, they can be interpreted as a _probability_ or _frequency_ of contact, similar to the Huff model of [@Luo2014].
+
+In reference to Fig \ref{fig:fig1-example-1}, we can see that the original (unadjusted) weights for population centre $1$ are $W_{1a} = 1$, $W_{1b} = 1$, and $W_{1c} = 1$, whereas the weights of population center $2$ are $W_{2a} = 0$, $W_{2b} = 0$, and $W_{2c} = 1$. 
+
+On the demand side, the adjusted weights become for population center $1$, $W^{i}_{1a} = 1/3$, $W^{i}_{1b} = 1/3$, and $W^{i}_{1c} = 1/3$, and for population center $2$ $W^{i}_{2a} = 0$, $W^{i}_{2b} = 0$, and $W^{i}_{2c} = 1$. Using the adjusted weights, it can be seen that the level of demand due to each population center equals its respective population:
+$$
+\begin{array}{ll}
+            \sum_j D_1j = 1/3P_1 + 1/3P_1 + 1/3P_1 = P_1\\
+            \sum_j D_2j = 0+0+P_2 = P_2
+        \end{array}
+$$
+
+Coming next to the supply side, the adjusted weights for service point $a$ are $W^{j*}_{1a} = 1$ and $W^{i*}_{2a} = 0$, for service point $b$ are $W^{j*}_{1b} = 1$ and $W^{i*}_{2b} = 0$, and for service point $c$ are $W^{j*}_{1b} = 1/2$ and $W^{i*}_{2b} = 1/2$. It can be seen that the level of service is preserved across clinics, and therefore across the system:
+$$
+\begin{array}{ll}
+            \sum_i L_{ia} = L_{1a} + 0 = L_a\\
+            \sum_i L_{ib} = L_{1b} + 0 = L_b\\
+            \sum_i L_{ic} = L_{1c}/2 + L_{2c}/2 = L_c
+        \end{array}
+$$
+
+The method to adjust the weights used above is identical to a procedure that will be familiar to readers acquainted with the literature in the fields of spatial statistics and econometrics. The same adjustment is widely used there under the names of row- and column-standardization of a weights matrix [see, inter alia, @Anselin1988; @Griffith1988].
+
+The proposed adjustment can be easily implemented. We will present next the implementation using a compact matrix notation. Begin by defining the following impedance matrix:
+$$
+\mathbf{W} = \left(\begin{array}{ccc}
+            W_{11} & \cdots & W_{1J}\\
+            \vdots & \ddots & \vdots\\
+            W_{N1} & \cdots & W_{NJ}\\
+        \end{array}
+        \right)
+$$
+where $W_{ij}$ is an impedance function evaluated at $d_{ij}$. Subindex $i$ is for population centers ($i=1,\dots,N$) and subindex $j$ is for service points ($j=1,\dots,J$). Note that the matrix does not need to be square. A row-standardized set of weights is obtained as follows:
+$$
+\mathbf{W}^{i} = \left(\begin{array}{ccc}
+            \frac{W_{11}}{\sum_jD_{1j}} & \cdots & \frac{W_{1J}}{\sum_jD_{1j}}\\
+            \vdots & \ddots & \vdots\\
+            \frac{W_{N1}}{\sum_jD_{Nj}} & \cdots & \frac{W_{NJ}}{\sum_jD_{Nj}}\\
+        \end{array}
+        \right)
+$$
+
+Next, a column-standardized set of weights is calculated as:
+$$
+\mathbf{W}^{j} = \left(\begin{array}{ccc}
+            \frac{W_{11}}{\sum_iD_{1j}} & \cdots & \frac{W_{1J}}{\sum_iD_{1j}}\\
+            \vdots & \ddots & \vdots\\
+            \frac{W_{N1}}{\sum_iD_{Nj}} & \cdots & \frac{W_{NJ}}{\sum_iD_{Nj}}\\
+        \end{array}
+        \right)
+$$
+
+In the first example above (see Fig \ref{fig:fig1-example-1}), the binary impedance matrix is:
+$$
+\mathbf{W}_{binary} = \left(\begin{array}{ccc}
+            1 & 1 & 1\\
+            0 & 0 & 1\\
+        \end{array}
+        \right)
+$$
+
+The row-standardized weights that correspond to this matrix are:
+$$
+\mathbf{W}^{i}_{binary} = \left(\begin{array}{ccc}
+            1/3 & 1/3 & 1/3\\
+            0 & 0 & 1\\
+        \end{array}
+        \right)
+$$
+and the column-standardized weights are:
+$$
+\mathbf{W}^{j}_{binary} = \left(\begin{array}{ccc}
+            1 & 1 & 1/2\\
+            0 & 0 & 1/2\\
+        \end{array}
+        \right)
+$$
+
+In the second example (see Fig \ref{fig:fig2-example-2}), the stepwise impedance weights are:
+$$
+\mathbf{W}_{stepwise} = \left(\begin{array}{ccc}
+            1 & 0.68 & 0.22\\
+            0 & 0 & 0.68\\
+        \end{array}
+        \right)
+$$
+
+The row-standardized weights in turn are (with some rounding):
+$$
+\mathbf{W}^{i}_{stepwise} = \left(\begin{array}{ccc}
+            0.526 & 0.358 & 0.116\\
+            0 & 0 & 1\\
+        \end{array}
+        \right)
+$$
+whereas the column-standardized weights are:
+$$
+\mathbf{W}^{j}_{stepwise} = \left(\begin{array}{ccc}
+            1 & 1 & 0.244\\
+            0 & 0 & 0.756\\
+        \end{array}
+        \right)
+$$
+
+Once that the impedance weights have been adjusted, a vector of adjusted level of demand $\mathbf{D}^*$ can be obtained by multiplying the _transposed_ impedance matrix by a vector of population values as follows:
+$$
+\mathbf{D}^* = [\mathbf{W}^{i}]^T\mathbf{P}
+$$
+where the $^T$ operator is for "transpose", and $\mathbf{P}$ is:
+$$
+\mathbf{P} = \left(\begin{array}{c}
+            P_1\\
+            \vdots\\
+            P_N\\
+        \end{array}
+        \right) 
+$$
+
+The level of demand for the service points in the binary impedance function example is (in vector form):
+$$
+\mathbf{D}^*_{binary}= \left( \begin{array}{cc}
+1/3 & 0\\
+1/3 & 0\\
+1/3 & 1\end{array} \right)
+\left( \begin{array}{c}
+100\\
+50\end{array} \right)=
+\left( \begin{array}{c}
+100/3\\
+100/3\\
+250/3
+\end{array} \right)=
+\left( \begin{array}{c}
+33.33\\
+33.33\\
+83.33\end{array} \right)
+$$
+
+The level of demand for the service points in the stepwise impedance function example is (in vector form):
+$$
+\mathbf{D}^*_{sstepwise}= \left( \begin{array}{cc}
+0.526 & 0\\
+0.358 & 0\\
+0.116 & 1\end{array} \right)
+\left( \begin{array}{c}
+100\\
+50\end{array} \right)=
+\left( \begin{array}{c}
+52.63\\
+35.78\\
+61.58
+\end{array} \right)
+$$
+
+As can be seen, the aggregated level of demand, after the adjustment, equals (as desired) the actual population of the region.
+
+The levels of demand can then be used to calculate the level of service at the individual clinic locations by performing Hadamard division ($\oslash$) of the vector of supply by the vector of adjusted demand. This is the first step of the 2SFCA (aggregating demand over catchment areas for service points):
+$$
+\mathbf{L}^* = \mathbf{S}\oslash\mathbf{D}^*
+$$
+
+Since Hadamard division is an element-by-element operation, the adjusted levels of service in the first example (using the binary impedance function) are:
+
+$$
+\mathbf{L}^*_{binary} = \left( \begin{array}{c}
+1 \\
+1 \\
+1 \\
+\end{array}\right)\oslash
+\left( \begin{array}{c}
+100/3\\
+100/3\\
+250/3
+\end{array} \right)=
+\left( \begin{array}{c}
+3/100\\
+3/100\\
+3/250
+\end{array} \right)=
+\left( \begin{array}{c}
+0.03\\
+0.03\\
+0.012
+\end{array} \right)
+$$
+
+The levels of service in the second example, when using the stepwise impedance function, are:
+$$
+\mathbf{L}^*_{stepwise} = \left( \begin{array}{c}
+1 \\
+1 \\
+1 \\
+\end{array}\right)\oslash
+\left( \begin{array}{c}
+52.63\\
+35.79\\
+61.58
+\end{array} \right)=
+\left( \begin{array}{c}
+0.019\\
+0.028\\
+0.016
+\end{array} \right)
+$$
+
+As in the 2SFCA, E2SFCA, and 3SFCA methods, this operation returns the Local Clinic PPR in terms of physicians per person for each service point. However, these level of service values are consistent with demand and supply. As we saw above, the demand equals the population. Here, the supply also equals the number of physicians in the region. Because both demand and supply are not inflated or deflated in this rectified method, these values are easily interpretable relative to the Regional Average PPR of $3/150$ or $0.02$ physicians per person. In the case of the bindary impedance function, it is clear that locations $a$ and $b$ offer better provider-to-population ratios than the regional average, whereas location $c$ offers a lower provider-to-population than the regional average. In the stepwise formulation, only clinic $b$ has a level of service greater than the regional average.
+
+Accessibility, finally, is calculated as the matrix product of the column-standardized weights and the adjusted level of service:
+$$
+\mathbf{A}^*=\mathbf{W}^{j}\mathbf{L}^*
+$$
+which, continuing with the example, gives the following for the binary impedance function:
+$$
+\mathbf{A}^*_{binary} = 
+\left(\begin{array}{ccc}
+            1 & 1 & 1/2\\
+            0 & 0 & 1/2\\
+        \end{array}
+        \right)
+\left( \begin{array}{c}
+0.03\\
+0.03\\
+0.012
+\end{array} \right) =
+\left( \begin{array}{c}
+0.03 + 0.03 + 0.006\\
+0 + 0 + 0.006
+\end{array} \right)=
+\left( \begin{array}{c}
+0.066\\
+0.006
+\end{array} \right)
+$$
+and for the stepwise impedance function:
+$$
+\mathbf{A}^*_{stepwise} = 
+\left(\begin{array}{ccc}
+            1 & 1 & 0.244\\
+            0 & 0 & 0.756\\
+        \end{array}
+        \right)
+\left( \begin{array}{c}
+0.019\\
+0.028\\
+0.016
+\end{array} \right) =
+\left( \begin{array}{c}
+0.019 + 0.028 + 0.004\\
+0 + 0 + 0.0012
+\end{array} \right)=
+\left( \begin{array}{c}
+0.051\\
+0.012
+\end{array} \right)
+$$
+
+As with the Local Clinic PPRs, these population-to-provider ratios for each local population center are consistent with demand and supply. As such, they are more meaningfully interpreted relative to the Regional Average PPR of 0.020. In both the binary and stepwise formulations, the Local Population Center PPR for $1$ is significantly higher than the regional average at 0.066 and 0.051 respectively. On the other hand, accessibility levels for population center $2$ are lower than the average. By extension, the average and population-weighted average Local Population Center PPRs in Table \ref{tab:table-example-statistics} also provide more meaningful measures of accessibility within a region. In contrast to previous FCA methods, the population-weighted average in particular does not equal the Regional Average PPR. By taking the geographic distribution of population, opportunities, and accessibility into account, these summary statistics provide a more useful and intuitive benchmark for capturing service and accessibility levels for population groups across a region relative to the simple regional average. To summarize, the proposed adjustment succeeds at preserving the level of demand to the total population and the level of service to the total resources available in the system. In this way, it provides a more intuitive interpretation of accessibility than previous FCA methods.
+
+```{r toy-example, echo=FALSE}
+#In this chunk, the toy example is replicated.
+
+#Population
+P <- c(100, 50)
+#Number of physicians at each clinic
+S <- c(1, 1, 1)
+
+#Toy matrix: binary
+W_b <- rbind(c(1, 1, 1), c(0, 0, 1))
+
+#Row standardize the impedance matrix to ensure that the sum of the population over the clinics preserves the population totals
+row_sums_binary <- rowSums(W_b) #sum weights over rows
+row_sums_binary[row_sums_binary == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+W_b_row_adjusted <- sweep(W_b, 1, row_sums_binary, FUN = "/") #row standardize
+
+#Column standardize the impedance matrix to ensure that the sum of the level of service preserves the total supply
+col_sums_binary <- colSums(W_b) #sum weights over rows
+col_sums_binary[col_sums_binary == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+W_b_col_adjusted <- sweep(W_b, 2, col_sums_binary, FUN = "/") #column standardize
+
+#Toy matrix: stepwise
+W_s = rbind(c(1, 0.68, 0.22), c(0, 0, 0.68))
+
+#Row standardize the impedance matrix to ensure that the sum of the population over the clinics preserves the population totals
+row_sums_stepwise <- rowSums(W_s) #sum weights over rows
+row_sums_stepwise[row_sums_stepwise == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+W_s_row_adjusted <- sweep(W_s, 1, row_sums_stepwise, FUN = "/") #row standardize
+
+#Column standardize the impedance matrix to ensure that the sum of the level of service preserves the total supply
+col_sums_stepwise <- colSums(W_s) #sum weights over rows
+col_sums_stepwise[col_sums_stepwise == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+W_s_col_adjusted <- sweep(W_s, 2, col_sums_stepwise, FUN = "/") #column standardize
+
+#Calculate levels of demand
+
+#Binary impedance 
+D_b <- (t(W_b) %*% (P))
+
+#Adjusted level of demand using binary impedance 
+D_b_adjusted <- (t(W_b_row_adjusted) %*% (P))
+
+#Stepwise impedance 
+D_s <- (t(W_s)%*% (P))
+
+#Adjusted level of demand using stepwise impedance 
+D_s_adjusted <- (t(W_s_row_adjusted)%*% (P))
+
+#Calculate level of service for each clinic. The level of service for the clinic is the number of physicians at the clinic divided by the population served. 
+
+#Binary impedance function
+L_b <- S / D_b
+
+#Adjusted binary impedance to rectify demand
+L_b_adjusted <- S / D_b_adjusted
+
+#Use stepwise impedance function
+L_s <- S / D_s
+
+#Adjust stepwise impedance function to deflate demand
+L_s_adjusted <- S / D_s_adjusted
+
+#Calculate accessibility for each case. This is the sum of the level of service for each population center, weighted by the corresponding impedance function.
+
+#Binary
+A_b <- W_b %*% L_b
+
+#Binary adjusted
+A_b_adjusted <- W_b_col_adjusted %*% L_b_adjusted
+
+#stepwise
+A_s <- W_s %*% L_s
+
+#stepwise adjusted
+A_s_adjusted <- W_s_col_adjusted %*% L_s_adjusted
+
+```
+
+$$
+Local Clinic PPR = L_{j}=\frac{S_j}{\sum_i P_iW_{ij}^{i}}
+$$
+$$
+Local Population Center PPR = A_{i}=\sum_j L_jW_{ij}^{i}
+$$
+
+
+# Empirical Example
+
+In this and the following sections we present an empirical example to illustrate the application of the methods. Based on the discussion above, the adjusted 2SFCA employed in this research can be summarized as:
+
+$$
+L_{j}=\sum_i\frac{S_j}{P_iW_{ij}^{i}}
+$$
+with the incorporation of the row-standardized impedance weights $W_{ij}^i$ in the first step, and:
+
+$$
+A_i = \sum_j{L_jW_{ij}^{j}}
+$$
+with the colum-standardized impedance weights $W_{ij}^j$ incorporated into the second step. The same approach is used to re-weight the impedance function for the stepwise approach (i.e., E2SFCA). The case study is based on accessibility to family physicians in the Hamilton CMA, in Ontario, Canada using data collected about the distribution of the population and primary health care clinics (i.e., family physicians) in the region. Time use data from Canada's General Social Survey was also used to inform the selection of thresholds for the impedance functions. The data collection and preprocessing protocols are described next.
+
+## Family Physicians and Clinic Locations
+
+In regards to the supply of clinics, the locations of family physicians were obtained using the College of Physicians and Surgeons of Ontario (CPSO) database for the Province of Ontario. We chose this organization beacuse all physicians practicing in Ontario are required to register with the CPSO, as set out in the Ontario Regulation 865/93: Registration [@Ontario1991].
+
+Our search of CPSO's database was conducted attending to the following criteria. 
+
+1) Only physicians who are registered as family physicians were selected (this excluded specialists such as pediatric physicians).
+
+2) The spatial extent of the search was determined using forward sortation areas (FSAs), which are the first three initial characters of a postal code. Using a GIS, the regions of interest were selected by choosing FSAs within a 10 kilometer buffer distance from the Hamilton CMA boundary. This involved 72 different FSA regions. Each FSA region code was then searched in the CPSO database in addition to the family physician specification. 
+
+The parameters of the search were deliberately conservative, and the search identified a total of 2,224 family physicians practicing in the region, of which, 864 are located in the Hamilton CMA. The resulting dataset was manually verified  by the third author to ensure that the information was consistent and suitable for geocoding. Prior to geocoding, locational information was organized in three columns, containing street address, city name, and province name. After family physicians were geocoded, locations were further examined. When family physicians overlapped or were within a 50 meter distance of each other we merged the records to identify 535 unique locations that we term "clinics". Many of these clinics are not in the Hamilton CMA proper, but provide a buffer to minimize edge effects in the analysis. The distribution of clinics and family physicians is shown in Fig \ref{fig:fig3-clinic-map} for the Hamilton CMA.
+
+```{r fig3-clinic-map, echo=FALSE, fig.cap="\\label{fig:fig3-clinic-map}Location of clinics and family physicians in the Hamilton CMA", echo=FALSE, warning=FALSE, message=FALSE}
+ggmap(basemap) + 
+  geom_point(data = clinics, aes(x = long, y = lat, 
+                                 size = family_doctors$family_doctors),
+             alpha = 0.5) +
+  scale_size(name = "Number of Family Physicians") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) +
+  theme(legend.position = "bottom")
+```
+
+## Population
+
+Population information was obtained from the 2011 Canadian Census. To maximize the spatial resolution, population data were acquired at the Dissemination Area (DA) level of geography for all DAs within the selected FSAs. As a result, this includes DAs not in the Hamilton CMA proper, but that provide a buffer against edge effects. From this, the region contains a population of 2,959,090, of which 720,725 are in the Hamilton CMA. The distribution of population in the Hamilton CMA is shown in Fig \ref{fig:fig4-population-map}.
+
+```{r fig4-population-map, echo=FALSE, fig.cap="\\label{fig:fig4-population-map}Population distribution in the Hamilton CMA", warning=FALSE, message=FALSE}
+#Zoning system is Dissemination Areas
+ggmap(basemap) + 
+  geom_polygon(data = hamilton_da.t, 
+               aes(x = long, y = lat, group = group, fill = cut(POP2011,quantile(POP2011))), 
+               color = NA) +
+  scale_fill_brewer(palette = "Oranges", direction = 1, name = "Population") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) +
+  theme(legend.position = "bottom")
+```
+
+## Travel Time Matrix
+
+Calculation of impedance weights requires that we evaluate an impedance function at values of $d_ij$, that is, the cost of travel between DA $i$ and clinic $j$. In this research we used travel time as our cost variable. To this end, we computed a matrix of travel times measured over the road network. To calculate the travel time between population centers and clinics we used the DA centroids and the geocoded locations of clinics. Shortest paths on the network and subsequently travel times were computed using a Geographic Information System.
+
+## Impedance Functions
+
+```{r binary-impedance-matrices, echo=FALSE}
+#Impedance population: binary function using the quantile break point (i.e., maximum time that  75% of population spend traveling)
+impedance_binary = 1 * (travel_time <= quantiles_tt[4]) #Use with Chris's Arc travel time
+row_sums_binary <- rowSums(impedance_binary) #sum weights over rows
+row_sums_binary[row_sums_binary == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+dis_impedance_binary_row_adjusted <- sweep(impedance_binary, 1, row_sums_binary, FUN = "/") #row standardize
+
+#multiply distance impedance matrix by physicians to get selection matrix and row standardize
+selection_binary <- sweep(dis_impedance_binary_row_adjusted, 2, family_doctors$family_doctors, "*")
+row_sums_selection_binary <- rowSums(selection_binary)
+row_sums_selection_binary[row_sums_selection_binary == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+impedance_binary_row_adjusted <- sweep(selection_binary, 1, row_sums_selection_binary, FUN = "/") #row standardize
+
+#Column standardize the impedance matrix to ensure that the sum of the level of service preserves the total supply
+col_sums_binary <- colSums(selection_binary) #sum weights over rows
+col_sums_binary[col_sums_binary == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+impedance_binary_col_adjusted <- sweep(selection_binary, 2, col_sums_binary, FUN = "/") #column standardize
+```
+
+```{r stepwise-impedance-matrices}
+#Gaussian impedance weights, with the quantiles, and using as standard deviation the travel time value corresponding to the quantile chosen for the break in the binary impedance function 
+w <- dnorm(quantiles_tt, mean = 0, sd = 15)/dnorm(quantiles_tt[1], 0, 15)
+
+#Impedance population: stepwise function using quantiles as break points.
+impedance_stepwise = w[2] * (travel_time <= quantiles_tt[2]) + 
+  w[3] * (travel_time > quantiles_tt[2] & travel_time <= quantiles_tt[3]) +
+  w[4] * (travel_time > quantiles_tt[3] & travel_time <= quantiles_tt[4]) +
+  w[5] * (travel_time > quantiles_tt[4] & travel_time <= quantiles_tt[5]) +
+  w[6] * (travel_time > quantiles_tt[5] & travel_time <= quantiles_tt[6]) +
+  w[7] * (travel_time > quantiles_tt[6] & travel_time <= quantiles_tt[7]) +
+  0 * (travel_time > quantiles_tt[7])
+
+#Row standardize the impedance matrix to ensure that the sum of the population over the clinics preserves the population totals
+row_sums_stepwise <- rowSums(impedance_stepwise) #sum weights over rows
+row_sums_stepwise[row_sums_stepwise == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+dis_impedance_stepwise_row_adjusted <- sweep(impedance_stepwise, 1, row_sums_stepwise, FUN = "/") #row standardize
+
+#multiply distance impedance matrix by physicians to get selection matrix and row standardize
+selection_stepwise <- sweep(dis_impedance_stepwise_row_adjusted, 2, family_doctors$family_doctors, "*")
+row_sums_selection_stepwise <- rowSums(selection_stepwise)
+row_sums_selection_stepwise[row_sums_selection_stepwise == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+impedance_stepwise_row_adjusted <- sweep(selection_stepwise, 1, row_sums_selection_stepwise, FUN = "/") #row standardize
+
+#Column standardize the impedance matrix to ensure that the sum of the level of service preserves the total supply
+col_sums_stepwise <- colSums(selection_stepwise) #sum weights over rows
+col_sums_stepwise[col_sums_stepwise == 0] <- 1 #change to one for those rows where the total is zero to avoid divisions by zero
+impedance_stepwise_col_adjusted <- sweep(selection_stepwise, 2, col_sums_stepwise, FUN = "/") #column standardize
+```
+
+For the experiments we used two different impedance functions, corresponding to the 2SFCA and E2SFCA algorithms. We do not implement the 3SFCA or the M2SFCA methods because, as noted above, they are equivalent to using steeper impedances. For the 2SFCA apprach, impedance is given by a binary function, whereas for E2SFCA it is given by a stepwise function. The impedance functions require that we define cost (i.e., travel time) thresholds to implement them. To select the thresholds, we retrieved time use data from Canada's General Social Survey Cycle 24 (see http://odesi2.scholarsportal.info/webview/). 
+
+From the time use files, we filtered all activity episodes corresponding to respondents living in CMAs/CAs (metropolitan regions) in Ontario. Next, we filtered all episodes taking place in a car (as driver) while traveling for personal care activities for household adults (which includes traveling to see a doctor) and traveling for shopping or obtaining services (which includes traveling to go to health clinic or doctor's office). It is worthwhile noting that travel by car accounts for over 95% of trips for the selected purposes in Ontario CMAs/CAs.
+
+Once episodes were filtered by mode of travel and purpose of the trip, their durations (in minutes) were examined by means of quantile analysis, using episode weights to ensure representativeness of the analysis. From the results, we learned that 50% of all trips by car for the aforementioned purposes are less than 15 minutes long, and we selected this value as the threshold $d_0$ for the binary function. In other words, this part of the analysis assumes that any person who has to travel longer than 15 minutes to reach a clinic is outside of its catchment area. We deem this value appropriate for the scale, density, and level of congestion of Hamilton CMA. 
+
+Quantile analysis of trip durations was used to calibrate a Gaussian function with standard deviation set at 15 minutes, to match the value selected for the binary impedance above. This produced the following stepwise function, with any trips longer than 45 minutes assumed to be outside of catchment:
+$$
+W(d_{ij}) = \left\{
+        \begin{array}{ll}
+            0.946 & \quad d_{ij} \leq 5 \\
+            0.801 & \quad 5 < d_{ij} \leq 10 \\
+            0.607 & \quad 10 < d_{ij} \leq 15 \\
+            0.411 & \quad 15 < d_{ij} \leq 20 \\
+            0.135 & \quad 20 < d_{ij} \leq 30 \\
+            0.011 & \quad 30 < d_{ij} \leq 45 \\
+            0.00 & \quad 45 < d_{ij}
+        \end{array}
+    \right.
+$$
+
+Notice how the stepwise function has weights greater than 0.5 for $d_{ij} \leq 15 min$ and less than 0.5 for $d_{ij} > 15 min$. This means that it will count fewer people than the binary function when $d_{ij} \leq 15 min$, but more when $d_{ij} > 15 min$.
+
+# Results
+
+We begin our discussion of the results by noting that with a total population of the region of `r prettyNum(sum(da_population$POP2011), big.mark = ",")` and `r prettyNum(sum(family_doctors$family_doctors), big.mark = ",")` family physicians, the Regional Average PPR ratio is `r formatC(sum(family_doctors$family_doctors)/sum(da_population$POP2011/1000), digits = 3)` family physicians per 1,000 people. This value is somewhat lower than the value of 1.16 for Ontario reported by CIHI [-@CIHI2018] and lower than the 1.20 estimated based on the population and physician data for the Hamilton CMA, which we attribute to our conservative search criteria of family physicians in the rest of the region.
+
+The level of demand is calculated for the 2SFCA and E2SFCA using both the unadjusted and adjusted impedance matrices. Table \ref{tab:table-descriptive-statistics} reports the total level of demand calculated by each impedance matrix. As seen there, when no adjustment is made, demand explodes to several times the actual population in the region. However, when the impedance weights are standardized, demand is now only slightly less than the total population for the region, since a small proportion of the population turns out to be outside of catchment areas. The total demand under binary impedance is lower due to the more strict catchment area condition (i.e., less than 15 minutes), compared to the stepwise function (i.e., less than 45 minutes), which in turn is somewhat lower than the total demand in the Regional Average PPR, which does not impose catchment area constraints within the region.
+
+It is clear that the rectified demand leads to results that are considerably more realistic. This is also seen when calculating the provider-to-population ratios for each case (i.e., Family Physicians per 1,000 people). As seen in Fig \ref{fig:fig5-map-demand-inflation-binary} and Fig \ref{fig:fig6-map-demand-inflation-stepwise}, demand inflation is far from uniform. Inflation factors are also substantially higher when the binary impedance function is used. Since this function lacks a gradual distance-decay mechanism, it is more generous in terms of counting population serviced.
+
+```{r local-clinic-level-of-demand-calculation, echo=FALSE}
+#Calculate clinic level of demand using binary impedance 
+demand_binary <- (t(impedance_binary) %*% (da_population$POP2011/1000))
+
+#Calculate row-adjusted clinic level of demand using binary impedance 
+demand_binary_adjusted <- (t(impedance_binary_row_adjusted) %*% (da_population$POP2011/1000))
+
+#Calculate clinic level of demand using stepwise impedance 
+demand_stepwise <- (t(impedance_stepwise) %*% (da_population$POP2011/1000))
+
+#Calculate row-adjusted clinic level of demand using stepwise impedance 
+demand_stepwise_adjusted <- (t(impedance_stepwise_row_adjusted) %*% (da_population$POP2011/1000))
+```
+
+```{r table-descriptive-statistics, echo=FALSE}
+descriptive_stats <- data.frame(Case = c("Binary", 
+                                         "Binary Adjusted", 
+                                         "Stepwise", 
+                                         "Stepwise Adjusted"),
+                            Demand = c(prettyNum(sum(demand_binary)*1000, big.mark = ","),
+                                       prettyNum(sum(demand_binary_adjusted)*1000, big.mark = ","),
+                                       prettyNum(sum(demand_stepwise)*1000, big.mark = ","),
+                                       prettyNum(sum(demand_stepwise_adjusted)*1000, big.mark = ",")),
+                            Physicians = c(sum(family_doctors$family_doctors)/sum(demand_binary),
+                                           sum(family_doctors$family_doctors)/sum(demand_binary_adjusted),
+                                           sum(family_doctors$family_doctors)/sum(demand_stepwise),
+                                           sum(family_doctors$family_doctors)/sum(demand_stepwise_adjusted))
+                            )
+kable(descriptive_stats, 
+      format = "latex",
+      booktabs = TRUE,
+      digits = 3,
+      col.names = c("Case", "Total Demand", "Family Physicians per 1,000"),
+      caption = "\\label{tab:table-descriptive-statistics}Descriptive Statistics")
+```
+
+```{r fig5-map-demand-inflation-binary, echo=FALSE, fig.cap="\\label{fig:fig5-map-demand-inflation-binary}Demand inflation, binary impedance function", warning=FALSE, message=FALSE}
+#Calculate inflation factor
+clinics$inflation_binary <- demand_binary / demand_binary_adjusted
+
+#Map
+ggmap(basemap) + 
+  geom_point(data = clinics, aes(x = long, y = lat, 
+                                 size = inflation_binary, 
+                                 color = inflation_binary),
+             alpha = 0.7) +
+  geom_point(data = clinics, aes(x = long, y = lat, 
+                                 size = inflation_binary),
+                                 shape = 1,
+             alpha = 0.2) +
+  scale_size_continuous(guide = FALSE) +
+  scale_color_distiller(palette = "Oranges", direction = 1, name = "Demand Inflation Factor (Binary)") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+```{r fig6-map-demand-inflation-stepwise, echo=FALSE, fig.cap="\\label{fig:fig6-map-demand-inflation-stepwise}Demand inflation, stepwise impedance function", warning=FALSE, message=FALSE}
+#Calculate inflation factor
+clinics$inflation_binary <- demand_stepwise / demand_stepwise_adjusted
+
+#Map
+ggmap(basemap) + 
+  geom_point(data = clinics, aes(x = long, y = lat, 
+                                 size = inflation_binary, 
+                                 color = inflation_binary),
+             alpha = 0.7) +
+  geom_point(data = clinics, aes(x = long, y = lat, 
+                                 size = inflation_binary),
+                                 shape = 1,
+             alpha = 0.2) +
+  scale_size_continuous(guide = FALSE) +
+  scale_color_distiller(palette = "Oranges", direction = 1, name = "Demand Inflation Factor (Stepwise)") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+The next step in the algorithm is to calculate the levels of service, that is, the number of physicians (supply) by level of demand. Since in the case of the adjusted impedance weights the demand is rectified to the population, the level of service is likely going to be higher than when the unrectified demand is used as in the conventional 2FSCA and 3SFCA implementations. Higher levels of service, however, do not necessarily translate in the second step of the algorithm into higher accessibility, since levels of service are also rectified so that total supply is not exceeded.
+
+```{r level-of-service-calculation, echo=FALSE}
+#Calculate level of service for each clinic. The level of service for the clinic is the number of physicians at the clinic divided by the population served. 
+
+#Use binary impedance function
+los_binary <- family_doctors$family_doctors / demand_binary
+#Remove clinic isolates by setting their level of service to zero (the value is Inf because zero DAs are within the catchment area of the clinic)
+los_binary[los_binary == Inf,] <- 0
+
+#Adjust binary impedance function to deflate demand
+los_binary_adjusted <- family_doctors$family_doctors / demand_binary_adjusted
+#Remove clinic isolates by setting their level of service to zero (the value is Inf because zero DAs are within the catchment area of the clinic)
+los_binary_adjusted[los_binary_adjusted == Inf,] <- 0
+
+#Use stepwise impedance function
+los_stepwise <- family_doctors$family_doctors / demand_stepwise
+#Remove clinic isolates by setting their level of service to zero (the value is Inf because zero DAs are within the catchment area of the clinic)
+los_stepwise[los_stepwise == Inf,] <- 0
+
+#Adjust stepwise impedance function to deflate demand
+los_stepwise_adjusted <- family_doctors$family_doctors / demand_stepwise_adjusted
+#Remove clinic isolates by setting their level of service to zero (the value is Inf because zero DAs are within the catchment area of the clinic)
+los_stepwise_adjusted[los_stepwise_adjusted == Inf,] <- 0
+
+los_hamilton <- data.frame(id = family_doctors$ClinicID,
+                           family_doctors$family_doctors,
+                           family_doctors$Hamilton,
+                           los_binary,
+                           los_binary_adjusted,
+                           los_stepwise,
+                           los_stepwise_adjusted)
+colnames(los_hamilton) <- c("ClinicID", "FamilyDoctors",
+                             "Hamilton_CMA", "LOS_Binary", 
+                             "LOS_Binary_Adjusted",
+                             "LOS_Stepwise", "LOS_Stepwise_Adjusted")
+los_hamilton <- subset(los_hamilton, Hamilton_CMA==1)
+```
+
+
+```{r accessibility-calculation, echo=FALSE, include=FALSE}
+#Calculate accessibility for each case. This is the sum of the level of service for each DA, weighted by the corresponding impedance function.
+
+#Binary
+accessibility_binary <- impedance_binary %*% los_binary
+
+#Binary adjusted
+#accessibility_binary_adjusted <- impedance_binary_col_adjusted %*% los_binary_adjusted
+
+#CDH Binary Adjusted
+totalsupply_binary_adjusted <- impedance_binary_col_adjusted %*% family_doctors$family_doctors
+totaldemand_binary_adjusted <- impedance_binary_col_adjusted %*% demand_binary_adjusted
+accessibility_binary_adjusted <- totalsupply_binary_adjusted / totaldemand_binary_adjusted
+
+#stepwise
+accessibility_stepwise <- impedance_stepwise %*% los_stepwise
+
+#stepwise adjusted
+#accessibility_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% los_stepwise_adjusted
+
+#CDH Stepwise Adjusted
+totalsupply_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% family_doctors$family_doctors
+totaldemand_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% demand_stepwise_adjusted
+accessibility_stepwise_adjusted <- totalsupply_stepwise_adjusted / totaldemand_stepwise_adjusted
+
+#
+accessibility <- data.frame(id = da_population$DAUID,
+                            da_population$CMA,
+                            da_population$POP2011,
+                            accessibility_binary,
+                            accessibility_binary_adjusted,
+                            accessibility_stepwise,
+                            accessibility_stepwise_adjusted)
+colnames(accessibility) <- c("id", "CMA", "Population", 
+                             "Binary", "Binary_Adjusted",
+                             "Stepwise", "Stepwise_Adjusted")
+
+# Subset so that it is only Hamilton CMAs entering the disparity calculations below
+#accessibility <- subset(accessibility,CMA==537)
+```
+
+```{r accessibility_comparison, echo=FALSE, include=FALSE}
+#accessibility_comparison <- transmute(accessibility, id, 
+#                                      Binary = ((Binary/Binary_Adjusted)),
+#                                      Stepwise = ((Stepwise/Stepwise_Adjusted)))
+
+accessibility_comparison <- transmute(accessibility, id, 
+                                      Binary = ((Binary/Binary_Adjusted)-1),
+                                      Stepwise = ((Stepwise/Stepwise_Adjusted)-1))
+```
+
+```{r accessibility_disparities, echo=FALSE, include=FALSE}
+#Disparities in this case is defined as the difference between the calculated accessibility (which is interpreted as the local provider-to-population ratio) and the local provider-to-population ratio if the level of service was distributed uniformly
+accessibility_disparities <- transmute(accessibility, id, 
+                                      Binary = Binary_Adjusted - sum(los_hamilton$LOS_Binary_Adjusted)/nrow(los_hamilton),
+                                      Stepwise = Stepwise_Adjusted- sum(los_hamilton$LOS_Stepwise_Adjusted)/nrow(los_hamilton))
+
+#accessibility_disparities <- transmute(accessibility, id, 
+#                                      Binary = Binary_Adjusted - sum(los_hamilton$FamilyDoctors)/(sum(accessibility$Population)/1000),
+#                                      Stepwise = Stepwise_Adjusted- sum(los_hamilton$FamilyDoctors)/(sum(accessibility$Population)/1000))
+```
+
+```{r join-geography, echo=FALSE, include=FALSE}
+#Join accessibility measures to geography.
+hamilton_da.t_accessibility <- left_join(hamilton_da.t, accessibility, by = "id")
+hamilton_da.t_comparison <- left_join(hamilton_da.t, accessibility_comparison, by = "id")
+hamilton_da.t_disparities <- left_join(hamilton_da.t, accessibility_disparities, by = "id")
+```
+
+```{r gather-columns, echo=FALSE}
+#Gather columns to facilitate facet wrapping for maps
+hamilton_da.t_accessibility <- gather(hamilton_da.t_accessibility, Type, Accessibility, -c(long, lat, order, hole, piece, id, group, Population))
+
+hamilton_da.t_comparison <- gather(hamilton_da.t_comparison, Type, Deflation_Factor, -c(long, lat, order, hole, piece, id, group))
+```
+
+Accessibility maps for the implementation of 2SFCA are shown in Fig \ref{fig:fig7-map-accessibility-binary} and Fig \ref{fig:fig8-map-accessibility-binary-adjusted}. The general patterns observed in the figures are as expected, with higher accessibility in denser, better connected parts of the region. Relatively high accessibility in the north and west of the CMA is due to proximity to other major population centers such as Oakville, Kitchener, and Waterloo.
+
+```{r fig7-map-accessibility-binary, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig7-map-accessibility-binary}Accessibility, binary impedance function", warning=FALSE}
+
+#Map
+ggmap(basemap) + 
+  geom_polygon(data = filter(hamilton_da.t_accessibility, Type == "Binary"),
+                              aes(x = long, y = lat, group = group, fill = Accessibility),
+               color = NA) +
+  scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Binary)") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+```{r fig8-map-accessibility-binary-adjusted, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig8-map-accessibility-binary-adjusted}Accessibility, adjusted binary impedance function", warning=FALSE}
+
+#Map
+ggmap(basemap) + 
+  geom_polygon(data = filter(hamilton_da.t_accessibility, Type == "Binary_Adjusted"),
+                              aes(x = long, y = lat, group = group, fill = Accessibility),
+               color = NA) +
+  scale_fill_distiller(palette = "Oranges", direction = 1, name = "Accessibility (Binary Adjusted)") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+The results demonstrate how inflation of the supply (i.e., the level of service) leads to much higher values of accessibility in the case of the binary 2SFCA method. The procedure to rectify the population and level of service, on the other hand, leads to accessibility output that is in line with the regional system-wide provider-to-population ratio. This, in turn, makes interpretation of the output more robust and intuitive.
+
+How much has access been inflated in the original 2SFCA? Fig \ref{fig:fig9-map-accessibility-binary-comparison} plots the ratio of the binary and adjusted binary accessibility measures. Here it can be seen that the unadjusted accessibility values are at least three times greater than their adjusted counterparts within the study area. This inflation, moreover, is not uniform across space, with inflation of the binary accessibility values up to 8 times greater than those from the adjusted model at the edges of the city where the 15-minute catchment areas begin to overlap with neighboring municipalites.
+
+```{r fig9-map-accessibility-binary-comparison, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig9-map-accessibility-binary-comparison}Accessibility Inflation factor, binary impedance function", warning=FALSE}
+
+#Map
+ggmap(basemap) + 
+  geom_polygon(data = filter(hamilton_da.t_comparison, Type == "Binary"),
+                              aes(x = long, y = lat, group = group, fill = Deflation_Factor),
+               color = NA) +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, name = "Binary Accessibility Inflation Factor") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+Why is this important? As noted by various authors [e.g., @Delamater2013; @Luo2003], in traditional FCA methods, the sum of the population-weighted average of accessibility across all population centers is equal to the regional average provider-to-population ratio [see the examples in @Delamater2013]. In the present case, the weighted sum of accessibility in the unadjusted binary and stepwise measures is `r round(sum(family_doctors$family_doctors)/sum(da_population$POP2011/1000), digits = 3)`. However, while this value is indeed identical to the regional average provider-to-population ratio, it is problematic because the share of the population correlates poorly with the pattern of inflation observed (see Fig \ref{fig:fig10-map-pop-share-inflation-comparison-binary}). The key issue here is that accessibility is deflated by the share of the population in a DA $i$; however, the degree of inflation of demand and supply depend not only of the population DA $i$, but on the population of every DA $j$ with which DA $i$ interacts via coincident catchment areas. As a consequence, deflating accessibility using population shares in previous FCA methods does not accurately offset demand and supply inflation.
+
+```{r fig10-map-pop-share-inflation-comparison-binary, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig10-map-pop-share-inflation-comparison-binary}Population share and inflation factors compared", warning=FALSE}
+da_pop_hamilton <- subset(da_population,CMA==537)
+da_pop_hamilton <- merge(x=da_pop_hamilton,y=accessibility_comparison,by.x="DA",by.y="id")
+ggplot(da_pop_hamilton,aes(x = da_pop_hamilton$POP2011/sum(da_pop_hamilton$POP2011), y=da_pop_hamilton$Binary)) +
+  geom_point() +
+  xlab("DA Population Share") +
+  ylab("DA Accessibility Inflation Factor") +
+  theme_minimal()
+```
+
+```{r}
+#ggplot(data = data.frame(pop_weight = da_population$POP2011/sum(da_population$POP2011), 
+#                         inflation = accessibility_comparison$Binary), 
+#       aes(x = pop_weight, y = inflation)) + 
+#  geom_point() +
+#  xlab("DA Population Share") +
+#  ylab ("DA Accessibility Inflation Factor") +
+#  theme_minimal()
+```
+
+Fig \ref{fig:fig11-map-accessibility-stepwise} and Fig \ref{fig:fig12-map-accessibility-stepwise-adjusted} present the results for the stepwise E2SFCA with and without the rectification. The results are qualitatively similar to the 2FSCA, with the expected differences. The inflation factor is even more substantial, given the larger catchment areas used.
+
+```{r fig11-map-accessibility-stepwise, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig11-map-accessibility-stepwise}Accessibility, stepwise impedance function",  warning=FALSE}
+
+#Map
+ggmap(basemap) + 
+  geom_polygon(data = filter(hamilton_da.t_accessibility, Type == "Stepwise"),
+                              aes(x = long, y = lat, group = group, fill = Accessibility),
+               color = NA) +
+  scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Stepwise)") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+```{r fig12-map-accessibility-stepwise-adjusted, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig12-map-accessibility-stepwise-adjusted}Accessibility, adjusted stepwise impedance function", warning=FALSE}
+
+#Map
+ggmap(basemap) + 
+  geom_polygon(data = filter(hamilton_da.t_accessibility, Type == "Stepwise_Adjusted"),
+                              aes(x = long, y = lat, group = group, fill = Accessibility),
+               color = NA) +
+  scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Stepwise Adjusted)") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+```{r fig13-map-accessibility-stepwise-comparison, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig13-map-accessibility-stepwise-comparison}Accessibility inflation factor, stepwise impedance function", warning=FALSE}
+
+#Map
+ggmap(basemap) + 
+  geom_polygon(data = filter(hamilton_da.t_comparison, Type == "Stepwise"),
+                              aes(x = long, y = lat, group = group, fill = Deflation_Factor),
+               color = NA) +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, name = "Stepwise Accessibility Inflation Factor") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+## Disparity Analysis
+
+Since neither supply or demand are inflated as in existing FCA methods, it is possible to conduct accessibility disparity analysis in a very intuitive way. 
+
+For instance, an analyst interested in equity analysis could allocate the total level of service uniformly to every DA. In other words, the total level of service (which equals the sum of accessibility over the system) can be divided by the number of population centers in the system to return the Average Local Population Center PPR. The resulting mean value, call it $L_i^e$ then would be assigned to the population centers as their "equitable" share of the total level of service in the system. Next, the equitative distribution of the level of service in each population center is substracted from the estimated mean accessibility to arrive at a disparity index. When the difference between these two quantities is positive, this would indicate that a DA's accessibility exceeds its equitable share of level of service. On the other hand, when the difference is negative, the DA's accessibility is below its equitable share of the level of service.
+
+This approach is reminiscent of the Spatial Access Ratio (SPAR) proposed by Wan et al. [-@Wan2012SPAR], which is calculated as the ratio between a population center's accessibility and the mean accessibility across all population centers. While Wan et al. [-@Wan2012] calculate SPAR based on the results of their 3SFCA method, its use here with the adjusted demand and supply parameters would enable more consistent and interpretable results. Nevertheless, SPAR rescales the accessibility measures to reflect the percentage difference in each population center's accessibility relative to the mean and was designed to overcome the sensitivity of existing FCA metrics to the impedance function. In contrast, the preservation of the system-wide population and level of service in the adjusted approach enables the disparity index to highlight the absolute difference in accessible provider-to-population ratios across the population centers.
+
+From this, the disparity maps for the adjusted binary and stepwise impedance functions are shown in Fig \ref{fig:fig14-map-disparities-binary} and Fig \ref{fig:fig15-map-disparities-stepwise}. These figures reveal the spatial distribution in disparity, with levels of access that are lower than the mean in more rural parts of the city (where travel times are longer and the distribution of physicians is more spatially disperse) compared to levels of access that are greater than the mean in the higher-density and more connected urban center.
+
+```{r fig14-map-disparities-binary, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig14-map-disparities-binary}Accessibility disparities, adjusted binary impedance function", warning=FALSE}
+
+#Map
+ggmap(basemap) + 
+  geom_polygon(data = hamilton_da.t_disparities,
+                              aes(x = long, y = lat, group = group, fill = Binary),
+               color = NA) +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, name = "Disparity Index (Binary)") +
+  #scale_fill_distiller(palette = "Oranges", direction = 1, name = "Disparities") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+```{r fig15-map-disparities-stepwise, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig15-map-disparities-stepwise}Accessibility disparities, adjusted stepwise impedance function", warning=FALSE}
+
+#Map
+ggmap(basemap) + 
+  geom_polygon(data = hamilton_da.t_disparities,
+                              aes(x = long, y = lat, group = group, fill = Stepwise),
+               color = NA) +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, name = "Disparity Index (Stepwise)") +
+  #scale_fill_distiller(palette = "Oranges", direction = 1, name = "Disparities") +
+  scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
+  theme(legend.position="bottom")
+```
+
+# Conclusions
+
+Access to healthcare remains a critical issue in health geography. One of the most popular approaches to estimating accessibility is the 2SFCA method and its associated family of FCA models due to their simplification of more complex gravity models and their interpretation in terms of provider-to-population ratios. These intuitive properties make FCA approaches particularly appealing for health policy. However, the overestimation of demand in FCA approaches poses a serious challenge to the interpretation of accessibility and the identification of spatial disparities in access, with potentially deleterious consequences for health policy.
+
+Recognizing this, alternative approaches have been proposed that seek to offset or minimize the demand overestimation problem. Nevertheless, the present paper has shown that the inflation of demand is present in all existing FCA methods. Moreover, we also show that in some cases, demand is deflated, and detail the potential for inflation/deflation on the supply side. To overcome these issues, we draw from spatial econometrics to incorporate row-standardized impedance weights in the estimation of an adjusted population demand parameter, and column-standardized impedance weights to adjust the supply of physicians. These adjustments ensure that the system-wide population and levels of service are preserved in the estimation of accessibility, thereby rectifying the inflation/deflation issue.
+
+The case study application in Hamilton revealed the extent of inflation in accessibility inherent in the unadjusted approaches compared to the adjusted binary and stepwise FCA methods. Furthermore, the adjustments result in local provider-to-population ratios which can be easily understood relative to the system-wide equitable level of service through the calculation of a disparity index. The applicability of these values is particularly enhanced by the use of a travel survey to inform the estimated impedance functions. Taken together, these innovations provide estimates of spatial accessibility and disparity that are robust to the regional distribution of supply and demand, as well as observed travel behaviour. By extension, these properties mean that the adjusted approach employed here can offer more rigorous recommendations for health policy.
+
+Our work is not without its limitations. For example, although we use a travel survey to define their parameters, the use of binary and stepwise impedance functions assumes a constant level of access within the travel-time isochrones of a catchment area. While we employed these functions for illustration purposes, the adjustment procedure outlined here is also suitable for re-weighting continous impedance functions. Second, our adjusted measures of supply and demand account for potential interactions between all physicians and population in the system. This is in contrast to Delamater's [-@Delamater2013] M2SFCA, where some supply may not be allocated due to the spatial configuration of opportunities relative to population centers. Beyond overcoming the inflation issue inherent in Delamater's modification, the assumption of full allocation in the present case seems reasonable in the context of a single-payer healthcare system with undifferentiated service. In essence, this approach measures the potential for spatial interaction; whether or not members of the population opt to actually use a given service is assumed to be an outcome of the aspatial dimension of accessibility.
+
+Nevertheless, the proposed adjustments overcome the inflation/deflation issue inherent in previous FCA approaches. By incorporating these methods into the estimation of accessibility to healthcare services, future research can help to ensure that the FCA approach lives up to its promise as an intuitive and policy-relevant method for investigating access and disparity.
+
+# References {#references .unnumbered}

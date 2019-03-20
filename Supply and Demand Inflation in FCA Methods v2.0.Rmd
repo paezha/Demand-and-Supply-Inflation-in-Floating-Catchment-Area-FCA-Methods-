@@ -68,8 +68,8 @@ family_doctors <- transmute(family_doctors, family_doctors = Sum_count, Hamilton
 #Note that three locations for family doctors are not read because they are beyond the catchment areas of the DAs in the study region or did not geocode to the network
 #clinics <- clinics[-c(192, 364, 537, 538),] #Use with Antonio/Sal's travel time and population files
 #family_doctors <- family_doctors[-c(192, 364, 537, 538),] #Use with Antonio/Sal's travel time and population files
-clinics <- clinics[-c(535, 537, 538),] #Use with Chris' Arc travel time and population files
-family_doctors <- family_doctors[-c(535, 537, 538),] #Use with Chris' Arc travel time and population files
+#clinics <- clinics[-c(535, 537, 538),] #Use with Chris' Arc travel time and population files
+#family_doctors <- family_doctors[-c(535, 537, 538),] #Use with Chris' Arc travel time and population files
 
 #clinics <- clinics[-c(535, 537, 538),] #Use with Chris' Maptitude travel time and population files
 #family_doctors <- family_doctors[-c(535, 537, 538),] #Use with Chris' Maptitude travel time and population files
@@ -1020,13 +1020,23 @@ los_stepwise_adjusted[los_stepwise_adjusted == Inf,] <- 0
 accessibility_binary <- impedance_binary %*% los_binary
 
 #Binary adjusted
-accessibility_binary_adjusted <- impedance_binary_col_adjusted %*% los_binary_adjusted
+#accessibility_binary_adjusted <- impedance_binary_col_adjusted %*% los_binary_adjusted
+
+#CDH Binary Adjusted
+totalsupply_binary_adjusted <- impedance_binary_col_adjusted %*% family_doctors$family_doctors
+totaldemand_binary_adjusted <- impedance_binary_col_adjusted %*% demand_binary_adjusted
+accessibility_binary_adjusted <- totalsupply_binary_adjusted / totaldemand_binary_adjusted
 
 #stepwise
 accessibility_stepwise <- impedance_stepwise %*% los_stepwise
 
 #stepwise adjusted
-accessibility_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% los_stepwise_adjusted
+#accessibility_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% los_stepwise_adjusted
+
+#CDH Stepwise Adjusted
+totalsupply_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% family_doctors$family_doctors
+totaldemand_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% demand_stepwise_adjusted
+accessibility_stepwise_adjusted <- totalsupply_stepwise_adjusted / totaldemand_stepwise_adjusted
 
 #
 accessibility <- data.frame(id = da_population$DAUID,
@@ -1038,6 +1048,8 @@ accessibility <- data.frame(id = da_population$DAUID,
 colnames(accessibility) <- c("id", "Population", 
                              "Binary", "Binary_Adjusted", 
                              "Stepwise", "Stepwise_Adjusted")
+
+
 ```
 
 ```{r accessibility_comparison, echo=FALSE, include=FALSE}
