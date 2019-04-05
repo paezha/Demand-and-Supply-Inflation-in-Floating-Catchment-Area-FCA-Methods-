@@ -1,52 +1,51 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.8)  17 JAN 2019 13:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.5)  5 APR 2019 18:23
 entering extended mode
 **./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.tex
 (Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 75 language(s) loaded.
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls
+LaTeX2e <2018-12-01>
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls
 "
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometr
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometr
 y.sty"
-Package: geometry 2010/09/12 v5.6 Page Geometry
+Package: geometry 2018/04/16 v5.8 Page Geometry
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.
 sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf
 .sty"
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvte
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifvte
 x.sty"
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxete
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ifxetex\ifxete
 x.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count87
-\Gm@cntv=\count88
-\c@Gm@tempcnt=\count89
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
 \Gm@bindingoffset=\dimen103
 \Gm@wd@mp=\dimen104
 \Gm@odd@mp=\dimen105
@@ -57,57 +56,57 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometr
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometr
 y.cfg"))
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.
 sty"
-Package: amsmath 2017/09/02 v2.17a AMS math features
+Package: amsmath 2018/12/01 v2.17b AMS math features
 \@mathmargin=\skip43
 For additional information on amsmath, use the `?' option.
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext.
 sty"
 Package: amstext 2000/06/29 v2.01 AMS text
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.s
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.s
 ty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen111
 ))
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.s
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.s
 ty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen112
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.s
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.s
 ty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count90
-LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count91
-\leftroot@=\count92
-LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count93
-\DOTSCASE@=\count94
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
+\inf@bad=\count91
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count92
+\leftroot@=\count93
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count94
+\DOTSCASE@=\count95
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
 \big@size=\dimen113
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count95
-\c@MaxMatrixCols=\count96
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count96
+\c@MaxMatrixCols=\count97
 \dotsspace@=\muskip10
-\c@parentequation=\count97
-\dspbrk@lvl=\count98
+\c@parentequation=\count98
+\dspbrk@lvl=\count99
 \tag@help=\toks17
-\row@=\count99
-\column@=\count100
-\maxfields@=\count101
+\row@=\count100
+\column@=\count101
+\maxfields@=\count102
 \andhelp@=\toks18
 \eqnshift@=\dimen114
 \alignsep@=\dimen115
@@ -119,14 +118,14 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb
 .sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfont
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfont
 s.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
@@ -134,34 +133,34 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\changepage\chang
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/changepage\chang
 epage.sty"
 Package: changepage 2009/10/20 v1.0c check page and change page layout
-\c@cp@cntr=\count102
-\cp@tempcnt=\count103
+\c@cp@cntr=\count103
+\cp@tempcnt=\count104
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.st
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.st
 y"
-Package: inputenc 2015/03/17 v1.2c Input encoding file
+Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks21
 \inpenc@posthook=\toks22
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\utf8x.def"
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ucs\utf8x.def"
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
-)) ("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucs.sty"
+)) ("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ucs\ucs.sty"
 Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\uni-global.d
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ucs\uni-global.d
 ef"
 File: uni-global.def 2013/05/13 UCS: Unicode global data
 )
-\uc@secondtry=\count104
+\uc@secondtry=\count105
 \uc@combtoks=\toks23
 \uc@combtoksb=\toks24
 \uc@temptokena=\toks25
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\textcomp.st
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\textcomp.st
 y"
-Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
 (textcomp)               4 = 5 + \texteuro
@@ -174,7 +173,7 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             Family '?' is the default used for unknown fonts.
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ts1enc.def"
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 )
 LaTeX Info: Redefining \oldstylenums on input line 334.
@@ -241,66 +240,61 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\marvosym\marvosy
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/marvosym\marvosy
 m.sty"
 Package: marvosym 2011/07/20 v2.2 Martin Vogel's Symbols font definitions
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref
 .sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\refcoun
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\refcoun
 t.sty"
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcm
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcm
 ds.sty"
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwa
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infwa
 rerr.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 ))
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\getti
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\getti
 tlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptio
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptio
 ns.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvset
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvset
 keys.sty"
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\etexc
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexc
 mds.sty"
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\iflua
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\iflua
 tex.sty"
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-))))
-\c@section@level=\count105
+)))))
+\c@section@level=\count106
 LaTeX Info: Redefining \ref on input line 355.
 LaTeX Info: Redefining \pageref on input line 355.
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperre
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hyperre
 f.sty"
-Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsu
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\hobsu
 b-hyperref.sty"
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsu
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\hobsu
 b-generic.sty"
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
@@ -313,7 +307,7 @@ Package hobsub Info: Skipping package `ifpdf' (already loaded).
 Package hobsub Info: Skipping package `etexcmds' (already loaded).
 Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -335,63 +329,63 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package hobsub Info: Skipping package `refcount' (already loaded).
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\auxhook
 .sty"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
 \@linkdim=\dimen120
-\Hy@linkcounter=\count106
-\Hy@pagecounter=\count107
+\Hy@linkcounter=\count107
+\Hy@pagecounter=\count108
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\pd1enc.
 def"
-File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count108
+\Hy@SavedSpaceFactor=\count109
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperre
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/00miktex\hyperre
 f.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Hyper figures OFF on input line 4509.
-Package hyperref Info: Link nesting OFF on input line 4514.
-Package hyperref Info: Hyper index ON on input line 4517.
-Package hyperref Info: Plain pages OFF on input line 4524.
-Package hyperref Info: Backreferencing OFF on input line 4529.
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4762.
-\c@Hy@tempcnt=\count109
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count110
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5115.
+LaTeX Info: Redefining \url on input line 5125.
 \XeTeXLinkMargin=\dimen121
-\Fld@menulength=\count110
+\Fld@menulength=\count111
 \Field@Width=\dimen122
 \Fld@charsize=\dimen123
-Package hyperref Info: Hyper figures OFF on input line 6369.
-Package hyperref Info: Link nesting OFF on input line 6374.
-Package hyperref Info: Hyper index ON on input line 6377.
-Package hyperref Info: backreferencing OFF on input line 6384.
-Package hyperref Info: Link coloring OFF on input line 6389.
-Package hyperref Info: Link coloring with OCG OFF on input line 6394.
-Package hyperref Info: PDF/A mode OFF on input line 6399.
-LaTeX Info: Redefining \ref on input line 6439.
-LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count111
-\c@Item=\count112
-\c@Hfootnote=\count113
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count112
+\c@Item=\count113
+\c@Hfootnote=\count114
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hpdftex
 .def"
-File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\Fld@listcount=\count114
-\c@bookmark@seq@number=\count115
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count115
+\c@bookmark@seq@number=\count116
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfi
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\rerunfi
 lecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
@@ -399,78 +393,80 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip46
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lineno\lineno.st
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lineno\lineno.st
 y"
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count116
+\linenopenalty=\count117
 \output=\toks26
-\linenoprevgraf=\count117
+\linenoprevgraf=\count118
 \linenumbersep=\dimen124
 \linenumberwidth=\dimen125
-\c@linenumber=\count118
-\c@pagewiselinenumber=\count119
-\c@LN@truepage=\count120
-\c@internallinenumber=\count121
-\c@internallinenumbers=\count122
+\c@linenumber=\count119
+\c@pagewiselinenumber=\count120
+\c@LN@truepage=\count121
+\c@internallinenumber=\count122
+\c@internallinenumbers=\count123
 \quotelinenumbersep=\dimen126
 \bframerule=\dimen127
 \bframesep=\dimen128
-\bframebox=\box28
+\bframebox=\box29
 LaTeX Info: Redefining \\ on input line 3056.
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\microtype\microt
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\microt
 ype.sty"
-Package: microtype 2018/01/14 v2.7a Micro-typographical refinements (RS)
+Package: microtype 2019/02/28 v2.7b Micro-typographical refinements (RS)
 \MT@toks=\toks27
-\MT@count=\count123
-LaTeX Info: Redefining \textls on input line 793.
+\MT@count=\count124
+LaTeX Info: Redefining \textls on input line 790.
 \MT@outer@kern=\dimen129
-LaTeX Info: Redefining \textmicrotypecontext on input line 1339.
-\MT@listname@count=\count124
+LaTeX Info: Redefining \textmicrotypecontext on input line 1336.
+\MT@listname@count=\count125
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\microtype\microt
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\microt
 ype-pdftex.def"
-File: microtype-pdftex.def 2018/01/14 v2.7a Definitions specific to pdftex (RS)
+File: microtype-pdftex.def 2019/02/28 v2.7b Definitions specific to pdftex (RS)
 
-LaTeX Info: Redefining \lsstyle on input line 913.
-LaTeX Info: Redefining \lslig on input line 913.
+LaTeX Info: Redefining \lsstyle on input line 914.
+LaTeX Info: Redefining \lslig on input line 914.
 \MT@outer@space=\skip47
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\microtype\microt
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\microt
 ype.cfg"
-File: microtype.cfg 2018/01/14 v2.7a microtype main configuration file (RS)
+File: microtype.cfg 2019/02/28 v2.7b microtype main configuration file (RS)
 ))
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.st
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.st
 y"
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\col
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\col
 or.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdf
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdf
 tex.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\colortbl\colortb
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/colortbl\colortb
 l.sty"
-Package: colortbl 2018/05/02 v1.0c Color table columns (DPC)
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty"
-Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \col@sep=\dimen130
+\ar@mcellbox=\box30
 \extrarowheight=\dimen131
 \NC@list=\toks28
 \extratabsurround=\skip48
 \backup@length=\skip49
+\ar@cellbox=\box31
 )
 \everycr=\toks29
 \minrowclearance=\skip50
 )
-\rownum=\count125
+\rownum=\count126
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
 Package xcolor Info: Model `RGB' extended on input line 1364.
@@ -483,13 +479,13 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 \savedwidth=\skip51
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.
 sty"
-Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3
 .sty"
-Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
 \captionmargin=\dimen132
 \captionmargin@=\dimen133
@@ -499,16 +495,17 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 \caption@parindent=\dimen137
 \caption@hangindent=\dimen138
 )
-\c@ContinuedFloat=\count126
+\c@caption@flags=\count127
+\c@ContinuedFloat=\count128
 Package caption Info: hyperref package is loaded.
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lastpage\lastpag
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lastpage\lastpag
 e.sty"
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhd
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/fancyhdr\fancyhd
 r.sty"
-Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip52
 \f@nch@O@elh=\skip53
@@ -520,19 +517,19 @@ s
 \f@nch@O@olf=\skip59
 \f@nch@O@orf=\skip60
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphic
 x.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphic
 s.sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.st
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.st
 y"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\gra
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\gra
 phics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
@@ -541,15 +538,15 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 \Gin@req@height=\dimen139
 \Gin@req@width=\dimen140
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopd
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopd
 f.sty"
 Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopd
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopd
 f-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.
 sty"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
@@ -560,7 +557,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 ))
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\booktabs\booktab
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/booktabs\booktab
 s.sty"
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen141
@@ -573,61 +570,83 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \cmidrulesep=\dimen148
 \cmidrulekern=\dimen149
 \defaultaddspace=\dimen150
-\@cmidla=\count127
-\@cmidlb=\count128
+\@cmidla=\count129
+\@cmidlb=\count130
 \@aboverulesep=\dimen151
 \@belowrulesep=\dimen152
-\@thisruleclass=\count129
-\@lastruleclass=\count130
+\@thisruleclass=\count131
+\@lastruleclass=\count132
 \@thisrulewidth=\dimen153
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\forarray\forarra
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\pdflsca
+pe.sty"
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\lscape.
+sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+) ("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.st
+y"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count133
+\float@exts=\toks30
+\float@box=\box32
+\@float@everytoks=\toks31
+\@floatcapt=\box33
+)
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/endfloat\endfloa
+t.sty"
+Package: endfloat 2018/03/24 v2.6 LaTeX2e package puts figures and tables at en
+d (jdm)
+\c@postfigure=\count134
+\efloat@postfff=\write3
+\@ef@fffopen=\count135
+)
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/forarray\forarra
 y.sty"
 Package: forarray 2008/06/20 Version 1.01 -- Using array structures in LaTeX
-\fe@toks=\toks30
-\fe@level=\count131
-\fe@cnt@i=\count132
-\fe@cnt@ii=\count133
-\thislevelcount=\count134
-\thislevelnr=\count135
+\fe@toks=\toks32
+\fe@level=\count136
+\fe@cnt@i=\count137
+\fe@cnt@ii=\count138
+\thislevelcount=\count139
+\thislevelnr=\count140
 )
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xstring\xstring.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xstring\xstring.
 sty"
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xstring\xstrin
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xstring\xstrin
 g.tex"
-\@xs@message=\write3
-\integerpart=\count136
-\decimalpart=\count137
+\integerpart=\count141
+\decimalpart=\count142
 )
-Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
-) (Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.aux
-
-LaTeX Warning: Label `tab:table-descriptive-statistics' multiply defined.
-
+Package: xstring 2019/02/06 v1.83 String manipulations (CT)
 )
+No file Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.aux.
 \openout1 = `Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 119.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 119.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 122.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 122.
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -662,862 +681,31 @@ LaTeX Font Info:    ... okay on input line 119.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ucs\ucsencs.def"
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
-\AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 119.
-LaTeX Info: Redefining \ref on input line 119.
-LaTeX Info: Redefining \pageref on input line 119.
-LaTeX Info: Redefining \nameref on input line 119.
-(Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.out) (Supply_and_Demand_Inflat
-ion_in_FCA_Methods_v2.0.out)
+\AtBeginShipoutBox=\box34
+Package hyperref Info: Link coloring OFF on input line 122.
+LaTeX Info: Redefining \ref on input line 122.
+LaTeX Info: Redefining \pageref on input line 122.
+LaTeX Info: Redefining \nameref on input line 122.
 \@outlinefile=\write4
 \openout4 = `Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 119.
-Package microtype Info: Generating PDF output.
-Package microtype Info: Character protrusion enabled (level 2).
-Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
-Package microtype Info: Using default expansion set `basictext'.
-Package microtype Info: No adjustment of tracking.
-Package microtype Info: No adjustment of interword spacing.
-Package microtype Info: No adjustment of character kerning.
-
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\microtype\mt-cmr
-.cfg"
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
-(RS)
-)
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.
-mkii"
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count138
-\scratchdimen=\dimen154
-\scratchbox=\box30
-\nofMPsegments=\count139
-\nofMParguments=\count140
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count141
-\MPscratchDim=\dimen155
-\MPnumerator=\count142
-\makeMPintoPDFobject=\count143
-\everyMPtoPDFconversion=\toks32
-)
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: End \AtBeginDocument code.
-Package lastpage Info: Please have a look at the pageslts package at
-(lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 119.
-LaTeX Font Info:    Try loading font information for U+msa on input line 130.
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
-"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\microtype\mt-msa
-.cfg"
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 130.
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
-"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex\latex\microtype\mt-msb
-.cfg"
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-\fe@count@abs@i=\count144
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmss' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 198.
-Package epstopdf Info: Output file is already uptodate.
-<PLOS-submission-eps-converted-to.pdf, id=67, 216.81pt x 35.13126pt>
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 198.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[1
-
-{C:/Users/Antonio/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./PLOS-su
-bmission-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 261.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 261.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[2]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 325.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 325.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[3]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 395.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 395.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[4]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 463.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 463.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[5]
-
-pdfTeX warning: pdflatex.exe (file ./fig1-Example1.pdf): PDF inclusion: found P
-DF version <1.7>, but at most version <1.5> allowed
-<fig1-Example1.pdf, id=116, 963.6pt x 542.025pt>
-File: fig1-Example1.pdf Graphic file (type pdf)
-<use fig1-Example1.pdf>
-Package pdftex.def Info: fig1-Example1.pdf  used on input line 466.
-(pdftex.def)             Requested size: 963.59766pt x 542.02367pt.
-
-Overfull \hbox (584.18016pt too wide) in paragraph at lines 466--468
- [][] 
- []
-
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 545.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 545.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[6]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 545.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 545.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[7 <./fig1-Example1.pdf>]
-
-pdfTeX warning: pdflatex.exe (file ./fig2-Example2.pdf): PDF inclusion: found P
-DF version <1.7>, but at most version <1.5> allowed
-<fig2-Example2.pdf, id=143, 963.6pt x 542.025pt>
-File: fig2-Example2.pdf Graphic file (type pdf)
-<use fig2-Example2.pdf>
-Package pdftex.def Info: fig2-Example2.pdf  used on input line 558.
-(pdftex.def)             Requested size: 963.59766pt x 542.02367pt.
-
-Overfull \hbox (584.18016pt too wide) in paragraph at lines 558--561
- [][] 
- []
-
-
-Overfull \hbox (20.36511pt too wide) detected at line 605
-[] [] []
- []
-
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 623.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 623.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[8]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 623.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 623.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[9 <./fig2-Example2.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 680.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 680.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[10]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 762.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 762.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[11]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 851.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 851.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[12]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 968.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 968.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[13]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1052.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1052.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[14]
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig3-clinic
--map-1.pdf, id=199, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig3-c
-linic-map-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig3-cl
-inic-map-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig3-clinic-map-1.pdf  used on input line 1071.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1071--1073
- [][] 
- []
-
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1086.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1086.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[15 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig3-
-clinic-map-1.pdf>]
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig4-popula
-tion-map-1.pdf, id=219, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig4-p
-opulation-map-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig4-po
-pulation-map-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig4-population-map-1.pdf  used on input line 1089.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1089--1091
- [][] 
- []
-
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1116.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1116.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[16 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig4-
-population-map-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1185.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1185.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[17]
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig5-map-de
-mand-inflation-binary-1.pdf, id=241, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig5-m
-ap-demand-inflation-binary-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig5-ma
-p-demand-inflation-binary-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig5-map-demand-inflation-binary-1.pdf  used on input line 1214.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1214--1216
- [][] 
- []
-
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig6-map-de
-mand-inflation-stepwise-1.pdf, id=242, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig6-m
-ap-demand-inflation-stepwise-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig6-ma
-p-demand-inflation-stepwise-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig6-map-demand-inflation-stepwise-1.pdf  used on input line 1221.
-
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1221--1223
- [][] 
- []
-
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1235.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1235.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[18 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig5-
-map-demand-inflation-binary-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1235.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1235.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[19 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig6-
-map-demand-inflation-stepwise-1.pdf>]
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7-map-ac
-cessibility-binary-1.pdf, id=282, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7-m
-ap-accessibility-binary-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7-ma
-p-accessibility-binary-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig7-map-accessibility-binary-1.pdf  used on input line 1247.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1247--1249
- [][] 
- []
-
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig8-map-ac
-cessibility-binary-adjusted-1.pdf, id=283, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig8-m
-ap-accessibility-binary-adjusted-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig8-ma
-p-accessibility-binary-adjusted-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig8-map-accessibility-binary-adjusted-1.pdf  used on input line 1
-254.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1254--1256
- [][] 
- []
-
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig9-map-ac
-cessibility-binary-comparison-1.pdf, id=285, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig9-m
-ap-accessibility-binary-comparison-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig9-ma
-p-accessibility-binary-comparison-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig9-map-accessibility-binary-comparison-1.pdf  used on input line
- 1278.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1278--1280
- [][] 
- []
-
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1300.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1300.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[20 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7-
-map-accessibility-binary-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1300.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1300.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[21 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig8-
-map-accessibility-binary-adjusted-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1300.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1300.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[22 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig9-
-map-accessibility-binary-comparison-1.pdf>]
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig10-map-p
-op-share-inflation-comparison-binary-1.pdf, id=326, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig10-
-map-pop-share-inflation-comparison-binary-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig10-m
-ap-pop-share-inflation-comparison-binary-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig10-map-pop-share-inflation-comparison-binary-1.pdf  used on inp
-ut line 1303.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1303--1305
- [][] 
- []
-
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig11-map-a
-ccessibility-stepwise-1.pdf, id=329, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig11-
-map-accessibility-stepwise-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig11-m
-ap-accessibility-stepwise-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig11-map-accessibility-stepwise-1.pdf  used on input line 1317.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1317--1319
- [][] 
- []
-
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig12-map-a
-ccessibility-stepwise-adjusted-1.pdf, id=330, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig12-
-map-accessibility-stepwise-adjusted-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig12-m
-ap-accessibility-stepwise-adjusted-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig12-map-accessibility-stepwise-adjusted-1.pdf  used on input lin
-e 1324.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1324--1326
- [][] 
- []
-
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig13-map-a
-ccessibility-stepwise-comparison-1.pdf, id=331, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig13-
-map-accessibility-stepwise-comparison-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig13-m
-ap-accessibility-stepwise-comparison-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig13-map-accessibility-stepwise-comparison-1.pdf  used on input l
-ine 1331.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1331--1333
- [][] 
- []
-
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1355.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1355.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[23 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig10
--map-pop-share-inflation-comparison-binary-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1355.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1355.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[24 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig11
--map-accessibility-stepwise-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1355.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1355.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[25 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig12
--map-accessibility-stepwise-adjusted-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1355.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1355.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[26 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig13
--map-accessibility-stepwise-comparison-1.pdf>]
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig14-map-d
-isparities-binary-1.pdf, id=385, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig14-
-map-disparities-binary-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig14-m
-ap-disparities-binary-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig14-map-disparities-binary-1.pdf  used on input line 1381.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1381--1383
- [][] 
- []
-
-<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig15-map-d
-isparities-stepwise-1.pdf, id=386, 469.755pt x 325.215pt>
-File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig15-
-map-disparities-stepwise-1.pdf Graphic file (type pdf)
-<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig15-m
-ap-disparities-stepwise-1.pdf>
-Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
-figure-latex/fig15-map-disparities-stepwise-1.pdf  used on input line 1388.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (90.33636pt too wide) in paragraph at lines 1388--1390
- [][] 
- []
-
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1393.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1393.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[27 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig14
--map-disparities-binary-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1393.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1393.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[28 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig15
--map-disparities-stepwise-1.pdf>]
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1468.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1468.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[29]
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1562.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1562.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[30] 
-AED: lastpage setting LastPage
-Package epstopdf Info: Source file: <PLOS-submission.eps>
-(epstopdf)                    date: 2018-08-07 20:40:31
-(epstopdf)                    size: 283246 bytes
-(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-08-07 20:53:45
-(epstopdf)                    size: 15498 bytes
-(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
-ed-to.pdf PLOS-submission.eps>
-(epstopdf)             \includegraphics on input line 1624.
-Package epstopdf Info: Output file is already uptodate.
-File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
-<use PLOS-submission-eps-converted-to.pdf>
-Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
-ne 1624.
-(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
-[31]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1624.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1624.
-(Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1624.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1624.
-
-Package rerunfilecheck Info: File `Supply_and_Demand_Inflation_in_FCA_Methods_v
-2.0.out' has not changed.
-(rerunfilecheck)             Checksum: B61A9EB037E425B72A6F9E3403DADBD0;1147.
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1624.
- ) 
+! I can't write on file `Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.pdf'.
+Please type another file name for output
+! Emergency stop.
+<to be read again> 
+                   \edef 
+l.122 \begin{document}
+                       
 Here is how much of TeX's memory you used:
- 11613 strings out of 493305
- 187040 string characters out of 3128933
- 324666 words of memory out of 3000000
- 14816 multiletter control sequences out of 15000+200000
- 10326 words of font info for 62 fonts, out of 3000000 for 9000
+ 11014 strings out of 492945
+ 170789 string characters out of 3125365
+ 312353 words of memory out of 3000000
+ 14774 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,16n,45p,349b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Antonio/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/Ant
-onio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmmi5.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmmi7.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Antonio/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Antonio/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/User
-s/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7
-.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmss10.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmss8.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Antonio/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Antoni
-o/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><
-C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmtt10.pfb>
-Output written on Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.pdf (31 pages
-, 11969283 bytes).
-PDF statistics:
- 559 PDF objects out of 1000 (max. 8388607)
- 96 named destinations out of 1000 (max. 500000)
- 13521 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 42i,1n,43p,349b,93s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+!  ==> Fatal error occurred, no output PDF file produced!

@@ -135,7 +135,7 @@ kable(data.frame(Center = Population_data$id, impedance_binary_row_adjusted, imp
   add_header_above(c(" " = 1, "Row Standardized" = 3, "Column Standardized" = 3))
 ```
 
-The 3SFCA of Wan et al. (2012) uses a selection weight to adjust the population. The selection weights are essentially a row standardized matrix of weights. They can be based on the cost matrix, as follows (using a negative exponential function to calculate the weights): 
+The 3SFCA of Wan et al. (2012) uses a selection weight to adjust the population. The selection weights are essentially a row-standardized matrix of weights. They can be based on the cost matrix, as follows (using a negative exponential function to calculate the weights): 
 ```{r}
 selection_weights <- exp(-0.0000001 * distance_matrix^2)
 ```

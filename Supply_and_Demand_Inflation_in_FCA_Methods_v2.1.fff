@@ -1,0 +1,108 @@
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig1-example-1-1} \caption{\label{fig:fig1-example-1}A single population center that enters the service areas of two clinics (triangles are clinics, dotted lines are segments of catchment areas)}\label{fig:fig1-example-1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig2-example-2-1} \caption{\label{fig:fig2-example-2}Levels of service of three clinics and accessibility of one population center (triangles are clinics, dotted lines are segments of catchment areas)}\label{fig:fig2-example-2}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig3-example-3-1} \caption{\label{fig:fig3-example-3}Three population centers and two clinics (triangles are clinics, dotted lines are segments of catchment areas)}\label{fig:fig3-example-3}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig4-example-4-1} \caption{\label{fig:fig4-example-4}Levels of service of two clinics and accessibility of three population centers (triangles are clinics, dotted lines are segments of catchment areas)}\label{fig:fig4-example-4}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig5-example-5-1} \caption{\label{fig:fig5-example-5}Levels of service and accessibility according to 3SFCA and M2SFCA methods (triangles are clinics, dotted lines are segments of catchment areas)}\label{fig:fig5-example-5}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig6-simulation-1} \caption{\label{fig:fig6-simulation}Setup for the simulation exercise}\label{fig:fig6-simulation}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig7a-simulation-step1-1} \caption{\label{fig:fig7a-simulation-step1}Catchment areas in step 1, according to binary and stepwise impedance functions (the weights of the stepwise function are 0.945, 0.600, and 0.424)}\label{fig:fig7a-simulation-step1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig7b-simulation-step1-1} \caption{\label{fig:fig7b-simulation-step1}Catchment areas in step 1, according to binary and stepwise impedance functions (the weights of the stepwise function are 0.945, 0.600, and 0.424)}\label{fig:fig7b-simulation-step1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig-comparison-1} \caption{\label{fig:fig-comparison}Accessibility by Population Center by Method}\label{fig:fig-comparison}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig8-clinic-map-1} \caption{\label{fig:fig8-clinic-map}Location of clinics and family physicians in the Hamilton CMA}\label{fig:fig8-clinic-map}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig9-population-map-1} \caption{\label{fig:fig9-population-map}Population distribution in the Hamilton CMA}\label{fig:fig9-population-map}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig10-map-demand-inflation-binary-1} \caption{\label{fig:fig10-map-demand-inflation-binary}Demand inflation, binary impedance function}\label{fig:fig10-map-demand-inflation-binary}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig11-map-demand-inflation-stepwise-1} \caption{\label{fig:fig11-map-demand-inflation-stepwise}Demand inflation, stepwise impedance function}\label{fig:fig11-map-demand-inflation-stepwise}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig12-map-accessibility-binary-1} \caption{\label{fig:fig12-map-accessibility-binary}Accessibility, binary impedance function}\label{fig:fig12-map-accessibility-binary}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig13-map-accessibility-binary-adjusted-1} \caption{\label{fig:fig13-map-accessibility-binary-adjusted}Accessibility, adjusted binary impedance function}\label{fig:fig13-map-accessibility-binary-adjusted}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig14-map-accessibility-binary-comparison-1} \caption{\label{fig:fig14-map-accessibility-binary-comparison}Accessibility Inflation factor, binary impedance function}\label{fig:fig14-map-accessibility-binary-comparison}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig15-map-pop-share-inflation-comparison-binary-1} \caption{\label{fig:fig15-map-pop-share-inflation-comparison-binary}Population share and inflation factors compared}\label{fig:fig15-map-pop-share-inflation-comparison-binary}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig16-map-accessibility-stepwise-1} \caption{\label{fig:fig16-map-accessibility-stepwise}Accessibility, stepwise impedance function}\label{fig:fig16-map-accessibility-stepwise}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig17-map-accessibility-stepwise-adjusted-1} \caption{\label{fig:fig17-map-accessibility-stepwise-adjusted}Accessibility, adjusted stepwise impedance function}\label{fig:fig17-map-accessibility-stepwise-adjusted}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig18-map-accessibility-stepwise-comparison-1} \caption{\label{fig:fig18-map-accessibility-stepwise-comparison}Accessibility inflation factor, stepwise impedance function}\label{fig:fig18-map-accessibility-stepwise-comparison}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig19-map-disparities-binary-1} \caption{\label{fig:fig19-map-disparities-binary}Accessibility disparities, adjusted binary impedance function}\label{fig:fig19-map-disparities-binary}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{Supply_and_Demand_Inflation_in_FCA_Methods_v2.1_files/figure-latex/fig20-map-disparities-stepwise-1} \caption{\label{fig:fig20-map-disparities-stepwise}Accessibility disparities, adjusted stepwise impedance function}\label{fig:fig20-map-disparities-stepwise}
+\end{figure}
