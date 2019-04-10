@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.5)  5 APR 2019 18:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.5)  8 APR 2019 09:21
 entering extended mode
 **./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.tex
 (Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.tex
@@ -622,8 +622,97 @@ g.tex"
 \decimalpart=\count142
 )
 Package: xstring 2019/02/06 v1.83 String manipulations (CT)
+) (Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.aux
+
+LaTeX Warning: Label `tab:table-simulation-demand' multiply defined.
+
+
+LaTeX Warning: Label `tab:table-simulation-los-accessibility' multiply defined.
+
+
+
+LaTeX Warning: Label `tab:table-simulation-demand-adjusted' multiply defined.
+
+
+LaTeX Warning: Label `tab:table-simulation-los-accessibility-adjusted' multiply
+ defined.
+
+
+LaTeX Warning: Label `tab:table-descriptive-statistics' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig1-example-1' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig2-example-2' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig3-example-3' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig4-example-4' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig5-example-5' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig6-simulation' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig7a-simulation-step1' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig7b-simulation-step1' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig-comparison' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig8-clinic-map' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig9-population-map' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig10-map-demand-inflation-binary' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig11-map-demand-inflation-stepwise' multiply defined
+.
+
+
+LaTeX Warning: Label `fig:fig12-map-accessibility-binary' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig13-map-accessibility-binary-adjusted' multiply def
+ined.
+
+
+LaTeX Warning: Label `fig:fig14-map-accessibility-binary-comparison' multiply d
+efined.
+
+
+LaTeX Warning: Label `fig:fig15-map-pop-share-inflation-comparison-binary' mult
+iply defined.
+
+
+LaTeX Warning: Label `fig:fig16-map-accessibility-stepwise' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig17-map-accessibility-stepwise-adjusted' multiply d
+efined.
+
+
+LaTeX Warning: Label `fig:fig18-map-accessibility-stepwise-comparison' multiply
+ defined.
+
+
+LaTeX Warning: Label `fig:fig19-map-disparities-binary' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig20-map-disparities-stepwise' multiply defined.
+
 )
-No file Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.aux.
 \openout1 = `Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
@@ -689,23 +778,1229 @@ Package hyperref Info: Link coloring OFF on input line 122.
 LaTeX Info: Redefining \ref on input line 122.
 LaTeX Info: Redefining \pageref on input line 122.
 LaTeX Info: Redefining \nameref on input line 122.
+(Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.out) (Supply_and_Demand_Inflat
+ion_in_FCA_Methods_v2.0.out)
 \@outlinefile=\write4
 \openout4 = `Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.out'.
 
-! I can't write on file `Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.pdf'.
-Please type another file name for output
-! Emergency stop.
-<to be read again> 
-                   \edef 
-l.122 \begin{document}
-                       
-Here is how much of TeX's memory you used:
- 11014 strings out of 492945
- 170789 string characters out of 3125365
- 312353 words of memory out of 3000000
- 14774 multiletter control sequences out of 15000+200000
- 3640 words of font info for 14 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 42i,1n,43p,349b,93s stack positions out of 5000i,500n,10000p,200000b,50000s
+LaTeX Info: Redefining \microtypecontext on input line 122.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
 
-!  ==> Fatal error occurred, no output PDF file produced!
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\mt-cmr
+.cfg"
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp
+-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count143
+\scratchdimen=\dimen154
+\scratchbox=\box35
+\nofMPsegments=\count144
+\nofMParguments=\count145
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count146
+\MPscratchDim=\dimen155
+\MPnumerator=\count147
+\makeMPintoPDFobject=\count148
+\everyMPtoPDFconversion=\toks34
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package lastpage Info: Please have a look at the pageslts package at
+(lastpage)             https://www.ctan.org/pkg/pageslts
+(lastpage)             ! on input line 122.
+LaTeX Font Info:    Try loading font information for U+msa on input line 133.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd
+"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\mt-msa
+.cfg"
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 133.
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd
+"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+("C:\Users\Antonio\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\mt-msb
+.cfg"
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+\fe@count@abs@i=\count149
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmss' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 202.
+Package epstopdf Info: Output file is already uptodate.
+<PLOS-submission-eps-converted-to.pdf, id=83, 216.81pt x 35.13126pt>
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 202.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[1
+
+{C:/Users/Antonio/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./PLOS-su
+bmission-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 264.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 264.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[2]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 342.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 342.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[3]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 406.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 406.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[4]
+Overfull \hbox (0.34174pt too wide) detected at line 452
+\OML/cmm/m/it/10 A[] \OT1/cmr/m/n/10 = [] [] = [] []
+ []
+
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 459.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 459.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[5]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 538.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 538.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[6]
+\openout3 = `Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.fff'.
+
+(Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.fff)
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 613.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 613.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[7]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 689.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 689.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[8]
+
+LaTeX Warning: Reference `fig:fig7-simulation-step1' on page 9 undefined on inp
+ut line 727.
+
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 762.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 762.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[9]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 792.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 792.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[10]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 850.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 850.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[11
+
+
+]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 888.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 888.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[12]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 964.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 964.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[13
+
+
+]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1035.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1035.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[14]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1123.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1123.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[15]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1237.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1237.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[16]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1316.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1316.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[17]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1346.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1346.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[18]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1374.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1374.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[19]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1457.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1457.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[20
+
+
+
+
+]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1530.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1530.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[21]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1592.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1592.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[22]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1662.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1662.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[23]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1671.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1671.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[24]
+Overfull \hbox (77.58076pt too wide) in paragraph at lines 1676--1686
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1687.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1687.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[25]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1809.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1809.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[26
+
+
+]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1883.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1883.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[27]
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 1979.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 1979.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[28]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+AED: lastpage setting LastPage
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 2064.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 2064.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[29] AED endfloat: Processing end Figures and Tables (Supply_and_Demand_Inflati
+on_in_FCA_Methods_v2.0.lof)
+\tf@lof=\write5
+\openout5 = `Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.lof'.
+
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 2064.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 2064.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[30
+
+
+
+] (Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.fff
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig1-exampl
+e-1-1.pdf, id=411, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig1-e
+xample-1-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig1-ex
+ample-1-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig1-example-1-1.pdf  used on input line 2.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 4.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 4.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[31 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig1-
+example-1-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig2-exampl
+e-2-1.pdf, id=425, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig2-e
+xample-2-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig2-ex
+ample-2-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig2-example-2-1.pdf  used on input line 7.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 9.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 9.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[32 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig2-
+example-2-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig3-exampl
+e-3-1.pdf, id=438, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig3-e
+xample-3-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig3-ex
+ample-3-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig3-example-3-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 14.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 14.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[33 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig3-
+example-3-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig4-exampl
+e-4-1.pdf, id=451, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig4-e
+xample-4-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig4-ex
+ample-4-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig4-example-4-1.pdf  used on input line 17.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 19.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 19.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[34 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig4-
+example-4-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig5-exampl
+e-5-1.pdf, id=464, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig5-e
+xample-5-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig5-ex
+ample-5-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig5-example-5-1.pdf  used on input line 22.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 24.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 24.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[35 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig5-
+example-5-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig6-simula
+tion-1.pdf, id=477, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig6-s
+imulation-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig6-si
+mulation-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig6-simulation-1.pdf  used on input line 27.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 29.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 29.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[36 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig6-
+simulation-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7a-simul
+ation-step1-1.pdf, id=488, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7a-
+simulation-step1-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7a-s
+imulation-step1-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig7a-simulation-step1-1.pdf  used on input line 32.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 34.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 34.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[37 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7a
+-simulation-step1-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7b-simul
+ation-step1-1.pdf, id=503, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7b-
+simulation-step1-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7b-s
+imulation-step1-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig7b-simulation-step1-1.pdf  used on input line 37.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 39.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 39.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[38 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig7b
+-simulation-step1-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig-compari
+son-1.pdf, id=517, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig-co
+mparison-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig-com
+parison-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig-comparison-1.pdf  used on input line 42.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 44.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 44.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[39 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig-c
+omparison-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig8-clinic
+-map-1.pdf, id=528, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig8-c
+linic-map-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig8-cl
+inic-map-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig8-clinic-map-1.pdf  used on input line 47.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 49.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 49.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[40 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig8-
+clinic-map-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig9-popula
+tion-map-1.pdf, id=544, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig9-p
+opulation-map-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig9-po
+pulation-map-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig9-population-map-1.pdf  used on input line 52.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 54.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 54.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[41 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig9-
+population-map-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig10-map-d
+emand-inflation-binary-1.pdf, id=556, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig10-
+map-demand-inflation-binary-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig10-m
+ap-demand-inflation-binary-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig10-map-demand-inflation-binary-1.pdf  used on input line 57.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 59.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 59.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[42 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig10
+-map-demand-inflation-binary-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig11-map-d
+emand-inflation-stepwise-1.pdf, id=574, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig11-
+map-demand-inflation-stepwise-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig11-m
+ap-demand-inflation-stepwise-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig11-map-demand-inflation-stepwise-1.pdf  used on input line 62.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 64.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 64.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[43 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig11
+-map-demand-inflation-stepwise-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig12-map-a
+ccessibility-binary-1.pdf, id=593, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig12-
+map-accessibility-binary-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig12-m
+ap-accessibility-binary-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig12-map-accessibility-binary-1.pdf  used on input line 67.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 69.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 69.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[44 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig12
+-map-accessibility-binary-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig13-map-a
+ccessibility-binary-adjusted-1.pdf, id=606, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig13-
+map-accessibility-binary-adjusted-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig13-m
+ap-accessibility-binary-adjusted-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig13-map-accessibility-binary-adjusted-1.pdf  used on input line 
+72.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 74.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 74.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[45 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig13
+-map-accessibility-binary-adjusted-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig14-map-a
+ccessibility-binary-comparison-1.pdf, id=619, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig14-
+map-accessibility-binary-comparison-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig14-m
+ap-accessibility-binary-comparison-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig14-map-accessibility-binary-comparison-1.pdf  used on input lin
+e 77.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 79.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 79.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[46 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig14
+-map-accessibility-binary-comparison-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig15-map-p
+op-share-inflation-comparison-binary-1.pdf, id=632, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig15-
+map-pop-share-inflation-comparison-binary-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig15-m
+ap-pop-share-inflation-comparison-binary-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig15-map-pop-share-inflation-comparison-binary-1.pdf  used on inp
+ut line 82.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 84.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 84.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[47 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig15
+-map-pop-share-inflation-comparison-binary-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig16-map-a
+ccessibility-stepwise-1.pdf, id=643, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig16-
+map-accessibility-stepwise-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig16-m
+ap-accessibility-stepwise-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig16-map-accessibility-stepwise-1.pdf  used on input line 87.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 89.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 89.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[48 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig16
+-map-accessibility-stepwise-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig17-map-a
+ccessibility-stepwise-adjusted-1.pdf, id=656, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig17-
+map-accessibility-stepwise-adjusted-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig17-m
+ap-accessibility-stepwise-adjusted-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig17-map-accessibility-stepwise-adjusted-1.pdf  used on input lin
+e 92.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 94.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 94.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[49 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig17
+-map-accessibility-stepwise-adjusted-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig18-map-a
+ccessibility-stepwise-comparison-1.pdf, id=670, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig18-
+map-accessibility-stepwise-comparison-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig18-m
+ap-accessibility-stepwise-comparison-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig18-map-accessibility-stepwise-comparison-1.pdf  used on input l
+ine 97.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 99.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 99.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[50 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig18
+-map-accessibility-stepwise-comparison-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig19-map-d
+isparities-binary-1.pdf, id=683, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig19-
+map-disparities-binary-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig19-m
+ap-disparities-binary-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig19-map-disparities-binary-1.pdf  used on input line 102.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 104.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 104.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[51 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig19
+-map-disparities-binary-1.pdf>]
+<Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig20-map-d
+isparities-stepwise-1.pdf, id=696, 469.755pt x 325.215pt>
+File: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig20-
+map-disparities-stepwise-1.pdf Graphic file (type pdf)
+<use Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig20-m
+ap-disparities-stepwise-1.pdf>
+Package pdftex.def Info: Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/
+figure-latex/fig20-map-disparities-stepwise-1.pdf  used on input line 107.
+(pdftex.def)             Requested size: 360.44545pt x 249.53798pt.
+)
+Package epstopdf Info: Source file: <PLOS-submission.eps>
+(epstopdf)                    date: 2018-08-07 20:40:31
+(epstopdf)                    size: 283246 bytes
+(epstopdf)             Output file: <PLOS-submission-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-07 20:53:45
+(epstopdf)                    size: 15498 bytes
+(epstopdf)             Command: <epstopdf --outfile=PLOS-submission-eps-convert
+ed-to.pdf PLOS-submission.eps>
+(epstopdf)             \includegraphics on input line 2064.
+Package epstopdf Info: Output file is already uptodate.
+File: PLOS-submission-eps-converted-to.pdf Graphic file (type pdf)
+<use PLOS-submission-eps-converted-to.pdf>
+Package pdftex.def Info: PLOS-submission-eps-converted-to.pdf  used on input li
+ne 2064.
+(pdftex.def)             Requested size: 144.54pt x 23.42201pt.
+[52 <./Supply_and_Demand_Inflation_in_FCA_Methods_v2.0_files/figure-latex/fig20
+-map-disparities-stepwise-1.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2064.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2064.
+(Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2064.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2064.
+
+Package rerunfilecheck Info: File `Supply_and_Demand_Inflation_in_FCA_Methods_v
+2.0.out' has not changed.
+(rerunfilecheck)             Checksum: 831A5A6353104D98E7873141A8CF0F8E;1423.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2064.
+ ) 
+Here is how much of TeX's memory you used:
+ 11992 strings out of 492945
+ 196004 string characters out of 3125365
+ 338988 words of memory out of 3000000
+ 15466 multiletter control sequences out of 15000+200000
+ 11158 words of font info for 68 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,16n,43p,539b,404s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Antonio/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Antonio/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex7.pfb
+><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmmi5.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Antonio/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Antonio/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
+rs/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+5.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr7.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmss10.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Antonio/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Antoni
+o/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C
+:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmti10.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmti7.pfb><C:/Users/Antonio/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Antonio/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on Supply_and_Demand_Inflation_in_FCA_Methods_v2.0.pdf (52 pages
+, 11325501 bytes).
+PDF statistics:
+ 803 PDF objects out of 1000 (max. 8388607)
+ 134 named destinations out of 1000 (max. 500000)
+ 14100 words of extra memory for PDF output out of 14400 (max. 10000000)
+

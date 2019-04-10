@@ -1880,7 +1880,8 @@ ggmap(basemap) +
   scale_size(name = "Number of Family Physicians") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ## Population
@@ -1896,7 +1897,8 @@ ggmap(basemap) +
   scale_fill_brewer(palette = "Oranges", direction = 1, name = "Population") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ## Travel Time Matrix
@@ -2108,7 +2110,8 @@ ggmap(basemap) +
   scale_color_distiller(palette = "Oranges", direction = 1, name = "Demand Inflation Factor (Binary)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ```{r fig11-map-demand-inflation-stepwise, echo=FALSE, fig.cap="\\label{fig:fig11-map-demand-inflation-stepwise}Demand inflation, stepwise impedance function", warning=FALSE, message=FALSE, out.width="95%"}
@@ -2129,7 +2132,8 @@ ggmap(basemap) +
   scale_color_distiller(palette = "Oranges", direction = 1, name = "Demand Inflation Factor (Stepwise)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 The map of accessibility for the implementation of 2SFCA is shown in Fig \ref{fig:fig12-map-accessibility-binary} and with the adjusted weights for proportional allocation in Fig \ref{fig:fig13-map-accessibility-binary-adjusted}. The general patterns observed in the figures are as expected, with higher accessibility in denser, better connected parts of the region. Relatively high accessibility in the north and west of the CMA is due to proximity to other major population centers such as Oakville, Kitchener, and Waterloo. A question, however, is the degree of inflation of accessibility in the original 2SFCA? Fig \ref{fig:fig14-map-accessibility-binary-comparison} plots the ratio of the binary and adjusted binary accessibility measures. Here it can be seen that the unadjusted accessibility values are at least three times greater than their adjusted counterparts within the study area. This inflation, moreover, is not uniform across space, with inflation of the binary accessibility values up to 8 times greater than those from the adjusted model at the edges of the city where the 15-minute catchment areas begin to overlap with neighboring municipalites.
@@ -2171,7 +2175,8 @@ ggmap(basemap) +
   scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Binary)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ```{r fig13-map-accessibility-binary-adjusted, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig13-map-accessibility-binary-adjusted}Accessibility, adjusted binary impedance function", warning=FALSE, out.width="95%"}
@@ -2184,7 +2189,8 @@ ggmap(basemap) +
   scale_fill_distiller(palette = "Oranges", direction = 1, name = "Accessibility (Binary Adjusted)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ```{r fig14-map-accessibility-binary-comparison, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig14-map-accessibility-binary-comparison}Accessibility Inflation factor, binary impedance function", warning=FALSE, out.width="95%"}
@@ -2197,7 +2203,8 @@ ggmap(basemap) +
   scale_fill_distiller(palette = "Oranges", direction = 1, name = "Binary Accessibility Inflation Factor") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 Why is this important? As noted by various authors [e.g., @Delamater2013; @Luo2003], in traditional FCA methods, the sum of the population-weighted average of accessibility across all population centers is equal to the regional average provider-to-population ratio [see the examples in @Delamater2013]. In the present case, the weighted sum of accessibility in the unadjusted binary and stepwise measures is `r round(sum(family_doctors$family_doctors)/sum(da_population$POP2011/1000), digits = 3)`. However, while this value is indeed identical to the regional average provider-to-population ratio, it is problematic because the share of the population correlates poorly with the pattern of inflation observed (see Fig \ref{fig:fig15-map-pop-share-inflation-comparison-binary}). The key issue here is that accessibility is deflated by the share of the population in a DA $i$; however, the degree of inflation of demand and supply depends not only of the population DA $i$, but on the population of every DA $j$ with which DA $i$ interacts via overlapping catchment areas. As a consequence, deflating accessibility using population shares in previous FCA methods does not accurately offset demand and supply inflation.
@@ -2209,7 +2216,8 @@ ggplot(da_pop_hamilton,aes(x = da_pop_hamilton$POP2011/sum(da_pop_hamilton$POP20
   geom_point() +
   xlab("DA Population Share") +
   ylab("DA Accessibility Inflation Factor") +
-  theme_minimal()
+  theme_minimal() +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 Fig \ref{fig:fig16-map-accessibility-stepwise} and Fig \ref{fig:fig17-map-accessibility-stepwise-adjusted} present the results for the stepwise E2SFCA with and without the rectification. The results are qualitatively similar to the 2FSCA, with the expected differences. The inflation factor is even more substantial, given the larger catchment areas used.
@@ -2224,7 +2232,8 @@ ggmap(basemap) +
   scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Stepwise)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ```{r fig17-map-accessibility-stepwise-adjusted, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig17-map-accessibility-stepwise-adjusted}Accessibility, adjusted stepwise impedance function", warning=FALSE, out.width="95%"}
@@ -2237,7 +2246,8 @@ ggmap(basemap) +
   scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Stepwise Adjusted)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ```{r fig18-map-accessibility-stepwise-comparison, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig18-map-accessibility-stepwise-comparison}Accessibility inflation factor, stepwise impedance function", warning=FALSE, out.width="95%"}
@@ -2250,7 +2260,8 @@ ggmap(basemap) +
   scale_fill_distiller(palette = "Oranges", direction = 1, name = "Stepwise Accessibility Inflation Factor") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ## Disparity Analysis
@@ -2274,7 +2285,8 @@ ggmap(basemap) +
   #scale_fill_distiller(palette = "Oranges", direction = 1, name = "Disparities") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 ```{r fig20-map-disparities-stepwise, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig20-map-disparities-stepwise}Accessibility disparities, adjusted stepwise impedance function", warning=FALSE, out.width="95%"}
@@ -2288,7 +2300,8 @@ ggmap(basemap) +
   #scale_fill_distiller(palette = "Oranges", direction = 1, name = "Disparities") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  labs(caption = "Map data ©2019 Google")
 ```
 
 # Conclusion
