@@ -148,30 +148,21 @@ quantiles_tt <- quantile(rep(episode_on_cma_t$DURATION, times = episode_on_cma_t
 
 ```{r read-shape-files, echo=FALSE, include=FALSE}
 #Hamilton DAs
-#hamilton_da.shp <- readOGR(".", "Hamilton_CMA_DAs_2011")
-#hamilton_da.shp@data <- transmute(hamilton_da.shp@data, ID = DA)
-
-#Lake mask
-#lake_mask.shp <- readOGR(".", "Lake Mask")
-
-#Clip geography using the `raster` package
-#hamilton_da.shp <- hamilton_da.shp - lake_mask.shp
+#hamilton_da.sf <- st_read(".", "Hamilton_CMA_DAs_2011")
+#hamilton_da.sf <- transmute(hamilton_da.sf, id = ID, DA = DA, POP2011 = POPULATION)
 ```
 
 ```{r tidy-polygons, echo=FALSE, include=FALSE}
 #hamilton_da.t <- fortify(hamilton_da.shp, region = "ID")
 ```
 
-```{r retrieve-basemap, echo=FALSE}
-#basemap <- get_map("Hamilton, Ontario", zoom = 10)
-```
 
 ```{r retrieve-geography-files, echo=FALSE, include=FALSE}
 #Join population data
 #hamilton_da.t <- left_join(hamilton_da.t,
 #                           data.frame(id = da_population$DAUID, POP2011 = da_population$POP2011),
 #                           by = "id")
-#save(hamilton_da.t, basemap, file = "geography_data.RData")
+#save(hamilton_da.sf, file = "geography_data.RData")
 load("geography_data.RData")
 load("Simulated Example.RData")
 ```
@@ -1872,16 +1863,16 @@ Our search of CPSO's database was conducted attending to the following criteria.
 
 The parameters of the search were deliberately conservative, and the search identified a total of 2,224 family physicians practicing in the region, of which, 864 are located in the Hamilton CMA. The resulting dataset was manually verified by the third author to ensure that the information was consistent and suitable for geocoding. Prior to geocoding, locational information was organized in three columns, containing street address, city name, and province name. After family physicians were geocoded, locations were further examined. When family physicians overlapped or were within a 50 meter distance of each other we merged the records to identify 535 unique locations that we term "clinics". Many of these clinics are not in the Hamilton CMA proper, but provide a buffer to minimize edge effects in the analysis. The distribution of clinics and family physicians is shown in Fig \ref{fig:fig8-clinic-map} for the Hamilton CMA.
 
-```{r fig8-clinic-map, echo=FALSE, fig.cap="\\label{fig:fig8-clinic-map}Location of clinics and family physicians in the Hamilton CMA", echo=FALSE, warning=FALSE, message=FALSE, out.width="95%"}
-ggmap(basemap) + 
+```{r fig8-clinic-map, echo=FALSE, fig.cap="\\label{fig:fig8-clinic-map}Location of clinics and family physicians in the Hamilton CMA and surrounding regions", echo=FALSE, warning=FALSE, message=FALSE, out.width="95%"}
+ggplot(data = st_union(hamilton_da.sf)) + 
+  geom_sf(fill = NA) +
   geom_point(data = clinics, aes(x = long, y = lat, 
                                  size = family_doctors$family_doctors),
              alpha = 0.5) +
   scale_size(name = "Number of Family Physicians") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) +
-  theme(legend.position = "bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position = "bottom")
 ```
 
 ## Population
@@ -1890,15 +1881,14 @@ Population information was obtained from the 2011 Canadian Census. To maximize t
 
 ```{r fig9-population-map, echo=FALSE, fig.cap="\\label{fig:fig9-population-map}Population distribution in the Hamilton CMA", warning=FALSE, message=FALSE, out.width="95%"}
 #Zoning system is Dissemination Areas
-ggmap(basemap) + 
-  geom_polygon(data = hamilton_da.t, 
-               aes(x = long, y = lat, group = group, fill = cut(POP2011,quantile(POP2011))), 
+ggplot(hamilton_da.sf) + 
+  geom_sf(aes(fill = cut(POP2011,quantile(POP2011))), 
                color = NA) +
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_brewer(palette = "Oranges", direction = 1, name = "Population") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) +
-  theme(legend.position = "bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position = "bottom")
 ```
 
 ## Travel Time Matrix
@@ -1975,7 +1965,7 @@ $$
 
 Notice how the stepwise function has weights greater than 0.5 for $d_{ij} \leq 15 min$ and less than 0.5 for $d_{ij} > 15 min$. This means that it will count fewer people than the binary function when $d_{ij} \leq 15 min$, but more when $d_{ij} > 15 min$.
 
-# Results
+## Results
 
 We begin our discussion of the results by noting that with a total population of the region of `r prettyNum(sum(da_population$POP2011), big.mark = ",")` and `r prettyNum(sum(family_doctors$family_doctors), big.mark = ",")` family physicians, the Regional Average PPR ratio is `r prettyNum(sum(family_doctors$family_doctors)/sum(da_population$POP2011/1000), digits = 3)` family physicians per 1,000 people. This value is somewhat lower than the value of 1.16 for Ontario reported by CIHI [-@CIHI2018] and lower than the 1.20 estimated based on the population and physician data for the Hamilton CMA, which we attribute to our conservative search criteria of family physicians in the rest of the region.
 
@@ -2048,13 +2038,13 @@ accessibility_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% los_stepw
 #accessibility_stepwise_adjusted <- totalsupply_stepwise_adjusted / totaldemand_stepwise_adjusted
 
 #
-accessibility <- data.frame(id = da_population$DAUID,
+accessibility <- data.frame(da_population$DAUID,
                             da_population$POP2011,
                             accessibility_binary,
                             accessibility_binary_adjusted,
                             accessibility_stepwise,
                             accessibility_stepwise_adjusted)
-colnames(accessibility) <- c("id", "Population", 
+colnames(accessibility) <- c("DA", "Population", 
                              "Binary", "Binary_Adjusted", 
                              "Stepwise", "Stepwise_Adjusted")
 
@@ -2097,7 +2087,9 @@ Another important issue is that spatial distribution of inflation of demand and 
 clinics$inflation_binary <- demand_binary / demand_binary_adjusted
 
 #Map
-ggmap(basemap) + 
+#ggmap(basemap) +
+ggplot(data = st_union(hamilton_da.sf)) +
+  geom_sf(fill = NA) +
   geom_point(data = clinics, aes(x = long, y = lat, 
                                  size = inflation_binary, 
                                  color = inflation_binary),
@@ -2110,8 +2102,7 @@ ggmap(basemap) +
   scale_color_distiller(palette = "Oranges", direction = 1, name = "Demand Inflation Factor (Binary)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 ```{r fig11-map-demand-inflation-stepwise, echo=FALSE, fig.cap="\\label{fig:fig11-map-demand-inflation-stepwise}Demand inflation, stepwise impedance function", warning=FALSE, message=FALSE, out.width="95%"}
@@ -2119,7 +2110,8 @@ ggmap(basemap) +
 clinics$inflation_binary <- demand_stepwise / demand_stepwise_adjusted
 
 #Map
-ggmap(basemap) + 
+ggplot(data = st_union(hamilton_da.sf)) +
+  geom_sf(fill = NA) + 
   geom_point(data = clinics, aes(x = long, y = lat, 
                                  size = inflation_binary, 
                                  color = inflation_binary),
@@ -2132,92 +2124,89 @@ ggmap(basemap) +
   scale_color_distiller(palette = "Oranges", direction = 1, name = "Demand Inflation Factor (Stepwise)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 The map of accessibility for the implementation of 2SFCA is shown in Fig \ref{fig:fig12-map-accessibility-binary} and with the adjusted weights for proportional allocation in Fig \ref{fig:fig13-map-accessibility-binary-adjusted}. The general patterns observed in the figures are as expected, with higher accessibility in denser, better connected parts of the region. Relatively high accessibility in the north and west of the CMA is due to proximity to other major population centers such as Oakville, Kitchener, and Waterloo. A question, however, is the degree of inflation of accessibility in the original 2SFCA? Fig \ref{fig:fig14-map-accessibility-binary-comparison} plots the ratio of the binary and adjusted binary accessibility measures. Here it can be seen that the unadjusted accessibility values are at least three times greater than their adjusted counterparts within the study area. This inflation, moreover, is not uniform across space, with inflation of the binary accessibility values up to 8 times greater than those from the adjusted model at the edges of the city where the 15-minute catchment areas begin to overlap with neighboring municipalites.
 
 ```{r accessibility_comparison, echo=FALSE, include=FALSE}
-accessibility_comparison <- transmute(accessibility, id, 
+accessibility_comparison <- transmute(accessibility, DA, 
                                       Binary = Binary/Binary_Adjusted,
                                       Stepwise = Stepwise/Stepwise_Adjusted)
 ```
 
 ```{r accessibility_disparities, echo=FALSE, include=FALSE}
 #Disparities in this case is defined as the difference between the calculated accessibility (which is interpreted as the local provider-to-population ratio) and the local provider-to-population ratio if the level of service was distributed uniformly
-accessibility_disparities <- transmute(accessibility, id, 
+accessibility_disparities <- transmute(accessibility, DA, 
                                       Binary = Binary_Adjusted - sum(los_binary_adjusted)/nrow(accessibility_binary_adjusted),
                                       Stepwise = Stepwise_Adjusted- sum(los_stepwise_adjusted)/nrow(accessibility_stepwise_adjusted))
 ```
 
 ```{r join-geography, echo=FALSE, include=FALSE}
 #Join accessibility measures to geography.
-hamilton_da.t_accessibility <- left_join(hamilton_da.t, accessibility, by = "id")
-hamilton_da.t_comparison <- left_join(hamilton_da.t, accessibility_comparison, by = "id")
-hamilton_da.t_disparities <- left_join(hamilton_da.t, accessibility_disparities, by = "id")
+hamilton_da.sf_accessibility <- left_join(hamilton_da.sf, accessibility, by = "DA")
+hamilton_da.sf_comparison <- left_join(hamilton_da.sf, accessibility_comparison, by = "DA")
+hamilton_da.sf_disparities <- left_join(hamilton_da.sf, accessibility_disparities, by = "DA")
 ```
 
 ```{r gather-columns, echo=FALSE}
 #Gather columns to facilitate facet wrapping for maps
-hamilton_da.t_accessibility <- gather(hamilton_da.t_accessibility, Type, Accessibility, -c(long, lat, order, hole, piece, id, group, Population))
+hamilton_da.sf_accessibility <- gather(hamilton_da.sf_accessibility, Type, Accessibility, -c(id, DA, POP2011, geometry))
 
-hamilton_da.t_comparison <- gather(hamilton_da.t_comparison, Type, Deflation_Factor, -c(long, lat, order, hole, piece, id, group))
+hamilton_da.sf_comparison <- gather(hamilton_da.sf_comparison, Type, Deflation_Factor, -c(id, DA, POP2011, geometry))
 ```
 
 ```{r fig12-map-accessibility-binary, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig12-map-accessibility-binary}Accessibility, binary impedance function", warning=FALSE, out.width="95%"}
 
 #Map
-ggmap(basemap) + 
-  geom_polygon(data = filter(hamilton_da.t_accessibility, Type == "Binary"),
-                              aes(x = long, y = lat, group = group, fill = Accessibility),
+ggplot(filter(hamilton_da.sf_accessibility, Type == "Binary")) + 
+  geom_sf(aes(fill = Accessibility),
                color = NA) +
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Binary)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 ```{r fig13-map-accessibility-binary-adjusted, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig13-map-accessibility-binary-adjusted}Accessibility, adjusted binary impedance function", warning=FALSE, out.width="95%"}
 
 #Map
-ggmap(basemap) + 
-  geom_polygon(data = filter(hamilton_da.t_accessibility, Type == "Binary_Adjusted"),
-                              aes(x = long, y = lat, group = group, fill = Accessibility),
+ggplot(filter(hamilton_da.sf_accessibility, Type == "Binary_Adjusted")) + 
+  geom_sf(aes(fill = Accessibility),
                color = NA) +
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_distiller(palette = "Oranges", direction = 1, name = "Accessibility (Binary Adjusted)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 ```{r fig14-map-accessibility-binary-comparison, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig14-map-accessibility-binary-comparison}Accessibility Inflation factor, binary impedance function", warning=FALSE, out.width="95%"}
 
 #Map
-ggmap(basemap) + 
-  geom_polygon(data = filter(hamilton_da.t_comparison, Type == "Binary"),
-                              aes(x = long, y = lat, group = group, fill = Deflation_Factor),
-               color = NA) +
+ggplot(filter(hamilton_da.sf_comparison, Type == "Binary")) + 
+  geom_sf(aes(fill = Deflation_Factor),
+               color = NA) + 
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_distiller(palette = "Oranges", direction = 1, name = "Binary Accessibility Inflation Factor") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 Why is this important? As noted by various authors [e.g., @Delamater2013; @Luo2003], in traditional FCA methods, the sum of the population-weighted average of accessibility across all population centers is equal to the regional average provider-to-population ratio [see the examples in @Delamater2013]. In the present case, the weighted sum of accessibility in the unadjusted binary and stepwise measures is `r round(sum(family_doctors$family_doctors)/sum(da_population$POP2011/1000), digits = 3)`. However, while this value is indeed identical to the regional average provider-to-population ratio, it is problematic because the share of the population correlates poorly with the pattern of inflation observed (see Fig \ref{fig:fig15-map-pop-share-inflation-comparison-binary}). The key issue here is that accessibility is deflated by the share of the population in a DA $i$; however, the degree of inflation of demand and supply depends not only of the population DA $i$, but on the population of every DA $j$ with which DA $i$ interacts via overlapping catchment areas. As a consequence, deflating accessibility using population shares in previous FCA methods does not accurately offset demand and supply inflation.
 
 ```{r fig15-map-pop-share-inflation-comparison-binary, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig15-map-pop-share-inflation-comparison-binary}Population share and inflation factors compared", warning=FALSE, out.width="95%"}
 da_pop_hamilton <- subset(da_population,CMA==537)
-da_pop_hamilton <- merge(x=da_pop_hamilton,y=accessibility_comparison,by.x="DA",by.y="id")
-ggplot(da_pop_hamilton,aes(x = da_pop_hamilton$POP2011/sum(da_pop_hamilton$POP2011), y=da_pop_hamilton$Binary)) +
+da_pop_hamilton <- merge(x=da_pop_hamilton,y=accessibility_comparison,by.x="DA",by.y="DA")
+ggplot(da_pop_hamilton, 
+       aes(x = da_pop_hamilton$POP2011/sum(da_pop_hamilton$POP2011),
+           y=da_pop_hamilton$Binary)) +
   geom_point() +
   xlab("DA Population Share") +
   ylab("DA Accessibility Inflation Factor") +
-  theme_minimal() +
-  labs(caption = "Map data ©2019 Google")
+  theme_minimal()
 ```
 
 Fig \ref{fig:fig16-map-accessibility-stepwise} and Fig \ref{fig:fig17-map-accessibility-stepwise-adjusted} present the results for the stepwise E2SFCA with and without the rectification. The results are qualitatively similar to the 2FSCA, with the expected differences. The inflation factor is even more substantial, given the larger catchment areas used.
@@ -2225,43 +2214,40 @@ Fig \ref{fig:fig16-map-accessibility-stepwise} and Fig \ref{fig:fig17-map-access
 ```{r fig16-map-accessibility-stepwise, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig16-map-accessibility-stepwise}Accessibility, stepwise impedance function", warning=FALSE, out.width="95%"}
 
 #Map
-ggmap(basemap) + 
-  geom_polygon(data = filter(hamilton_da.t_accessibility, Type == "Stepwise"),
-                              aes(x = long, y = lat, group = group, fill = Accessibility),
+ggplot(data = filter(hamilton_da.sf_accessibility, Type == "Stepwise")) + 
+  geom_sf(aes(fill = Accessibility),
                color = NA) +
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Stepwise)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 ```{r fig17-map-accessibility-stepwise-adjusted, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig17-map-accessibility-stepwise-adjusted}Accessibility, adjusted stepwise impedance function", warning=FALSE, out.width="95%"}
 
 #Map
-ggmap(basemap) + 
-  geom_polygon(data = filter(hamilton_da.t_accessibility, Type == "Stepwise_Adjusted"),
-                              aes(x = long, y = lat, group = group, fill = Accessibility),
+ggplot(data = filter(hamilton_da.sf_accessibility, Type == "Stepwise_Adjusted")) + 
+  geom_sf(aes(fill = Accessibility),
                color = NA) +
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_distiller(palette = "Oranges", direction = 1, "Accessibility (Stepwise Adjusted)") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 ```{r fig18-map-accessibility-stepwise-comparison, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig18-map-accessibility-stepwise-comparison}Accessibility inflation factor, stepwise impedance function", warning=FALSE, out.width="95%"}
 
 #Map
-ggmap(basemap) + 
-  geom_polygon(data = filter(hamilton_da.t_comparison, Type == "Stepwise"),
-                              aes(x = long, y = lat, group = group, fill = Deflation_Factor),
+ggplot(data = filter(hamilton_da.sf_comparison, Type == "Stepwise")) + 
+  geom_sf(aes(fill = Deflation_Factor),
                color = NA) +
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_distiller(palette = "Oranges", direction = 1, name = "Stepwise Accessibility Inflation Factor") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 ## Disparity Analysis
@@ -2277,31 +2263,29 @@ Disparity maps for the adjusted binary and stepwise impedance functions are show
 ```{r fig19-map-disparities-binary, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig19-map-disparities-binary}Accessibility disparities, adjusted binary impedance function", warning=FALSE, out.width="95%"}
 
 #Map
-ggmap(basemap) + 
-  geom_polygon(data = hamilton_da.t_disparities,
-                              aes(x = long, y = lat, group = group, fill = Binary),
+ggplot(data = hamilton_da.sf_disparities) + 
+  geom_sf(aes(fill = Binary),
                color = NA) +
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, name = "Disparity Index (Binary)") +
   #scale_fill_distiller(palette = "Oranges", direction = 1, name = "Disparities") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 ```{r fig20-map-disparities-stepwise, echo=FALSE, message=FALSE, fig.cap="\\label{fig:fig20-map-disparities-stepwise}Accessibility disparities, adjusted stepwise impedance function", warning=FALSE, out.width="95%"}
 
 #Map
-ggmap(basemap) + 
-  geom_polygon(data = hamilton_da.t_disparities,
-                              aes(x = long, y = lat, group = group, fill = Stepwise),
+ggplot(data = hamilton_da.sf_disparities) + 
+  geom_sf(aes(fill = Stepwise),
                color = NA) +
+  geom_sf(data = st_union(hamilton_da.sf), fill = NA) +
   scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, name = "Disparity Index (Stepwise)") +
   #scale_fill_distiller(palette = "Oranges", direction = 1, name = "Disparities") +
   scale_x_continuous(limits = c(-80.3, -79.45), expand = c(0, 0)) +
   scale_y_continuous(limits = c(43.03, 43.5), expand = c(0, 0)) + 
-  theme(legend.position="bottom") +
-  labs(caption = "Map data ©2019 Google")
+  theme(legend.position="bottom")
 ```
 
 # Conclusion
