@@ -1047,7 +1047,6 @@ ggplot() +
   theme(axis.text.x = element_blank(),
         axis.text.y = element_blank()) + 
   theme(legend.position="bottom")
-  
 ```
 
 For this experiment, we consider binary and stepwise impedance functions. The former is simply the traditional 2SFCA method, whereas the latter is the Enhanced 2SFCA approach. The catchment areas for the first step of the algorithm (demand allocation) are shown in Figs \ref{fig:fig7-simulation-step1} (binary impedance) and \ref{fig:fig8-simulation-step1} (stepwise impedance). Notice that some population centers are inside the catchment areas of more than one clinic. For instance, Population Center 5 is in the catchment areas of Clinics 2 and 3, whereas Population Center 4 is in the catchment areas of all three clinics.
@@ -1344,7 +1343,7 @@ kable(df_los,
 
 Accessibility in the table is calculated as the level of service of the clinics multiplied by the the values of the impedance function with respect to a population center, and then aggregated for all clinics. As seen in the table, the levels of accessibility vary considerably depending on the method. As anticipated, use of non-binary impedance functions reduces the inflation effect, and can even lead to deflation. Consider for instance the case of the binary impedance matrix: the total level of service in the system is the sum of the level of service at the three clinics, or `r prettyNum(sum(L_b), digits = 3)`. The level of service _allocated_ to population centers, on the other hand, is the sum of the accessibility in the system, or `r prettyNum(sum(A_b), digits = 3)`. When using the stepwise impedance function, the total level of service in the system is `r prettyNum(sum(L_s), digits = 3)`, and the level of service allocated to population centers is `r prettyNum(sum(A_s), digits = 3)`. Compare this to the case of 3SFCA, where the total level of service in the system is `r prettyNum(sum(L_sel), digits = 3)`, but the level of service allocated to population centers is only `r prettyNum(sum(A_sel), digits = 3)`; or the case of M2SFCA, which estimates the total level of service in the system as `r prettyNum(sum(L_s), digits = 3)` (same as E2SFCA) but allocates `r prettyNum(sum(A_m), digits = 3)` to population centers.
 
-Clearly, all the methods give qualitatively similar results, with peripheral centers displaying lower accessibility and more central places higher. But there are important differences in how demand and level of service are allocated throughout the system to calculate accessibilty. Figure \ref{fig:fig9-comparison} shows how the different methods penalize peripheral centers at different rates. And, since the demand is not consistent with the population and the accessibility is not consistent with the level of service of the clinics, it is difficult to interpret the results in terms PPRs. For instance, when we inspect the results for the binary impedance matrix (2SFCA), we can see in the table that the accessibility of Population Center 1 is simply the level of service of Clinic 1. But, as we saw before, this level of service was deflated by double counting the population of Centers 2, 3, and 4, which contribute to the calculation of demand at multiple clinics. Things become more complex as the number of overlapping catchment areas grows. For example, Population Center 2 contributed to the congestion effect of two clinics. However, demand at one of those clinics was calculated using the population of eight out of nine population centers. What this suggests is that, at the very least, some population centers (likely those in the periphery of regions) will have artificially low accessibility levels as a consequence of demand inflation. 
+Clearly, all the methods give qualitatively similar results, with peripheral centers displaying lower accessibility and more central places higher. But there are important differences in how demand and level of service are allocated throughout the system to calculate accessibilty. Fig \ref{fig:fig9-comparison} shows how the different methods penalize peripheral centers at different rates. And, since the demand is not consistent with the population and the accessibility is not consistent with the level of service of the clinics, it is difficult to interpret the results in terms PPRs. For instance, when we inspect the results for the binary impedance matrix (2SFCA), we can see in the table that the accessibility of Population Center 1 is simply the level of service of Clinic 1. But, as we saw before, this level of service was deflated by double counting the population of Centers 2, 3, and 4, which contribute to the calculation of demand at multiple clinics. Things become more complex as the number of overlapping catchment areas grows. For example, Population Center 2 contributed to the congestion effect of two clinics. However, demand at one of those clinics was calculated using the population of eight out of nine population centers. What this suggests is that, at the very least, some population centers (likely those in the periphery of regions) will have artificially low accessibility levels as a consequence of demand inflation. 
 
 ```{r fig9-comparison, echo=FALSE, fig.cap="\\label{fig:fig9-comparison}Accessibility by Population Center by Method", warning=FALSE, message=FALSE, out.width="95%"}
 
@@ -2013,6 +2012,8 @@ los_stepwise[los_stepwise == Inf,] <- 0
 los_stepwise_adjusted <- family_doctors$family_doctors / demand_stepwise_adjusted
 #Remove clinic isolates by setting their level of service to zero (the value is Inf because zero DAs are within the catchment area of the clinic)
 los_stepwise_adjusted[los_stepwise_adjusted == Inf,] <- 0
+
+los <- data.frame(los_binary, los_binary_adjusted, los_stepwise, los_stepwise_adjusted)
 ```
 
 ```{r accessibility-calculation, echo=FALSE, include=FALSE}
@@ -2041,17 +2042,11 @@ accessibility_stepwise_adjusted <- impedance_stepwise_col_adjusted %*% los_stepw
 #accessibility_stepwise_adjusted <- totalsupply_stepwise_adjusted / totaldemand_stepwise_adjusted
 
 #
-accessibility <- data.frame(da_population$DAUID,
-                            da_population$POP2011,
-                            accessibility_binary,
-                            accessibility_binary_adjusted,
-                            accessibility_stepwise,
-                            accessibility_stepwise_adjusted)
-colnames(accessibility) <- c("DA", "Population", 
-                             "Binary", "Binary_Adjusted", 
-                             "Stepwise", "Stepwise_Adjusted")
-
-
+accessibility <- data.frame(DA = da_population$DAUID,
+                            Binary = accessibility_binary,
+                            Binary_Adjusted = accessibility_binary_adjusted,
+                            Stepwise = accessibility_stepwise,
+                            Stepwise_Adjusted = accessibility_stepwise_adjusted)
 ```
 
 ```{r table-descriptive-statistics, echo=FALSE}
@@ -2064,15 +2059,17 @@ descriptive_stats <- data.frame(Case = c("Binary",
                                        prettyNum(sum(demand_binary_adjusted)*1000, big.mark = ","),
                                        prettyNum(sum(demand_stepwise)*1000, big.mark = ","),
                                        prettyNum(sum(demand_stepwise_adjusted)*1000, big.mark = ",")),
-                            Physicians = c(sum(family_doctors$family_doctors)/sum(demand_binary),
+                            RAPPR = c(sum(family_doctors$family_doctors)/sum(demand_binary),
                                            sum(family_doctors$family_doctors)/sum(demand_binary_adjusted),
                                            sum(family_doctors$family_doctors)/sum(demand_stepwise),
                                            sum(family_doctors$family_doctors)/sum(demand_stepwise_adjusted)), 
-                            mean_LOS = c(sum(los_binary), sum(los_binary_adjusted), sum(los_stepwise), sum(los_stepwise_adjusted))/nrow(clinics),
-                            sum_LOS = c(sum(los_binary), sum(los_binary_adjusted), sum(los_stepwise), sum(los_stepwise_adjusted)),
-                            mean_Accessibility = c(sum(accessibility_binary), sum(accessibility_binary_adjusted), sum(accessibility_stepwise), sum(accessibility_stepwise_adjusted))/nrow(clinics),
-                            sum_Accessibility = c(sum(accessibility_binary), sum(accessibility_binary_adjusted), sum(accessibility_stepwise), sum(accessibility_stepwise_adjusted))
+                            mean_LOS = apply(los, 2, mean),
+                            sum_LOS = apply(los, 2, sum),
+                            mean_Accessibility = apply(accessibility[,2:5], 2, mean),
+                            sum_Accessibility = apply(accessibility[,2:5], 2, sum)
                             )
+
+row.names(descriptive_stats) <- NULL
                             
 kable(descriptive_stats, 
       format = "latex",
