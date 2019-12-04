@@ -1,6 +1,6 @@
 # Demand and level of service inflation in Floating Catchment Area (FCA) methods
 
-Antonio Paez A, Higgins C.D., Vivona S.F. (2019) Demand and level of service inflation in Floating Catchment Area (FCA) methods. PLoS ONE 14(6): e0218773. 
+Antonio Paez, Christopher D. Higgins, Salvatore F. Vivona (2019) Demand and level of service inflation in Floating Catchment Area (FCA) methods. PLoS ONE 14(6): e0218773. 
 
 https://doi.org/10.1371/journal.pone.0218773
 
